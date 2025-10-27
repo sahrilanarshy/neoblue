@@ -1,0 +1,2156 @@
+/* Pengaturan Font dan Body Utama */
+body {
+    /* Menggunakan font 'Nunito' dari file Anda */
+    font-family: 'Nunito', sans-serif; 
+    /* Padding untuk fixed navbar & bottom bar dari file Anda */
+    padding-top: 105px;
+    padding-bottom: 104px;
+    background-color: #ffffff; /* Latar belakang putih seperti desain baru */
+}
+
+/* Container Utama */
+.container {
+    padding-right: 16px !important;
+    padding-left: 16px !important;
+}
+
+/* Tombol Primary (dari file Anda, bisa digunakan di tempat lain) */
+.btn-primary {
+    background-color: #007bff;
+    border: none;
+    font-weight: 700;
+    padding: 10px 20px;
+    border-radius: 50px;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+}
+
+/* Navbar Atas (dari file Anda) */
+.navbar {
+    background-image: linear-gradient(to right, rgb(37 99 235), rgb(29 78 216));
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1030;
+}
+
+.navbar-brand {
+    font-size: 35px;
+    margin-right: 0px;
+    color: #fff !important;
+}
+
+.menu {
+    color: #fff !important;
+}
+
+.nav-link {
+    font-size: 16px;
+    font-weight: 700;
+    padding: 16px !important;
+}
+
+/* Bottom Bar (dari file Anda) */
+.bottombar {
+    display: none; /* Akan muncul di layar kecil */
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: rgb(255, 255, 255);
+    z-index: 1030;
+}
+
+.bottombar .nav-item {
+    flex: 1;
+    text-align: center;
+    padding: 10px 0;
+}
+
+.bottombar .nav-link {
+    color: #6c757d;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.bottombar .nav-link i {
+    font-size: 20px;
+    display: block;
+    color: #6c757d;
+}
+
+
+/* --- [BAGIAN 2] GAYA KONTEN DASHBOARD (Baru & Disesuaikan) --- */
+.dashboard-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 0.5rem;
+}
+
+/* Header Selamat Datang */
+.welcome-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #ffffff;
+    border: 1px solid #dee2e6;
+    border-radius: 0.5rem;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+}
+
+.welcome-header h1 {
+    font-size: 24px;
+    font-weight: 600;
+    margin: 0;
+}
+
+.user-status {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 8px;
+}
+
+.user-status .status-badge {
+    background-color: #e2e8f0;
+    color: #2563eb;
+    padding: 4px 12px;
+    border-radius: 9999px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.user-status p {
+    margin: 0;
+    color: #6c757d;
+    font-size: 14px;
+}
+
+/* Tombol-tombol khusus Dashboard */
+.btn-upgrade, .btn-start-learning {
+    background-color: #ffc107;
+    color: #212529;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px; /* Radius ini akan ditimpa di bawah */
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    text-decoration: none
+}
+
+.btn-start-learning {
+    width: 100%;
+    font-size: 16px;
+    font-weight: 700; /* Dibuat lebih tebal */
+    background-color: #facc15; /* Warna kuning lebih cerah */
+    border-radius: 0.75rem; /* Sudut lebih tumpul (12px) */
+    padding-top: 14px; /* Dibuat sedikit lebih tinggi */
+    padding-bottom: 14px;
+    text-decoration: none;
+    text-align: center;
+}
+
+.btn-upgrade:hover, .btn-start-learning:hover {
+    background-color: #eab308; /* Warna hover disesuaikan */
+}
+
+/* Menu Utama (4 Kartu Atas) */
+.main-menu {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.menu-card {
+    background-color: #ffffff;
+    padding: 24px;
+    border-radius: 0.75rem;
+    border: 1px solid #e9ecef;
+}
+
+.menu-card h2 {
+    margin: 0 0 8px 0;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.menu-card p {
+    margin: 0;
+    color: #6c757d;
+    font-size: 14px;
+}
+
+/* Materi Pembelajaran */
+.learning-materials {
+    background-color: #ffffff;
+    border: 1px solid #dee2e6;
+    border-radius: 0.75rem;
+    padding: 1.5rem;
+}
+
+.learning-materials h2 {
+    font-size: 22px;
+    font-weight: 600;
+    margin-top: 0;
+    margin-bottom: 1.5rem;
+}
+
+.materials-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    
+}
+
+.material-card {
+    background-color: #eef2ff; /* Warna biru lebih lembut */
+    padding: 20px;
+    border-radius: 1rem; /* Sudut lebih tumpul (16px) */
+    display: flex; /* Tambahan untuk tata letak yang lebih baik */
+    flex-direction: column; /* Tambahan */
+    justify-content: space-between; /* Tambahan */
+    height: 100%; /* Tambahan */
+}
+
+.material-card h3 {
+    margin: 0;
+    font-size: 20px;
+    font-weight: 700;
+    color: #4338ca;
+}
+
+.material-card p {
+    margin: 4px 0 20px 0;
+    color: #495057;
+}
+
+/* --- [BAGIAN 3] MEDIA QUERIES (RESPONSIVE) - Gabungan --- */
+
+/* Untuk Desktop (Layar Besar) */
+@media (min-width: 992px) {
+    body {
+        padding-bottom: 26px !important;
+    }
+}
+
+/* Untuk Tablet */
+@media (max-width: 991px) {
+    /* Aturan dari CSS Anda */
+    .nav-link {
+        padding: 5px 0 5px 0 !important;
+    }
+    .bottombar {
+        display: flex;
+    }
+    .gabung {
+        margin-top: 5%;
+    }
+    
+    /* Aturan dari konten dashboard */
+    .main-menu,
+    .materials-grid {
+        grid-template-columns: repeat(2, 1fr); /* Kartu menjadi 2 kolom */
+    }
+}
+
+/* Untuk Mobile (Layar Sedang) */
+@media (max-width: 767px) {
+    /* Aturan dari CSS Anda */
+    .navbar-nav {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    /* Aturan dari konten dashboard */
+    .welcome-header {
+        flex-direction: column; /* Tumpuk vertikal */
+        align-items: flex-start;
+        gap: 15px;
+    }
+    .main-menu,
+    .materials-grid {
+        grid-template-columns: 1fr; /* Kartu menjadi 1 kolom */
+    }
+}
+
+/* Untuk Mobile (Layar Kecil) */
+@media (max-width: 575px) {
+    .container {
+        padding-left: 26px !important;
+        padding-right: 26px !important;
+    }
+}
+
+/* Header Halaman Materi (Tombol Kembali & Judul) */
+.materi-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    /* Diletakkan di dalam .dashboard-content yang sudah ada */
+}
+.materi-header .kembali-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    text-decoration: none;
+    color: #4b5563;
+    font-weight: 600;
+}
+.materi-header h1 {
+    font-size: 24px;
+    font-weight: 700;
+    margin: 0;
+}
+
+/* Kontainer Putih untuk Daftar Materi */
+.daftar-materi-container {
+    background-color: #fff;
+    border-radius: 0.75rem;
+    padding: 1.5rem;
+    border: 1px solid #dee2e6;
+}
+.daftar-materi-container h2 {
+    margin-top: 0;
+    margin-bottom: 1.5rem;
+    font-weight: 700;
+    font-size: 20px;
+}
+.materi-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+/* Gaya per Baris Item Materi */
+.materi-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    border-radius: 0.5rem;
+}
+.materi-item.free { background-color: #dbeafe; } /* Latar biru untuk item gratis */
+.materi-item.locked { background-color: #f1f5f9; } /* Latar abu-abu untuk item terkunci */
+
+.materi-info { 
+    display: flex; 
+    align-items: center; 
+    gap: 1rem; 
+}
+.materi-title { 
+    margin: 0; 
+    font-weight: 600; 
+    color: #1e293b; 
+}
+.materi-actions { 
+    display: flex; 
+    align-items: center; 
+    gap: 1rem; 
+}
+
+/* Gaya untuk Ikon (Buku & Gembok) */
+.icon-wrapper {
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    color: #fff;
+}
+.icon-wrapper.book { background-color: #84cc16; } /* Ikon buku hijau */
+.icon-wrapper.lock { background-color: #9ca3af; } /* Ikon gembok abu-abu */
+.icon-wrapper svg { width: 22px; height: 22px; }
+
+/* Gaya untuk Badge (Label Gratis & Premium) */
+.badge { 
+    font-size: 12px; 
+    font-weight: 700; 
+    padding: 4px 10px; 
+    border-radius: 999px; 
+}
+.badge-gratis { background-color: #d9f99d; color: #4d7c0f; }
+.badge-premium { color: #6b7280; }
+
+/* Gaya untuk Tombol-Tombol Baru */
+.btn-mulai, .btn-upgrade-cta {
+    background-color: #ffc107;
+    color: #212529;
+    border: none;
+    padding: 10px 22px;
+    border-radius: 8px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+}
+.btn-mulai:hover, .btn-upgrade-cta:hover { 
+    background-color: #e0a800; 
+}
+.btn-upgrade-item {
+    background-color: #fff;
+    border: 1px solid #d1d5db;
+    color: #4b5563;
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    text-decoration: none;
+}
+.btn-upgrade-item:hover { 
+    background-color: #f3f4f6; 
+}
+
+/* Gaya untuk Banner Ajakan Upgrade (CTA) */
+.cta-banner {
+    background-color: #a5b4fc;
+    color: #1e1b4b;
+    border-radius: 0.75rem;
+    padding: 2rem;
+    text-align: center;
+    margin-top: 2rem;
+}
+.cta-banner h2 { 
+    margin-top: 0; 
+    margin-bottom: 0.5rem; 
+    font-weight: 700; 
+}
+.cta-banner p { 
+    margin-top: 0; 
+    margin-bottom: 1.5rem; 
+    opacity: 0.9; 
+}
+
+
+/* --- [TAMBAHAN] ATURAN RESPONSIVE UNTUK HALAMAN MATERI --- */
+
+/* Tambahkan aturan ini di dalam media query @media (max-width: 767px) yang sudah ada */
+@media (max-width: 767px) {
+    .materi-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+    .materi-actions {
+        margin-top: 0.5rem;
+    }
+}
+/* --- [BAGIAN BARU] GAYA HALAMAN HABIT HARIAN --- */
+
+/* Judul Halaman */
+.page-title {
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+}
+
+/* Kontainer Abu-abu Utama */
+.habit-container {
+    background-color: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 1rem; /* 16px */
+    padding: 1.5rem; /* 24px */
+}
+
+/* Blok per Hari */
+.habit-day-entry:not(:last-child) {
+    margin-bottom: 1.5rem; /* Jarak antar hari */
+}
+
+/* Header Tanggal */
+.habit-date-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem; /* 12px */
+    margin-bottom: 1rem; /* 16px */
+}
+.date-text {
+    margin: 0;
+    color: #6b7280;
+    font-weight: 600;
+}
+.tag-today {
+    background-color: #3b82f6; /* Biru */
+    color: #ffffff;
+    padding: 4px 12px;
+    border-radius: 9999px; /* Pill shape */
+    font-size: 12px;
+    font-weight: 700;
+}
+
+/* Grid untuk Kartu Soal & Bacaan */
+.habit-cards-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* 2 kolom sama besar */
+    gap: 1.5rem;
+}
+
+/* Kartu Individual */
+.habit-card {
+    background-color: #dbeafe; /* Biru muda, konsisten */
+    border-radius: 0.75rem; /* 12px */
+    padding: 1rem 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.habit-title {
+    margin: 0;
+    font-weight: 700;
+    color: #1e3a8a; /* Biru Tua */
+}
+
+/* Tombol/Status di dalam Kartu */
+.habit-button {
+    padding: 6px 18px;
+    border-radius: 9999px; /* Pill shape */
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    color: #ffffff;
+    display: inline-block;
+}
+.habit-button.yellow {
+    background-color: #ffc107; /* Kuning */
+    color: #422006;
+}
+.habit-button.yellow:hover {
+    background-color: #e0a800;
+}
+.habit-button.green {
+    background-color: #22c55e; /* Hijau */
+}
+
+
+/* --- [TAMBAHAN] ATURAN RESPONSIVE UNTUK HALAMAN HABIT --- */
+
+/* Tambahkan ini di dalam media query @media (max-width: 767px) yang sudah ada */
+@media (max-width: 767px) {
+    .habit-cards-grid {
+        grid-template-columns: 1fr; /* Ubah menjadi 1 kolom di layar kecil */
+    }
+}
+
+/* --- [BAGIAN BARU] GAYA HALAMAN JADWAL BELAJAR (VERSI BARU) --- */
+
+/* Judul halaman (tanpa garis bawah) */
+.page-title {
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+}
+
+/* Layout utama 2 kolom */
+.main-grid-layout {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 1.5rem;
+    align-items: start;
+    margin-bottom: 1.5rem;
+}
+
+/* Mengubah kontainer utama menjadi berbayang (shadow) */
+.main-grid-layout > .content-box,
+.weekly-summary {
+    background-color: #ffffff;
+    border: none; /* Menghilangkan border */
+    border-radius: 1rem; /* Sudut lebih tumpul */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); /* Menambahkan shadow lembut */
+}
+
+/* Form Tambah Jadwal */
+.form-title { display: flex; align-items: center; gap: 0.5rem; font-size: 20px; font-weight: 700; margin-bottom: 1.5rem; }
+.form-title i { color: #3b82f6; }
+.form-group { margin-bottom: 1rem; }
+.form-group label { display: block; font-weight: 600; color: #4b5563; margin-bottom: 0.5rem; }
+.form-select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #d1d5db;
+    border-radius: 0.5rem;
+    background-color: #ffffff; /* Latar diubah menjadi putih */
+    font-size: 16px;
+}
+.time-inputs { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.btn i { margin-right: 0.5rem; }
+
+/* Daftar Jadwal Saat Ini */
+.schedule-list { display: flex; flex-direction: column; gap: 1rem; }
+.schedule-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #e0e7ff; /* Warna biru diubah */
+    padding: 1rem 1.5rem;
+    border-radius: 0.75rem;
+}
+.schedule-info h3 { margin: 0 0 4px 0; font-size: 18px; font-weight: 700; }
+.schedule-info p { margin: 0 0 8px 0; color: #4b5563; }
+.time-tag { display: flex; align-items: center; gap: 0.5rem; font-size: 14px; font-weight: 600; color: #3730a3; }
+.delete-btn {
+    background-color: #fee2e2;
+    color: #ef4444;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Ringkasan Mingguan */
+.weekly-summary h2 { margin-top: 0; }
+.summary-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 1rem; }
+.summary-day h4 { font-size: 16px; margin-bottom: 0.75rem; color: #4b5563; text-align: center; }
+.summary-card {
+    background-color: #e0e7ff; /* Warna biru disamakan */
+    border-radius: 0.75rem;
+    padding: 1rem;
+    text-align: center;
+}
+.summary-card strong { display: block; font-size: 18px; color: #3730a3; } /* Warna teks diubah */
+.summary-card span { font-size: 14px; color: #3730a3; } /* Warna teks diubah */
+.no-schedule { color: #9ca3af; text-align: center; font-size: 14px; padding-top: 1rem; }
+
+
+/* --- [TAMBAHAN] ATURAN RESPONSIVE UNTUK HALAMAN JADWAL --- */
+
+/* Untuk Tablet */
+@media (max-width: 991px) {
+    .main-grid-layout { grid-template-columns: 1fr; }
+    .summary-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+/* Untuk Mobile */
+@media (max-width: 767px) {
+    .summary-grid { grid-template-columns: repeat(2, 1fr); }
+}
+/* --- [BAGIAN BARU] GAYA HALAMAN TRYOUT --- */
+
+.tryout-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem; /* Jarak antar item tryout */
+    margin-top: 1.5rem; /* Jarak dari subjudul 'Daftar Tryout' */
+}
+
+.tryout-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.25rem;
+    border: 1px solid #e5e7eb; /* Border abu-abu muda */
+    border-radius: 0.75rem;
+    background-color: #ffffff;
+    transition: box-shadow 0.2s;
+}
+
+.tryout-item:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); /* Efek shadow saat hover */
+}
+
+/* Gaya untuk item tryout yang sedang aktif/berlangsung */
+.tryout-item.active {
+    background-color: #dbeafe; /* Latar biru muda */
+    border-color: #bfdbfe;
+}
+
+/* Info di sisi kiri (judul, tanggal, skor) */
+.tryout-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem; /* Jarak kecil antar teks */
+}
+
+.tryout-title {
+    font-size: 18px;
+    font-weight: 700;
+    margin: 0;
+    color: #1f2937;
+}
+
+/* Wrapper untuk tanggal dan tag 'Selesai' */
+.tryout-meta {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin: 4px 0;
+}
+
+.tryout-date {
+    font-size: 14px;
+    color: #6b7280;
+}
+
+/* Badge 'Selesai' kustom */
+.badge-selesai {
+    background-color: #e5e7eb;
+    color: #4b5563;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 9999px;
+}
+
+/* Teks Skor */
+.tryout-score {
+    font-size: 14px;
+    font-weight: 600;
+    color: #4f46e5; /* Warna ungu kebiruan */
+}
+
+/* Tombol menggunakan class .btn-mulai dan .btn-upgrade-item yang sudah ada */
+
+
+/* --- ATURAN RESPONSIVE UNTUK HALAMAN TRYOUT --- */
+@media (max-width: 767px) {
+    .tryout-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem; /* Jarak antara info dan tombol */
+    }
+
+    .tryout-actions {
+        width: 100%;
+    }
+
+    .tryout-actions .btn-mulai,
+    .tryout-actions .btn-upgrade-item {
+        width: 100%;
+        text-align: center;
+    }
+}
+/* --- [BAGIAN BARU] GAYA HALAMAN PROFIL --- */
+
+.profile-grid {
+    display: grid;
+    grid-template-columns: 1fr 2fr; /* Layout 2 kolom, kanan lebih besar */
+    gap: 1.5rem;
+    align-items: start;
+}
+
+.profile-column {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.profile-card {
+    background-color: #ffffff;
+    border: 1px solid #dee2e6;
+    border-radius: 0.75rem;
+    padding: 1.5rem;
+}
+
+.profile-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+.profile-card-header h2 {
+    font-size: 18px;
+    font-weight: 700;
+    margin: 0;
+}
+
+.profile-card-body p {
+    margin: 0;
+    color: #6b7280;
+    font-size: 14px;
+}
+
+.btn-premium-small {
+    background-color: #3b82f6;
+    color: #ffffff;
+    padding: 6px 14px;
+    border-radius: 0.5rem;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.btn-community-green {
+    background-color: #22c55e;
+    color: #ffffff;
+    padding: 6px 14px;
+    border-radius: 0.5rem;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.btn-community-green-outline {
+    background-color: #ffffff;
+    color: #16a34a;
+    border: 1px solid #22c55e;
+    padding: 6px 14px;
+    border-radius: 0.5rem;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+/* Form Edit Profil */
+.edit-profile-title {
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+}
+
+.profile-picture-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 2rem;
+}
+
+.profile-picture-initials {
+    width: 96px;
+    height: 96px;
+    border-radius: 50%;
+    background-color: #4f46e5;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.profile-picture-initials span {
+    font-size: 32px;
+    font-weight: 700;
+}
+
+.profile-picture-upload {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 14px;
+    color: #6b7280;
+}
+
+.btn-file-upload {
+    background-color: #f3f4f6;
+    border: 1px solid #d1d5db;
+    padding: 6px 12px;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.form-hint {
+    font-size: 12px;
+    color: #9ca3af;
+}
+
+.edit-profile-form .form-group {
+    margin-bottom: 1.25rem;
+}
+
+.edit-profile-form .form-input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #d1d5db;
+    border-radius: 0.5rem;
+    font-size: 16px;
+    background-color: #f9fafb;
+}
+.edit-profile-form .form-input[readonly] {
+    background-color: #e5e7eb;
+    cursor: not-allowed;
+}
+
+
+.btn-save-changes {
+    width: 100%;
+    padding: 14px;
+    background-color: #ffc107;
+    color: #212529;
+    border: none;
+    border-radius: 0.5rem;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+/* --- ATURAN RESPONSIVE UNTUK HALAMAN PROFIL --- */
+@media (max-width: 991px) {
+    .profile-grid {
+        grid-template-columns: 1fr; /* Tumpuk menjadi 1 kolom */
+    }
+}
+/* --- [BAGIAN BARU] GAYA HALAMAN NOTIFIKASI --- */
+
+.notification-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem; /* Jarak antar kartu notifikasi */
+    max-width: 800px; /* Batasi lebar agar tidak terlalu panjang di layar besar */
+}
+
+.notification-item {
+    background-color: #ffffff;
+    border: 1px solid #e5e7eb; /* Border abu-abu sangat muda */
+    border-radius: 0.75rem; /* Sudut tumpul */
+    padding: 1.5rem; /* Padding di dalam kartu */
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03); /* Shadow lembut */
+}
+
+.notification-date {
+    font-size: 14px;
+    color: #6b7280; /* Warna abu-abu */
+    margin-bottom: 0.5rem;
+}
+
+.notification-title {
+    font-size: 20px;
+    font-weight: 700;
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+    color: #1f2937;
+}
+
+.notification-body {
+    font-size: 16px;
+    color: #4b5563;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+}
+
+.btn-notification {
+    background-color: #3b82f6; /* Warna biru */
+    color: #ffffff;
+    padding: 10px 24px;
+    border-radius: 0.5rem;
+    text-decoration: none;
+    font-weight: 600;
+    display: inline-block;
+    transition: background-color 0.2s;
+}
+
+.btn-notification:hover {
+    background-color: #2563eb; /* Warna biru lebih gelap saat hover */
+    color: #ffffff;
+}
+/* --- [BAGIAN BARU] GAYA HALAMAN PREMIUM --- */
+
+.premium-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+.premium-header h1 {
+    font-size: 32px;
+    font-weight: 700;
+}
+.premium-header p {
+    font-size: 18px;
+    color: #6b7280;
+    margin-bottom: 1.5rem;
+}
+.btn-promo {
+    background-color: #ef4444;
+    color: #ffffff;
+    padding: 12px 28px;
+    border-radius: 0.5rem;
+    text-decoration: none;
+    font-weight: 700;
+}
+
+.premium-layout {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 1.5rem;
+    align-items: start;
+    margin-bottom: 2rem;
+}
+
+.paket-premium-card {
+    background-color: #fefce8;
+    border: 2px solid #facc15;
+    border-radius: 1rem;
+    padding: 2rem;
+    position: relative;
+}
+.badge-populer {
+    position: absolute;
+    top: -16px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #f59e0b;
+    color: #ffffff;
+    padding: 6px 16px;
+    border-radius: 999px;
+    font-weight: 700;
+}
+.paket-premium-card h2 {
+    font-size: 24px;
+    font-weight: 700;
+    margin-top: 1rem;
+}
+.harga { margin: 0.5rem 0; }
+.harga-dicoret {
+    text-decoration: line-through;
+    color: #9ca3af;
+    font-size: 20px;
+    margin-right: 0.5rem;
+}
+.harga-promo {
+    font-size: 36px;
+    font-weight: 700;
+    color: #1f2937;
+}
+.info-berlaku { color: #6b7280; border-bottom: 1px solid #e5e7eb; padding-bottom: 1.5rem; margin-bottom: 1.5rem; }
+
+.fitur-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 1rem; }
+.fitur-list li { display: flex; align-items: center; gap: 0.75rem; }
+.fitur-list i { color: #22c55e; font-size: 20px; }
+
+.pembayaran-card { background-color: #fff; border: 1px solid #e5e7eb; border-radius: 1rem; padding: 2rem; }
+.pembayaran-card h3 { font-size: 20px; font-weight: 700; margin-bottom: 1.5rem; }
+.form-voucher label { font-weight: 600; margin-bottom: 0.5rem; display: block; }
+.input-grup { display: flex; }
+.input-grup input { flex-grow: 1; padding: 10px; border: 1px solid #d1d5db; border-radius: 0.5rem 0 0 0.5rem; background-color: #f9fafb; }
+.input-grup button { background-color: #3b82f6; color: #fff; border: none; padding: 0 16px; border-radius: 0 0.5rem 0.5rem 0; cursor: pointer; }
+
+.ringkasan-harga { margin: 1.5rem 0; border-top: 1px solid #e5e7eb; padding-top: 1.5rem; display: flex; flex-direction: column; gap: 0.75rem; }
+.item-harga, .total-harga { display: flex; justify-content: space-between; }
+.total-harga { font-weight: 700; margin-top: 0.5rem; }
+.harga-final { font-size: 20px; }
+
+.btn-langganan { width: 100%; background-color: #f59e0b; color: #fff; border: none; padding: 14px; font-size: 16px; font-weight: 700; border-radius: 0.5rem; cursor: pointer; }
+.syarat-ketentuan { font-size: 12px; color: #9ca3af; text-align: center; margin-top: 1rem; }
+
+.perbandingan-fitur-card { background-color: #fff; border: 1px solid #e5e7eb; border-radius: 1rem; padding: 2rem; }
+.perbandingan-fitur-card h2 { text-align: center; margin-bottom: 1.5rem; font-weight: 700; }
+.tabel-wrapper { overflow-x: auto; } /* Agar tabel bisa di-scroll di layar kecil */
+.tabel-fitur { width: 100%; border-collapse: collapse; }
+.tabel-fitur th, .tabel-fitur td { padding: 1rem; text-align: center; border-bottom: 1px solid #e5e7eb; }
+.tabel-fitur th { font-weight: 600; }
+.tabel-fitur td:first-child { text-align: left; font-weight: 600; }
+.premium-highlight { background-color: #fef9c3; font-weight: 600; }
+.icon-merah { color: #ef4444; font-size: 20px; }
+.icon-hijau { color: #22c55e; font-size: 20px; }
+
+/* --- ATURAN RESPONSIVE --- */
+@media (max-width: 991px) {
+    .premium-layout {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* --- [BAGIAN BARU] GAYA HALAMAN DETAIL HABIT --- */
+
+.habit-detail-container {
+    background-color: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 0.75rem;
+    padding: 2rem;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.habit-detail-header {
+    border-bottom: 1px solid #e5e7eb;
+    padding-bottom: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.habit-detail-header h1 {
+    font-size: 24px;
+    font-weight: 700;
+    margin: 0 0 0.25rem 0;
+}
+
+.habit-detail-header p {
+    font-size: 16px;
+    color: #6b7280;
+    margin: 0;
+}
+
+.question-list {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.question-item {
+    line-height: 1.7;
+}
+
+.question-text {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.answer-options {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1rem 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.answer-options li {
+    color: #374151;
+}
+
+.show-answer-link {
+    color: #3b82f6;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.show-answer-link:hover {
+    text-decoration: underline;
+}
+/* --- [BAGIAN BARU] GAYA HALAMAN DETAIL BACAAN --- */
+
+.reading-content {
+    line-height: 1.8; /* Jarak antar baris lebih lebar untuk kenyamanan membaca */
+}
+
+.reading-subtitle {
+    font-size: 16px;
+    font-weight: 700;
+    color: #6b7280; /* Warna abu-abu */
+    margin-bottom: 0.5rem;
+}
+
+.reading-title {
+    font-size: 22px;
+    font-weight: 700;
+    margin-top: 0;
+    margin-bottom: 1.5rem;
+}
+
+.reading-content p {
+    font-size: 16px;
+    color: #374151; /* Warna teks sedikit lebih gelap */
+    margin-bottom: 1.5rem;
+}
+/* --- [BAGIAN BARU] GAYA HALAMAN PENGERJAAN TRYOUT --- */
+
+/* Sembunyikan bottom bar saat tryout aktif */
+body.tryout-active {
+    padding-bottom: 0 !important;
+}
+body.tryout-active .bottombar {
+    display: none !important;
+}
+
+/* Layout utama 2 kolom */
+.tryout-container {
+    max-width: 100%; /* Lebar penuh */
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: 3fr 1fr; /* 75% kiri, 25% kanan */
+    min-height: calc(100vh - 105px); /* Tinggi penuh dikurangi navbar */
+}
+
+.tryout-question-panel {
+    padding: 2rem;
+    background-color: #fff;
+}
+
+.tryout-navigation-panel {
+    height: calc(100vh - 105px);
+    position: sticky;
+    top: 105px; /* Setinggi navbar */
+    border-radius: 0;
+    border-left: 1px solid #dee2e6;
+    border-top: none;
+    border-right: none;
+    border-bottom: none;
+}
+
+.tryout-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #dee2e6;
+    padding-bottom: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.timer {
+    background-color: #fee2e2;
+    color: #b91c1c;
+    font-weight: 700;
+    padding: 10px 16px;
+    border-radius: 0.5rem;
+    font-size: 16px;
+}
+.timer i {
+    margin-right: 0.5rem;
+}
+
+.question-number {
+    font-size: 14px;
+    font-weight: 700;
+    color: #6b7280;
+}
+.question-body {
+    font-size: 18px;
+    line-height: 1.7;
+    margin-bottom: 2rem;
+}
+
+.answer-options-list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+.answer-options-list label {
+    display: block;
+    padding: 1rem;
+    border: 1px solid #d1d5db;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+.answer-options-list label:hover {
+    background-color: #f9fafb;
+}
+.answer-options-list input[type="radio"]:checked + label {
+    background-color: #dbeafe;
+    border-color: #3b82f6;
+    font-weight: 700;
+}
+
+.tryout-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2rem;
+    border-top: 1px solid #dee2e6;
+    padding-top: 1.5rem;
+}
+
+/* Navigasi Kanan */
+.question-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(40px, 1fr));
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+.question-grid-item {
+    width: 100%;
+    aspect-ratio: 1 / 1; /* Membuat kotak */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #d1d5db;
+    border-radius: 0.5rem;
+    text-decoration: none;
+    font-weight: 700;
+    color: #4b5563;
+}
+.question-grid-item.active {
+    background-color: #3b82f6;
+    color: #fff;
+    border-color: #3b82f6;
+}
+.question-grid-item.answered {
+    background-color: #22c55e;
+    color: #fff;
+    border-color: #22c55e;
+}
+.question-grid-item.flagged {
+    background-color: #f59e0b;
+    color: #fff;
+    border-color: #f59e0b;
+}
+
+.legend ul { list-style: none; padding: 0; margin-top: 0.5rem; }
+.legend li { display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.25rem; }
+.legend .box {
+    width: 20px;
+    height: 20px;
+    border: 1px solid #d1d5db;
+    border-radius: 0.25rem;
+}
+.legend .box.active { background-color: #3b82f6; border-color: #3b82f6; }
+.legend .box.answered { background-color: #22c55e; border-color: #22c55e; }
+.legend .box.flagged { background-color: #f59e0b; border-color: #f59e0b; }
+
+.btn-selesai {
+    width: 100%;
+    background-color: #ef4444;
+    color: #fff;
+    border: none;
+    padding: 14px;
+    font-size: 16px;
+    font-weight: 700;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    margin-top: 1.5rem;
+    
+    /* --- TAMBAHAN --- */
+    text-decoration: none; /* Menghilangkan garis bawah */
+    display: block;         /* Memastikan link mengisi lebar penuh */
+    text-align: center;   /* Menengahkan teks di dalam link */
+}
+
+/* Tambahkan ini juga agar tidak muncul garis saat di-hover */
+.btn-selesai:hover {
+    color: #fff;
+    text-decoration: none;
+}
+
+/* Responsive untuk Halaman Tryout */
+@media (max-width: 991px) {
+    .tryout-container {
+        grid-template-columns: 1fr; /* 1 kolom */
+    }
+    .tryout-navigation-panel {
+        order: -1; /* Pindah ke atas */
+        position: relative;
+        top: 0;
+        height: auto; /* Tinggi otomatis */
+    }
+}
+@media (max-width: 767px) {
+    .tryout-actions {
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+    .tryout-actions button {
+        flex-grow: 1;
+    }
+    .tryout-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+}
+/* --- [BAGIAN BARU] GAYA HALAMAN HASIL TRYOUT --- */
+
+.hasil-tryout-container {
+    background-color: #ffffff;
+    border: 1px solid #dee2e6;
+    border-radius: 0.75rem;
+    padding: 2.5rem;
+    max-width: 700px;
+    margin: 2rem auto; /* Otomatis di tengah */
+    text-align: center;
+}
+
+.hasil-icon i {
+    font-size: 64px;
+}
+
+.hasil-tryout-container h1 {
+    font-size: 28px;
+    font-weight: 700;
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+}
+.hasil-tryout-container p {
+    font-size: 16px;
+    color: #6b7280;
+    margin-bottom: 1.5rem;
+}
+
+.skor-final {
+    font-size: 80px;
+    font-weight: 700;
+    color: #3b82f6; /* Warna biru */
+    line-height: 1.1;
+}
+.skor-label {
+    font-weight: 600;
+    color: #374151;
+    margin-bottom: 2rem;
+}
+
+.skor-summary-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    border-top: 1px solid #e5e7eb;
+    border-bottom: 1px solid #e5e7eb;
+    padding: 1.5rem 0;
+    margin-bottom: 2rem;
+}
+
+.skor-summary-item h3 {
+    font-size: 32px;
+    font-weight: 700;
+    margin: 0;
+}
+.skor-summary-item p {
+    margin: 0;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+/* Helper warna teks */
+.text-success { color: #22c55e; }
+.text-danger  { color: #ef4444; }
+.text-muted   { color: #6b7280; }
+
+.hasil-actions {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+/* Responsive untuk Halaman Hasil */
+@media (max-width: 576px) {
+    .skor-summary-grid {
+        grid-template-columns: 1fr; /* 1 kolom di HP */
+    }
+    .hasil-actions {
+        flex-direction: column;
+    }
+}
+
+/*css untuk premium*/
+        .premium-header {
+            background-image: linear-gradient(to right, rgb(37 99 235), rgb(29 78 216));
+            color: white;
+            padding: 2rem;
+            border-radius: 0.75rem;
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+            margin-bottom: 2rem;
+        }
+
+        .premium-header h1 {
+            font-size: 2rem;
+            line-height: 2.5rem;
+            font-weight: 700;
+            margin: 0;
+        }
+
+        .premium-header p {
+            font-size: 1.125rem;
+            margin-top: 0.5rem;
+            color: #dbeafe;
+        }
+
+        .btn-promo {
+            display: inline-block;
+            background-color: #facc15;
+            color: #1e3a8a;
+            font-weight: 700;
+            padding: 0.5rem 1.25rem;
+            border-radius: 9999px;
+            margin-top: 1.25rem;
+            font-size: 0.875rem;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            transition: background-color 0.2s;
+            text-decoration: none;
+        }
+
+        .btn-promo:hover {
+            background-color: #fde047;
+        }
+
+        .premium-layout {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        @media (max-width: 1024px) {
+            .premium-layout {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .paket-premium-card {
+            background-color: white;
+            border-radius: 0.75rem;
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+            overflow: hidden;
+            position: relative;
+            border: 1px solid #f59e0b;
+            padding: 2rem;
+        }
+
+        .badge-populer {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            background-color: #f59e0b;
+            color: black;
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+        }
+
+        .paket-premium-card h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            margin-top: 2rem;
+        }
+
+        .harga {
+            display: flex;
+            align-items: baseline;
+            gap: 0.75rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .harga-dicoret {
+            color: #6b7280;
+            text-decoration: line-through;
+            font-size: 1.25rem;
+        }
+
+        .harga-promo {
+            color: #2563eb;
+            font-weight: 700;
+            font-size: 2.25rem;
+        }
+
+        .info-berlaku {
+            color: #4b5563;
+            font-size: 0.875rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .fitur-list {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .fitur-list li {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .fitur-list .bi {
+            color: #22c55e;
+            font-size: 1.5rem;
+        }
+
+        .fitur-list span {
+            color: #1f2937;
+            font-size: 1rem;
+        }
+
+        .pembayaran-card {
+            background-color: white;
+            border-radius: 0.75rem;
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+            padding: 1.5rem;
+            height: fit-content;
+        }
+
+        .pembayaran-card h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 1.25rem;
+        }
+
+        .form-voucher {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-voucher label {
+            display: block;
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: #374151;
+            margin-bottom: 0.25rem;
+        }
+
+        .input-grup {
+            display: flex;
+        }
+
+        .input-grup input {
+            flex-grow: 1;
+            border-top-left-radius: 0.375rem;
+            border-bottom-left-radius: 0.375rem;
+            border: 1px solid #d1d5db;
+            box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+            padding: 0.5rem 0.75rem;
+            font-size: 1rem;
+        }
+
+        .input-grup input:focus {
+            outline: 2px solid transparent;
+            outline-offset: 2px;
+            border-color: #2563eb;
+            box-shadow: 0 0 0 1px #2563eb;
+        }
+
+        .input-grup button {
+            background-color: #2563eb;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-top-right-radius: 0.375rem;
+            border-bottom-right-radius: 0.375rem;
+            font-weight: 600;
+            font-size: 0.875rem;
+            transition: background-color 0.2s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .input-grup button:hover {
+            background-color: #1d4ed8;
+        }
+
+        .ringkasan-harga {
+            border-top: 1px solid #e5e7eb;
+            padding-top: 1rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .item-harga {
+            display: flex;
+            justify-content: space-between;
+            color: #374151;
+        }
+
+        .item-harga span:last-child {
+            font-weight: 500;
+        }
+
+        .item-harga:nth-child(2) span:last-child {
+            color: #16a34a;
+        }
+
+        .total-harga {
+            display: flex;
+            justify-content: space-between;
+            color: black;
+            font-weight: 700;
+            font-size: 1.125rem;
+            padding-top: 0.5rem;
+            border-top: 1px solid #e5e7eb;
+            margin-top: 0.5rem;
+        }
+
+        .btn-langganan {
+            width: 100%;
+            background-color: #f97316;
+            color: white;
+            font-weight: 700;
+            padding: 0.75rem 0;
+            border-radius: 0.5rem;
+            margin-top: 1.5rem;
+            font-size: 1.125rem;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            transition: background-color 0.2s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-langganan:hover {
+            background-color: #ea580c;
+        }
+
+        .syarat-ketentuan {
+            font-size: 0.75rem;
+            color: #6b7280;
+            text-align: center;
+            margin-top: 1rem;
+        }
+
+        .perbandingan-fitur-card {
+            background-color: white;
+            border-radius: 0.75rem;
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+            padding: 2rem;
+        }
+
+        .perbandingan-fitur-card h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .tabel-wrapper {
+            overflow-x: auto;
+        }
+
+        .tabel-fitur {
+            width: 100%;
+            min-width: 500px;
+            text-align: left;
+            border-collapse: collapse;
+        }
+
+        .tabel-fitur thead tr {
+            background-color: #f9fafb;
+        }
+
+        .tabel-fitur th,
+        .tabel-fitur td {
+            padding: 1rem;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .tabel-fitur th {
+            font-weight: 600;
+            color: #374151;
+        }
+
+        .tabel-fitur td:nth-child(2) {
+            color: #4b5563;
+        }
+
+        .premium-highlight {
+            font-weight: 600;
+            color: #2563eb;
+        }
+
+        .icon-merah {
+            color: #ef4444;
+            font-size: 1.25rem;
+            text-align: center;
+        }
+
+        .icon-hijau {
+            color: #22c55e;
+            font-size: 1.25rem;
+            text-align: center;
+        }
+
+        .tabel-fitur td:has(.icon-merah),
+        .tabel-fitur td:has(.icon-hijau) {
+            text-align: center;
+        }
+
+        .tabel-fitur .premium-highlight.icon-hijau {
+            color: #22c55e;
+        }
+
+        /* --- [ CSS UNTUK MODAL PEMBAYARAN ] --- */
+
+        #paymentModal {
+            display: none;
+            /* Diubah ke 'flex' oleh JS */
+            position: fixed;
+            inset: 0;
+            background-color: rgba(0, 0, 0, 0.6);
+            z-index: 50;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+        }
+
+        .modal-content {
+            background-color: white;
+            border-radius: 0.5rem;
+            box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+            width: 100%;
+            max-width: 448px;
+            /* max-w-md */
+            overflow: hidden;
+            animation: scale-in 0.2s ease-out;
+        }
+
+        .modal-step {
+            display: none;
+            /* Diubah ke 'block' oleh JS */
+        }
+
+        .modal-step.active {
+            display: block;
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .modal-header h3 {
+            font-size: 1.125rem;
+            font-weight: 700;
+            color: #1f2937;
+            margin: 0;
+        }
+
+        .modal-header img {
+            height: 1.5rem;
+        }
+
+        .modal-header .modal-close-button {
+            background: none;
+            border: none;
+            color: #9ca3af;
+            font-size: 2rem;
+            line-height: 1;
+            cursor: pointer;
+            padding: 0;
+        }
+
+        .modal-header .modal-close-button:hover {
+            color: #374151;
+        }
+
+        .modal-back-button {
+            background: none;
+            border: none;
+            font-size: 0.875rem;
+            color: #2563eb;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+        }
+
+        .modal-back-button:hover {
+            color: #1d4ed8;
+        }
+
+        .modal-body {
+            padding: 1.5rem;
+            max-height: 60vh;
+            overflow-y: auto;
+        }
+
+        /* Step 1: Rincian */
+        .modal-tabs {
+            display: flex;
+            border-bottom: 1px solid #e5e7eb;
+            margin-bottom: 1.25rem;
+        }
+
+        .modal-tabs button {
+            background: none;
+            border: none;
+            padding: 0.5rem 1rem;
+            font-size: 0.875rem;
+            font-weight: 600;
+            cursor: pointer;
+            color: #6b7280;
+        }
+
+        .modal-tabs button.active {
+            color: #2563eb;
+            border-bottom: 2px solid #2563eb;
+        }
+
+        .order-details {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            font-size: 0.875rem;
+        }
+
+        .order-details div {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .order-details span:first-child {
+            color: #4b5563;
+        }
+
+        .order-details span:last-child {
+            color: #1f2937;
+            font-weight: 500;
+        }
+
+        /* Step 2: Metode */
+        .modal-body h4 {
+            font-weight: 600;
+            color: #374151;
+            font-size: 0.875rem;
+            margin: 1rem 0 0.5rem 0;
+        }
+
+        .payment-method-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            padding: 1rem;
+            border: 1px solid #e5e7eb;
+            border-radius: 0.5rem;
+            background: none;
+            cursor: pointer;
+            text-align: left;
+            margin-bottom: 0.75rem;
+        }
+
+        .payment-method-item:hover {
+            background-color: #f9fafb;
+        }
+
+        .payment-method-item div {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .payment-method-item img {
+            height: 1.25rem;
+        }
+
+        .payment-method-item .method-title {
+            font-weight: 600;
+            display: block;
+            text-align: left;
+            font-size: 0.875rem;
+        }
+
+        .payment-method-item .method-fee {
+            color: #6b7280;
+            display: block;
+            text-align: left;
+            font-size: 0.75rem;
+        }
+
+        /* Step 3 & 4: Detail VA */
+        .modal-body p {
+            text-align: center;
+            color: #4b5563;
+            font-size: 0.875rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .modal-body p strong {
+            color: #111827;
+        }
+
+        .payment-instructions-list {
+            border: 1px solid #e5e7eb;
+            border-radius: 0.5rem;
+            overflow: hidden;
+        }
+
+        .payment-instructions-list a {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem;
+            text-decoration: none;
+            color: #1f2937;
+            font-size: 0.875rem;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .payment-instructions-list a:last-child {
+            border-bottom: none;
+        }
+
+        .payment-instructions-list a:hover {
+            background-color: #f9fafb;
+        }
+
+        .payment-instructions-list .bi {
+            color: #9ca3af;
+        }
+
+        /* Step 4: Status */
+        .va-display {
+            text-align: center;
+        }
+
+        .va-display .va-label {
+            color: #4b5563;
+            font-size: 0.875rem;
+        }
+
+        .va-display .va-number {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1f2937;
+            margin: 0.5rem 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .va-display .va-number .bi {
+            color: #2563eb;
+            cursor: pointer;
+        }
+
+        .va-display .va-status {
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: #f97316;
+        }
+
+        .pending-warning {
+            background-color: #fefce8;
+            border: 1px solid #fde047;
+            border-radius: 0.5rem;
+            padding: 0.75rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            text-align: left;
+            font-size: 0.875rem;
+            color: #854d0e;
+            margin: 1.25rem 0;
+        }
+
+        .pending-warning .bi {
+            font-size: 1.25rem;
+            margin-top: 0.25rem;
+            color: #ca8a04;
+        }
+
+        /* Step 5: Pending */
+        .pending-final-status {
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .pending-final-status .bi-exclamation-triangle-fill {
+            font-size: 4rem;
+            color: #facc15;
+        }
+
+        .pending-final-status .amount {
+            margin: 1rem 0;
+        }
+
+        .pending-final-status .amount span:first-child {
+            color: #6b7280;
+            font-size: 0.875rem;
+        }
+
+        .pending-final-status .amount span:last-child {
+            font-size: 2.25rem;
+            font-weight: 700;
+            color: #1f2937;
+        }
+
+        .pending-final-status .status-label {
+            color: #4b5563;
+        }
+
+        .pending-final-status .status-text {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #f97316;
+        }
+
+        .pending-details {
+            text-align: left;
+            border-top: 1px solid #e5e7eb;
+            border-bottom: 1px solid #e5e7eb;
+            margin: 1.5rem 0;
+            padding: 1.5rem 0;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            font-size: 0.875rem;
+        }
+
+        .pending-details div {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .pending-details span:first-child {
+            color: #6b7280;
+        }
+
+        .pending-details span:last-child {
+            color: #1f2937;
+            font-weight: 600;
+        }
+
+        .pending-details span .bi {
+            cursor: pointer;
+        }
+
+        .pending-final-status .duitku-logo {
+            height: 2.5rem;
+            margin: 1rem auto 0 auto;
+        }
+
+        .modal-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem;
+            background-color: #f9fafb;
+            border-top: 1px solid #e5e7eb;
+        }
+
+        .total-payment-display .total-label {
+            display: block;
+            font-size: 0.75rem;
+            color: #4b5563;
+        }
+
+        .total-payment-display .total-amount {
+            display: block;
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #2563eb;
+        }
+
+        .modal-footer button,
+        .modal-footer .modal-button-full {
+            background-color: #2563eb;
+            color: white;
+            font-weight: 700;
+            padding: 0.6rem 1.5rem;
+            border-radius: 0.5rem;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .modal-footer button:hover {
+            background-color: #1d4ed8;
+        }
+
+        .modal-footer .modal-button-full {
+            width: 100%;
+            background-color: #1e3a8a;
+        }
+
+        .modal-footer .modal-button-full:hover {
+            background-color: #1e40af;
+        }
+
+        /* Animasi */
+        @keyframes scale-in {
+            from {
+                transform: scale(0.9);
+                opacity: 0;
+            }
+
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }

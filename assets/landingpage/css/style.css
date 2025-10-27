@@ -1,0 +1,159 @@
+/* General Body Styles */
+body {
+margin: 0;
+font-family: 'Poppins', sans-serif;
+background-color: #007bff;
+color: #333;
+display: flex;
+justify-content: center;
+align-items: center;
+min-height: 100vh;
+}
+
+/* Form Container */
+.form-container {
+display: flex;
+justify-content: center;
+align-items: center;
+width: 100%;
+}
+
+/* Form Box Styling */
+.form-box {
+background-color: white;
+padding: 40px;
+border-radius: 8px;
+box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+width: 100%;
+max-width: 400px;
+text-align: center;
+}
+
+/* Logo Styling */
+.logo {
+display: flex;
+align-items: center;
+justify-content: center;
+margin-bottom: 20px;
+color: #005eff;
+font-weight: bold;
+font-size: 24px;
+}
+
+.logo svg {
+margin-right: 8px;
+stroke: #007bff;
+}
+
+.logo-text {
+font-weight: 700;
+}
+
+/* Headings and Subtitles */
+h2 {
+margin-top: 0;
+margin-bottom: 10px;
+font-size: 24px;
+font-weight: 600;
+}
+
+.subtitle {
+margin-bottom: 30px;
+color: #666;
+font-size: 14px;
+}
+
+.subtitle a, .bottom-text a {
+color: #007bff;
+text-decoration: none;
+font-weight: 600;
+}
+
+.subtitle a:hover, .bottom-text a:hover {
+text-decoration: underline;
+}
+
+/* Input Fields */
+.input-group {
+margin-bottom: 20px;
+text-align: left;
+}
+
+.input-group label {
+display: block;
+margin-bottom: 8px;
+font-weight: 600;
+font-size: 14px;
+}
+
+.input-group input {
+width: 100%;
+padding: 12px;
+border: 1px solid #ccc;
+border-radius: 6px;
+box-sizing: border-box;
+font-size: 14px;
+}
+
+.input-group input:focus {
+outline: none;
+border-color: #007bff;
+box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+}
+
+/* Password Field Specifics */
+.password-wrapper {
+position: relative;
+display: flex;
+align-items: center;
+}
+
+.password-wrapper input {
+padding-right: 40px;
+}
+
+.toggle-password {
+position: absolute;
+right: 12px;
+cursor: pointer;
+color: #999;
+}
+
+/* Button Styling */
+.btn {
+width: 100%;
+padding: 12px;
+background-color: #007bff;
+border: none;
+border-radius: 6px;
+color: white;
+font-size: 16px;
+font-weight: 600;
+cursor: pointer;
+margin-top: 10px;
+transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+background-color: rgb(0, 117, 234);
+}
+
+/* Links below the form */
+.form-link {
+display: inline-block;
+margin-top: 20px;
+color: #007bff;
+text-decoration: none;
+font-size: 14px;
+font-weight: 600;
+}
+
+.form-link:hover {
+text-decoration: underline;
+}
+
+.bottom-text {
+margin-top: 20px;
+font-size: 14px;
+color: #666;
+}

@@ -1,0 +1,111 @@
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>NeoBlue | Short</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<div class="page-inner">
+    <div class="page-header">
+        <h3 class="fw-bold mb-3">Short</h3>
+        <ul class="breadcrumbs mb-3">
+            <li class="nav-home">
+                <a href="#">
+                    <i class="icon-home"></i>
+                </a>
+            </li>
+            <li class="separator">
+                <i class="icon-arrow-right"></i>
+            </li>
+            <li class="nav-item">
+                <a href="#">Daftar Short</a>
+            </li>
+        </ul>
+    </div>
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <div class="d-flex align-items-center">
+                    <h4 class="card-title">Daftar Short</h4>
+                    <button class="btn btn-primary btn-round ms-auto"
+                        onclick="window.location.href='.?hal=tambahshort';">
+                        <i class="fa fa-plus"></i>
+                        Tambah
+                    </button>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table id="basic-datatables" class="display table table-striped table-hover">
+                        <thead>
+                            <tr>
+                                <th>No</th>
+                                <th>Tanggal</th>
+                                <th>Judul</th>
+                                <th>Tipe</th>
+                                <th>Aksi</th>
+                            </tr>
+                        </thead>
+                        <tfoot>
+                            <tr>
+                                <th>No</th>
+                                <th>Tanggal</th>
+                                <th>Judul</th>
+                                <th>Tipe</th>
+                                <th>Aksi</th>
+                            </tr>
+                        </tfoot>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>10/10/2025</td>
+                                <td>Operasi Bilangan</td>
+                                <td>
+                                    <a class="btn btn-primary btn-round btn-xs btn-success">
+                                        Free
+                                    </a>
+                                </td>
+                                <td>
+                                    <div class="form-button-action">
+                                        <a href=".?hal=editshort" data-bs-toggle="tooltip" title="Edit"
+                                            class="btn btn-link btn-primary">
+                                            <i class="fa fa-edit"></i>
+                                        </a>
+
+                                        <a href=".?hal=short-delete" data-bs-toggle="tooltip" title="Hapus"
+                                            class="btn btn-link btn-danger"
+                                            onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?');">
+                                            <i class="fa fa-times"></i>
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>11/10/2025</td>
+                                <td>Penalaran Umum</td>
+                                <td>
+                                    <a class="btn btn-primary btn-round btn-xs btn-warning">
+                                        Premium
+                                    </a>
+                                </td>
+                                <td>
+                                    <div class="form-button-action">
+                                        <a href=".?hal=editsubtest" data-bs-toggle="tooltip" title="Edit"
+                                            class="btn btn-link btn-primary">
+                                            <i class="fa fa-edit"></i>
+                                        </a>
+
+                                        <a href=".?hal=hapusubtest" data-bs-toggle="tooltip" title="Hapus"
+                                            class="btn btn-link btn-danger"
+                                            onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?');">
+                                            <i class="fa fa-times"></i>
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
