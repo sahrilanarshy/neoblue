@@ -80,25 +80,3 @@
         </div>
     </div>
 </main>
-<style>
-    .logout-section {
-    text-align: center;
-    margin-top: 20px;
-}
-
-.btn-logout {
-    display: inline-block;
-    background-color: #ff4d4f;
-    color: white;
-    padding: 10px 20px;
-    border-radius: 8px;
-    text-decoration: none;
-    font-weight: 600;
-    transition: background-color 0.2s ease;
-}
-
-.btn-logout:hover {
-    background-color: #d9363e;
-}
-
-    </style>

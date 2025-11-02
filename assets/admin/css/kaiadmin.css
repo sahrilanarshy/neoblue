@@ -6932,4 +6932,46 @@ body {
             font-size: 0.95rem; /* Sedikit lebih kecil agar pas */
             color: #343a40;
         }
-        
+        .stat-card {
+  padding: 20px;
+  transition: all 0.3s ease-in-out;
+}
+.stat-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+.stat-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.stat-icon {
+  font-size: 2.5rem;
+  opacity: 0.9;
+}
+
+.stat-number {
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+.stat-label {
+  font-size: 0.95rem;
+  margin: 0;
+  opacity: 0.9;
+}
+
+.stat-footer {
+  margin-top: 15px;
+  background: rgba(255, 255, 255, 0.15);
+  padding: 8px;
+  border-radius: 10px;
+  transition: 0.3s;
+}
+
+.stat-footer:hover {
+  background: rgba(255, 255, 255, 0.25);
+}

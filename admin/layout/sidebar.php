@@ -4,7 +4,7 @@
         <!-- Logo Header -->
         <div class="logo-header" data-background-color="blue">
             <a href="index.php" class="logo">
-                <img src="../assets/admin/img/logo/logo 1.png" alt="navbar brand" class="navbar-brand" height="40" />
+                <img src="../assets/admin/img/logo/logo.png" alt="navbar brand" class="navbar-brand" height="34" />
             </a>
             <div class="nav-toggle">
                 <button class="btn btn-toggle toggle-sidebar">

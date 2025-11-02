@@ -1,10 +1,3 @@
-<head>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>NeoBlue | Manajemen Pesan</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-</head>
-
 <div class="page-inner">
     <div class="page-header">
         <h3 class="fw-bold mb-3">Manajemen Pesan</h3>
@@ -13,12 +6,6 @@
                 <a href="#">
                     <i class="icon-home"></i>
                 </a>
-            </li>
-            <li class="separator">
-                <i class="icon-arrow-right"></i>
-            </li>
-            <li class="nav-item">
-                <a href="#">Kontak</a>
             </li>
             <li class="separator">
                 <i class="icon-arrow-right"></i>

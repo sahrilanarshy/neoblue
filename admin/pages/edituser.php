@@ -1,17 +1,12 @@
-<head>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>NeoBlue | User</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-</head>
 <div class="page-inner">
     <div class="page-header">
-        <h3 class="fw-bold mb-3">Pengguna</h3>
+        <h3 class="fw-bold mb-3">Siswa</h3>
         <ul class="breadcrumbs mb-3">
             <li class="nav-home"><a href="#"><i class="icon-home"></i></a></li>
             <li class="separator"><i class="icon-arrow-right"></i></li>
-            <li class="nav-item"><a href=".?hal=daftaruser">Daftar Pengguna</a></li>
+            <li class="nav-item"><a href=".?hal=daftaruser">Daftar Siswa</a></li>
             <li class="separator"><i class="icon-arrow-right"></i></li>
-            <li class="nav-item"><a href="#">Tambah Pengguna</a></li>
+            <li class="nav-item"><a href="#">Tambah Siswa</a></li>
         </ul>
     </div>
 
@@ -19,7 +14,7 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title">Edit Pengguna</h4>
+                    <h4 class="card-title">Edit Siswa</h4>
                 </div>
                 <div class="card-body">
 

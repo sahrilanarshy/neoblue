@@ -29,6 +29,7 @@ $tipe_user = $_SESSION['tipe_user'];
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon/fonts/remixicon.css" rel="stylesheet">
     <link
         rel="stylesheet"href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.5/font/bootstrap-icons.min.css">
     <link href="../assets/user/css/main.css" rel="stylesheet">
@@ -40,7 +41,7 @@ $tipe_user = $_SESSION['tipe_user'];
     <nav class="navbar navbar-expand-lg navbar-dark">
         <div class="container">
             <a class="navbar-brand fw-bold d-flex align-items-center" href="#">
-                <img src="../assets/user/img/header.png" alt="NeoBlue Logo" style="height: 32px; margin: 10px 0px;">
+                <img src="../assets/user/img/logo.png" alt="NeoBlue Logo" style="height: 32px; margin: 10px 0px;">
             </a>
             <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
                 <ul class="navbar-nav">
@@ -93,7 +94,6 @@ $tipe_user = $_SESSION['tipe_user'];
     <script src="../assets/user/js/main.js"></script>
     <script src="../assets/user/js/tryout.js"></script>
     <script>
-
         const showListBtn = document.getElementById('showListBtn');
         const showCardBtn = document.getElementById('showCardBtn');
         const listView = document.getElementById('listView');

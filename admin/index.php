@@ -18,8 +18,9 @@ ob_start();
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>NeoBlue</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="icon" href="../assets/admin/img/logo/logo neoblue.png" type="image/x-icon" />
+    <link rel="icon" href="../assets/admin/img/logo/icon.png" type="image/x-icon" />
     <script src="../assets/admin/js/tinymce/js/tinymce/tinymce.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <script>
         tinymce.init({
             selector: '#editor',
@@ -54,7 +55,6 @@ ob_start();
     <link rel="stylesheet" href="../assets/admin/css/bootstrap.min.css" />
     <link rel="stylesheet" href="../assets/admin/css/plugins.min.css" />
     <link rel="stylesheet" href="../assets/admin/css/kaiadmin.min.css" />
-
     <link rel="stylesheet" href="../assets/admin/css/demo.css" />
 </head>
 

@@ -3,7 +3,7 @@
                 <!-- Logo Header -->
                 <div class="logo-header" data-background-color="blue">
                     <a href="index.php" class="logo">
-                        <img src="../assets/admin/img/logo/logo neoblue.png" alt="navbar brand" class="navbar-brand"
+                        <img src="../assets/admin/img/logo/logo.png" alt="navbar brand" class="navbar-brand"
                             height="20" />
                     </a>
                     <div class="nav-toggle">

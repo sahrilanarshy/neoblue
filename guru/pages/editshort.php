@@ -1,8 +1,3 @@
-<head>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>NeoBlue | Short</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-</head>
 <div class="page-inner">
     <div class="page-header">
         <h3 class="fw-bold mb-3">Short</h3>
