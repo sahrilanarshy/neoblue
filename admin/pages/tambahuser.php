@@ -1,8 +1,3 @@
-<head>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>NeoBlue | User</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-</head>
 <div class="page-inner">
     <div class="page-header">
         <h3 class="fw-bold mb-3">Pengguna</h3>
@@ -55,15 +50,6 @@
                                 placeholder="Masukkan nomor telepon (opsional)" />
                         </div>
 
-                        <div class="form-group">
-                            <div class="form-check form-switch">
-                                <input class="form-check-input" type="checkbox" role="switch" id="is_premium"
-                                    name="is_premium" value="1">
-                                <label class="form-check-label" for="is_premium">Jadikan Pengguna ini Premium</label>
-                                <small class="form-text text-muted d-block">Aktifkan jika pengguna berbayar,
-                                    non-aktifkan jika gratis (Free).</small>
-                            </div>
-                        </div>
                         <div class="form-group mt-4">
                             <button type="submit" class="btn btn-primary">Simpan</button>
                             <a href=".?hal=daftaruser" class="btn btn-secondary">Batal</a>

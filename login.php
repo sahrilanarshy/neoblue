@@ -1,21 +1,17 @@
 <?php
-// login.php
-
-// Selalu mulai session di awal file, SEBELUM output apapun
-session_start(); 
+session_start();
 
 // 1. Inisialisasi variabel untuk pesan error dan sukses
-$error = "";
-$success = "";
+$error = '';
+$success = '';
 
 // Cek apakah ada pesan sukses dari halaman registrasi
 if (isset($_GET['status']) && $_GET['status'] == 'registrasi_sukses') {
-    $success = "Registrasi berhasil! Silakan login.";
+    $success = 'Registrasi berhasil! Silakan login.';
 }
 
 // 2. Cek apakah form telah disubmit (metode POST)
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // 3. Sertakan koneksi HANYA saat diperlukan
     include 'config/koneksi.php';
 
@@ -25,11 +21,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // 4. Validasi (Sederhana)
     if (empty($email) || empty($password)) {
-        $error = "Email dan Password wajib diisi!";
+        $error = 'Email dan Password wajib diisi!';
     } else {
         // 5. Siapkan query untuk mencari user berdasarkan email
-        $stmt = $koneksi->prepare("SELECT * FROM users WHERE email = ?");
-        $stmt->bind_param("s", $email);
+        $stmt = $koneksi->prepare('SELECT * FROM users WHERE email = ?');
+        $stmt->bind_param('s', $email);
         $stmt->execute();
         $result = $stmt->get_result();
 
@@ -41,7 +37,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // 7. Verifikasi password
             if (password_verify($password, $user['password'])) {
                 // Password cocok!
-                
+
                 // 8. Simpan data user ke dalam session
                 $_SESSION['status_login'] = true;
                 $_SESSION['user_id'] = $user['id'];
@@ -50,24 +46,29 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $_SESSION['role'] = $user['role'];
                 $_SESSION['tipe_user'] = $user['tipe_user'];
 
-                // 9. Logika Redirect berdasarkan ROLE
+                // 9. Logika Redirect berdasarkan ROLE (PERBAIKAN DI SINI)
                 if ($user['role'] === 'admin') {
-                    header("Location: admin/index.php");
-                    exit(); // Penting! Hentikan eksekusi script
+                    // Jika dia admin
+                    header('Location: admin/index.php');
+                    exit();
+                } elseif ($user['role'] === 'guru') {
+                    // Jika dia guru, arahkan ke dashboard guru
+                    // (Asumsi Anda punya folder 'guru/')
+                    header('Location: guru/index.php');
+                    exit();
                 } else {
-                    header("Location: user/index.php");
-                    exit(); // Penting! Hentikan eksekusi script
+                    // Jika bukan admin atau guru (berarti 'siswa')
+                    // (Menggunakan folder 'user/' dari kode Anda sebelumnya)
+                    header('Location: user/index.php');
+                    exit();
                 }
-
             } else {
                 // Password salah
-                // PERBAIKAN: Gunakan pesan error yang lebih umum untuk keamanan
-                $error = "Login gagal. Email atau Password salah.";
+                $error = 'Login gagal. Email atau Password salah.';
             }
         } else {
             // Email tidak ditemukan
-            // PERBAIKAN: Gunakan pesan error yang lebih umum untuk keamanan
-            $error = "Login gagal. Email atau Password salah.";
+            $error = 'Login gagal. Email atau Password salah.';
         }
 
         $stmt->close();
@@ -76,17 +77,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Jika validasi gagal atau login gagal, script akan lanjut ke HTML di bawah
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="id">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - NeoBlue</title> <link rel="stylesheet" href="assets/landingpage/css/style.css">
+    <title>Login - NeoBlue</title>
+    <link rel="stylesheet" href="assets/landingpage/css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <link href="assets/landingpage/img/logo/profile_neoblue.png" rel="icon">
-    <link href="assets/landingpage/img/logo/profile_neoblue.png" type="image/png" rel="apple-touch-icon"> 
+    <link href="assets/landingpage/img/logo/profile_neoblue.png" type="image/png" rel="apple-touch-icon">
 </head>
 
 <body>
@@ -98,15 +99,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </div>
             <h2>Selamat Datang di NeoBlue</h2>
             <p class="subtitle">Belum punya akun? <a href="register.php">Daftar Sekarang</a></p>
-            
+
             <?php if (!empty($success)): ?>
-            <div class="success-message" style="color:green; margin-bottom:10px;"> <?= htmlspecialchars($success) ?> </div>
+            <div class="success-message" style="color:green; margin-bottom:10px;"> <?= htmlspecialchars($success) ?>
+            </div>
             <?php endif; ?>
 
             <?php if (!empty($error)): ?>
             <div class="error-message" style="color:red; margin-bottom:10px;"> <?= htmlspecialchars($error) ?> </div>
             <?php endif; ?>
-            
+
             <form method="post" action="" autocomplete="off">
                 <div class="input-group">
                     <label for="login-email">Email</label>

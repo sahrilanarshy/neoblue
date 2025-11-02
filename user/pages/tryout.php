@@ -1,79 +1,80 @@
 <main class="dashboard-content">
-    <h1 class="page-title">Tryouts UTBK-SNBT</h1>
-
-    <section class="learning-materials">
-        <h2>Daftar Tryout</h2>
-
-        <div class="tryout-list">
-            <div class="tryout-item active">
-                <div class="tryout-info">
-                    <p class="tryout-title">Tryout UTBK - SNBT #15</p>
-                    <div class="tryout-meta">
-                        <span class="tryout-date">15 - 22 Oktober 2025</span>
+    <section class="tryout-section">
+        <div class="tryout-group">
+            <h3 class="tryout-heading">Tryout Terbaru</h3>
+            <div class="tryout-box">
+                <div class="tryout-item">
+                    <div class="tryout-left">
+                        <div class="tryout-icon">
+                            <i class="fa-regular fa-file-lines"></i>
+                        </div>
+                        <div class="tryout-info">
+                            <p class="tryout-title">Tryout #3</p>
+                            <p class="tryout-date">Mulai Tanggal 27/10/2025</p>
+                        </div>
                     </div>
-                    <span class="tryout-score">Skor: 100</span>
-                </div>
-                <div class="tryout-actions">
-                    <a href=".?hal=kerjakantryout" class="btn-mulai">Kerjakan</a>
+                    <a href=".?hal=detailtryout" class="btn-tryout aktif">Kerjakan Sekarang</a>
                 </div>
             </div>
+        </div>
 
-            <div class="tryout-item">
-                <div class="tryout-info">
-                    <p class="tryout-title">Tryout UTBK - SNBT #14</p>
-                    <div class="tryout-meta">
-                        <span class="tryout-date">08 - 15 Oktober 2025</span>
-                        <span class="badge-selesai">Selesai</span>
-                    </div>
-                    <span class="tryout-score">Skor: 90</span>
-                </div>
-                <div class="tryout-actions">
-                    <a href="#" class="btn-upgrade-item">Lihat Hasil</a>
-                </div>
-            </div>
+        <div class="tryout-group">
+            <h3 class="tryout-heading">Semua Tryout</h3>
+            <div class="tryout-box">
 
-            <div class="tryout-item">
-                <div class="tryout-info">
-                    <p class="tryout-title">Tryout UTBK - SNBT #13</p>
-                    <div class="tryout-meta">
-                        <span class="tryout-date">01 - 08 Oktober 2025</span>
-                        <span class="badge-selesai">Selesai</span>
+                <div class="tryout-item">
+                    <div class="tryout-left">
+                        <div class="tryout-icon">
+                            <i class="fa-regular fa-file-lines"></i>
+                        </div>
+                        <div class="tryout-info">
+                            <p class="tryout-title">Tryout #1</p>
+                            <p class="tryout-date">Mulai Tanggal 20/09/2025</p>
+                        </div>
                     </div>
-                    <span class="tryout-score">Skor: 70</span>
+                    <a href="#" class="btn-tryout premium">Akses Premium</a>
                 </div>
-                <div class="tryout-actions">
-                    <a href="#" class="btn-upgrade-item">Lihat Hasil</a>
-                </div>
-            </div>
-            
-            <div class="tryout-item">
-                <div class="tryout-info">
-                    <p class="tryout-title">Tryout UTBK - SNBT #12</p>
-                    <div class="tryout-meta">
-                        <span class="tryout-date">08 - 15 Oktober 2025</span>
-                        <span class="badge-selesai">Selesai</span>
-                    </div>
-                    <span class="tryout-score">Skor: 90</span>
-                </div>
-                <div class="tryout-actions">
-                    <a href="#" class="btn-upgrade-item">Lihat Hasil</a>
-                </div>
-            </div>
 
-             <div class="tryout-item">
-                <div class="tryout-info">
-                    <p class="tryout-title">Tryout UTBK - SNBT #11</p>
-                    <div class="tryout-meta">
-                        <span class="tryout-date">01 - 08 Oktober 2025</span>
-                        <span class="badge-selesai">Selesai</span>
+                <div class="tryout-item">
+                    <div class="tryout-left">
+                        <div class="tryout-icon">
+                            <i class="fa-regular fa-file-lines"></i>
+                        </div>
+                        <div class="tryout-info">
+                            <p class="tryout-title">Tryout #2</p>
+                            <p class="tryout-date">Mulai Tanggal 10/10/2025</p>
+                        </div>
                     </div>
-                    <span class="tryout-score">Skor: 70</span>
+                    <a href="#" class="btn-tryout premium">Akses Premium</a>
                 </div>
-                <div class="tryout-actions">
-                    <a href="#" class="btn-upgrade-item">Lihat Hasil</a>
-                </div>
-            </div>
 
+                <div class="tryout-item">
+                    <div class="tryout-left">
+                        <div class="tryout-icon">
+                            <i class="fa-regular fa-file-lines"></i>
+                        </div>
+                        <div class="tryout-info">
+                            <p class="tryout-title">Tryout #3</p>
+                            <p class="tryout-date">Mulai Tanggal 27/10/2025</p>
+                        </div>
+                    </div>
+                    <a href=".?hal=detailtryout" class="btn-tryout aktif">Kerjakan Sekarang</a>
+                </div>
+
+                <div class="tryout-item">
+                    <div class="tryout-left">
+                        <div class="tryout-icon">
+                            <i class="fa-regular fa-file-lines"></i>
+                        </div>
+                        <div class="tryout-info">
+                            <p class="tryout-title">Tryout #4</p>
+                            <p class="tryout-date">Mulai Tanggal 08/11/2025</p>
+                        </div>
+                    </div>
+                    <a href="#" class="btn-tryout coming">Segera Dimulai</a>
+                </div>
+
+            </div>
         </div>
     </section>
 </main>

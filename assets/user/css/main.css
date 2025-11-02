@@ -1,0 +1,236 @@
+
+
+.point-popup-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, .4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 12000;
+}
+
+.point-popup {
+    background: #fff;
+    border-radius: 12px;
+    padding: 22px 20px;
+    width: 320px;
+    max-width: 92%;
+    text-align: center;
+    box-shadow: 0 8px 30px -5px rgba(0, 0, 0, .25);
+}
+
+
+/* Style dari <style> tag kedua (halaman soal) */
+.question-number {
+    background-color: #e3f2fd;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 5px;
+    font-weight: bold;
+    color: #007bff;
+    aspect-ratio: 1/1;
+    cursor: pointer;
+}
+
+.question-number.active {
+    background-color: #007bff;
+    color: #e3f2fd;
+}
+
+.question-number.answered {
+    border: 2px solid #007bff;
+}
+
+.answer-option {
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #f8f9fa;
+    cursor: pointer;
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+}
+
+.answer-option:hover {
+    background-color: #e3f2fd;
+}
+
+.answer-option.selected {
+    background-color: #007bff;
+    color: white;
+}
+
+.question-numbers {
+    overflow-x: auto;
+    white-space: nowrap;
+    display: flex;
+}
+
+.answer-option .opt-letter {
+    font-weight: bold;
+    margin-right: 2px;
+    min-width: 22px;
+    display: inline-block;
+    text-align: center;
+}
+
+.answer-option .opt-text {
+    flex: 1;
+    line-height: 1.4;
+}
+
+/* Extra padding for multi-answer option text */
+.answer-option[data-type="multi"] .opt-text {
+    padding-left: 5px;
+}
+
+.navigation div {
+    background-color: #e3f2fd;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 5px;
+    color: #007bff;
+    cursor: pointer;
+    aspect-ratio: 1/1;
+}
+
+.timer-box {
+    font-size: 13px;
+    font-weight: 700;
+    background: #e3f2fd;
+    color: #007bff;
+    padding: 6px 14px;
+    border-radius: 20px;
+    display: inline-block;
+}
+
+.timer-box.danger {
+    background: #ffe5e5;
+    color: #dc3545;
+}
+
+.timer-box-btn {
+    border: none;
+    background: #e3f2fd;
+    color: #007bff;
+    font-weight: 700;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 13px;
+    cursor: pointer;
+}
+
+.timer-box-btn:disabled {
+    opacity: .6;
+    cursor: not-allowed;
+}
+
+.question-text {
+    font-size: 15px;
+    margin-bottom: 16px;
+}
+
+.multi-banner {
+    font-weight: 700;
+    font-size: 15px;
+    background: #e3f2fd;
+    color: #007bff;
+    padding: 8px 12px;
+    border-radius: 8px;
+    border: 1px solid #cfe8ff;
+    margin-bottom: 10px;
+}
+
+.opt-check {
+    width: 18px;
+    height: 18px;
+    margin-top: 3px;
+}
+
+.overlay-modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, .6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    font-family: inherit;
+}
+
+.overlay-box {
+    background: #fff;
+    border-radius: 12px;
+    padding: 24px;
+    max-width: 340px;
+    width: 90%;
+    text-align: center;
+}
+
+.overlay-box h5 {
+    font-size: 16px;
+    margin-bottom: 18px;
+    font-weight: 700;
+}
+
+.overlay-box .btn {
+    width: 100%;
+    border-radius: 10px;
+    font-size: 14px;
+    margin-top: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.btn-secondary-outline {
+    background: #e9ecef;
+    border: none;
+    color: #333;
+}
+
+.btn-secondary-outline:hover {
+    background: #dde1e4;
+}
+
+
+/* Style dari <style> tag ketiga (bottombar) */
+/* Style .bottombar ini sepertinya bagian dari template utama Anda, 
+   sama seperti .navbar. Sebaiknya ini juga ada di file CSS utama 
+   template Anda, bukan di file CSS khusus halaman ini.
+*/
+.bottombar {
+    display: none;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: rgb(255, 255, 255);
+    z-index: 1030;
+}
+
+.bottombar .nav-item {
+    flex: 1;
+    text-align: center;
+    padding: 10px 0;
+}
+
+.bottombar .nav-link {
+    color: #6c757d;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.bottombar .nav-link i {
+    font-size: 20px;
+    display: block;
+    color: #6c757d;
+}

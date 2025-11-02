@@ -7,7 +7,6 @@
 
     <div class="premium-layout">
         <div class="paket-premium-card">
-            <span class="badge-populer">Terpopuler</span>
             <h2>Paket Premium</h2>
             <div class="harga">
                 <span class="harga-dicoret">Rp1.000.000</span>

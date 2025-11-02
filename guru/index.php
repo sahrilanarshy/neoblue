@@ -1,8 +1,8 @@
 <?php
 session_start();
 
-if (!isset($_SESSION['status_login']) || $_SESSION['status_login'] !== true || $_SESSION['role'] !== 'admin') {
-    header("Location: ../login.php");
+if (!isset($_SESSION['status_login']) || $_SESSION['status_login'] !== true || $_SESSION['role'] !== 'guru') {
+    header('Location: ../login.php');
     exit();
 }
 
@@ -18,7 +18,7 @@ ob_start();
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>NeoBlue</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="icon" href="../assets/admin/img/logo/logo neoblue.png" type="image/x-icon" />
+    <link rel="icon" href="../assets/admin/img/logo/icon.png" type="image/x-icon" />
     <script src="../assets/admin/js/tinymce/js/tinymce/tinymce.min.js"></script>
     <script>
         tinymce.init({
@@ -127,14 +127,8 @@ ob_start();
                     case 'profile':
                         $page_to_include = 'pages/profile.php';
                         break;
-                    case 'artikel':
-                        $page_to_include = 'pages/artikel.php';
-                        break;
-                    case 'editartikel':
-                        $page_to_include = 'pages/editartikel.php';
-                        break;
-                    case 'tambahartikel':
-                        $page_to_include = 'pages/tambahartikel.php';
+                    case 'short':
+                        $page_to_include = 'pages/short.php';
                         break;
                     case 'soaltryout':
                         $page_to_include = 'pages/soaltryout.php';
@@ -178,36 +172,29 @@ ob_start();
                     case 'user':
                         $page_to_include = 'pages/user.php';
                         break;
+                    case 'pengumuman':
+                        $page_to_include = 'pages/pengumuman.php';
+                        break;
+                    case 'tambahpengumuman':
+                        $page_to_include = 'pages/tambahpengumuman.php';
+                        break;
+                    case 'editpengumuman':
+                        $page_to_include = 'pages/editpengumuman.php';
+                        break;
                     case 'guru':
                         $page_to_include = 'pages/guru.php';
-                        break;
-                    case 'tambahguru':
-                        $page_to_include = 'pages/tambahguru.php';
-                        break;
-                    case 'editguru':
-                        $page_to_include = 'pages/editguru.php';
-                        break;  
-                    case 'konfirmasi':
-                        $page_to_include = 'pages/konfirmasi.php';
-                        break;
-                    case 'riwayat':
-                        $page_to_include = 'pages/riwayat.php';
-                        break;
-                    case 'pendapatan':
-                        $page_to_include = 'pages/pendapatan.php';
-                        break;
-                        
+
                     default:
                         $page_to_include = 'pages/beranda.php';
                 }
-
+                
                 // 3. Include file HANYA jika file-nya ada
                 if (file_exists($page_to_include)) {
                     include $page_to_include;
                 } else {
                     // Tampilkan pesan error jika file tidak ditemukan
-                    echo "<h4>Error: Halaman tidak ditemukan.</h4>";
-                    echo "<p>File <b>" . htmlspecialchars($page_to_include) . "</b> tidak ada di server.</p>";
+                    echo '<h4>Error: Halaman tidak ditemukan.</h4>';
+                    echo '<p>File <b>' . htmlspecialchars($page_to_include) . '</b> tidak ada di server.</p>';
                 }
                 ?>
             </div>

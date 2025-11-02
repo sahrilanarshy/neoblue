@@ -1,5 +1,0 @@
-login admin : admin@gmail.com
-password : admin
-
-login user : user@gmail.com
-password : user

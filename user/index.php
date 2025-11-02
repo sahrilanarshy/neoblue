@@ -1,11 +1,9 @@
 <?php
 session_start();
-
-if (!isset($_SESSION['status_login']) || $_SESSION['status_login'] !== true || $_SESSION['role'] !== 'user') {
+if (!isset($_SESSION['status_login']) || $_SESSION['status_login'] !== true || $_SESSION['role'] !== 'siswa') {
     header('Location: ../login.php');
     exit();
 }
-
 $nama_user = $_SESSION['nama'];
 $tipe_user = $_SESSION['tipe_user'];
 
@@ -28,7 +26,7 @@ $tipe_user = $_SESSION['tipe_user'];
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="../assets/user/img/profile_neoblue.png" type="image/x-icon">
     <title>NeoBlue</title>
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet">
     <link
@@ -92,31 +90,24 @@ $tipe_user = $_SESSION['tipe_user'];
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../assets/user/js/main.js"></script>
+    <script src="../assets/user/js/tryout.js"></script>
     <script>
-        // Ambil elemen-elemen yang dibutuhkan
+
         const showListBtn = document.getElementById('showListBtn');
         const showCardBtn = document.getElementById('showCardBtn');
         const listView = document.getElementById('listView');
         const cardView = document.getElementById('cardView');
 
-        // Event listener untuk tombol List View
         showListBtn.addEventListener('click', () => {
-            // Tampilkan List View dan sembunyikan Card View
             listView.style.display = 'block';
             cardView.style.display = 'none';
-
-            // Atur status 'active' pada tombol
             showListBtn.classList.add('active');
             showCardBtn.classList.remove('active');
         });
-
-        // Event listener untuk tombol Card View
         showCardBtn.addEventListener('click', () => {
-            // Tampilkan Card View dan sembunyikan List View
             cardView.style.display = 'block';
             listView.style.display = 'none';
-
-            // Atur status 'active' pada tombol
             showCardBtn.classList.add('active');
             showListBtn.classList.remove('active');
         });

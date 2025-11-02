@@ -1,0 +1,8 @@
+login admin : admin@gmail.com
+password : admin
+
+login siswa : siswa@gmail.com
+password : siswa
+
+login guru : guru@gmail.com
+password : guru

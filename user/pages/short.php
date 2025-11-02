@@ -275,7 +275,7 @@
                         <video class="short-video" loop preload="metadata" playsinline webkit-playsinline
                             disablepictureinpicture controlslist="nodownload noremoteplayback noplaybackrate"
                             poster="" data-src="../assets/short/vid_565036_1757642696.mp4">
-                            <source data-src="short/video1.mp4" type="video/mp4">
+                            <source data-src="../assets/user/short/video1.mp4" type="video/mp4">
                             Browser Anda tidak mendukung video.
                         </video>
                         <div class="short-progress-container">

@@ -1,157 +1,123 @@
-<head>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>NeoBlue | Dashboard</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-</head>       
-       <div class="page-inner">
-            <div class="d-flex align-items-left align-items-md-center flex-column flex-md-row pt-2 pb-4">
-              <div>
-                <h3 class="fw-bold mb-3">Dashboard</h3>
-                <h6 class="op-7 mb-2">Free Bootstrap 5 Admin Dashboard</h6>
-              </div>
-            </div>
-            <!-- Card With Icon States Background -->
-            <div class="row">
-              <div class="col-sm-6 col-md-3">
-                <div class="card card-stats card-round">
-                  <div class="card-body">
-                    <div class="row align-items-center">
-                      <div class="col-icon">
-                        <div
-                          class="icon-big text-center icon-primary bubble-shadow-small"
-                        >
-                          <i class="fas fa-users"></i>
-                        </div>
-                      </div>
-                      <div class="col col-stats ms-3 ms-sm-0">
-                        <div class="numbers">
-                          <p class="card-category">Total User</p>
-                          <h4 class="card-title">1,294</h4>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-sm-6 col-md-3">
-                <div class="card card-stats card-round">
-                  <div class="card-body">
-                    <div class="row align-items-center">
-                      <div class="col-icon">
-                        <div
-                          class="icon-big text-center icon-info bubble-shadow-small"
-                        >
-                          <i class="fas fa-user-check"></i>
-                        </div>
-                      </div>
-                      <div class="col col-stats ms-3 ms-sm-0">
-                        <div class="numbers">
-                          <p class="card-category"> Statistik Konten</p>
-                          <h4 class="card-title">1303</h4>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-sm-6 col-md-3">
-                <div class="card card-stats card-round">
-                  <div class="card-body">
-                    <div class="row align-items-center">
-                      <div class="col-icon">
-                        <div
-                          class="icon-big text-center icon-success bubble-shadow-small"
-                        >
-                          <i class="fas fa-luggage-cart"></i>
-                        </div>
-                      </div>
-                      <div class="col col-stats ms-3 ms-sm-0">
-                        <div class="numbers">
-                          <p class="card-category">Grafik Pendapatan</p>
-                          <h4 class="card-title">$ 1,345</h4>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-sm-6 col-md-3">
-                <div class="card card-stats card-round">
-                  <div class="card-body">
-                    <div class="row align-items-center">
-                      <div class="col-icon">
-                        <div
-                          class="icon-big text-center icon-secondary bubble-shadow-small"
-                        >
-                          <i class="far fa-check-circle"></i>
-                        </div>
-                      </div>
-                      <div class="col col-stats ms-3 ms-sm-0">
-                        <div class="numbers">
-                          <p class="card-category">Aktivitas Terbaru</p>
-                          <h4 class="card-title">576</h4>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-        <div class="row justify-content-center">
-            <div class="col-md-6">
-                <div class="card">
-                    <div class="card-header">
-                        <div class="card-title">Statistik User</div>
-                    </div>
-                    <div class="card-body">
-                        <div class="chart-container">
-                            <canvas id="pieChart" style="width: 100%; height: 300px"></canvas>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    <script src="../assets/js/plugin/chart.js/chart.min.js"></script>
-    <script>
-        var pieChartCanvas = document.getElementById("pieChart").getContext("2d");
+<div class="container mt-4">
+  <h2 class="fw-bold mb-4 text-dark">Dashboard</h2>
 
-        var myPieChart = new Chart(pieChartCanvas, {
-            type: "pie",
-            data: {
-                // Perubahan ada di sini: labels sekarang hanya 'Free' dan 'Premium'
-                labels: ["Free", "Premium"], 
-                datasets: [
-                    {
-                        // Data diubah menjadi 2 nilai, Anda bisa menggantinya sesuai kebutuhan
-                        data: [70, 30], 
-                        
-                        // Warna diubah menjadi biru untuk Free dan kuning untuk Premium
-                        backgroundColor: ["#0091ffff", "#fdaf4b"], 
-                        borderWidth: 0,
-                    },
-                ],
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                legend: {
-                    position: "bottom",
-                    labels: {
-                        fontColor: "rgb(154, 154, 154)",
-                        fontSize: 12,
-                        usePointStyle: true,
-                        padding: 20,
-                    },
-                },
-                layout: {
-                    padding: {
-                        left: 10,
-                        right: 10,
-                        top: 10,
-                        bottom: 10,
-                    },
-                },
-            },
-        });
-    </script>
-            <!-- Row Card No Padding -->
+  <div class="row g-4">
+    <!-- Jumlah Siswa -->
+    <div class="col-md-3 col-sm-6">
+      <div class="stat-card bg-primary text-white shadow rounded-4">
+        <div class="stat-content">
+          <div class="stat-icon"><i class="fas fa-user-graduate"></i></div>
+          <div>
+            <h3 class="stat-number">120</h3>
+            <p class="stat-label">Jumlah Siswa</p>
+          </div>
+        </div>
+        <div class="stat-footer text-center">
+          <a href=".?hal=user" class="text-white text-decoration-none fw-semibold">
+            Lihat semua <i class="fas fa-arrow-circle-right"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Jumlah Admin -->
+    <div class="col-md-3 col-sm-6">
+      <div class="stat-card bg-warning text-white shadow rounded-4">
+        <div class="stat-content">
+          <div class="stat-icon"><i class="fas fa-user-shield"></i></div>
+          <div>
+            <h3 class="stat-number">8</h3>
+            <p class="stat-label">Jumlah Guru</p>
+          </div>
+        </div>
+        <div class="stat-footer text-center">
+          <a href=".?hal=guru" class="text-white text-decoration-none fw-semibold">
+            Lihat semua <i class="fas fa-arrow-circle-right"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pesan Masuk -->
+    <div class="col-md-3 col-sm-6">
+      <div class="stat-card bg-success text-white shadow rounded-4">
+        <div class="stat-content">
+          <div class="stat-icon"><i class="fas fa-envelope"></i></div>
+          <div>
+            <h3 class="stat-number">45</h3>
+            <p class="stat-label">Pesan Masuk</p>
+          </div>
+        </div>
+        <div class="stat-footer text-center">
+          <a href=".?hal=kontak" class="text-white text-decoration-none fw-semibold">
+            Lihat semua <i class="fas fa-arrow-circle-right"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+    <!-- Pendapatan -->
+    <div class="col-md-3 col-sm-6">
+      <div class="stat-card bg-info text-white shadow rounded-4">
+        <div class="stat-content">
+          <div class="stat-icon"><i class="fas fa-coins"></i></div>
+          <div>
+            <h3 class="stat-number">Rp 5.250.000</h3>
+            <p class="stat-label">Total Pendapatan</p>
+          </div>
+        </div>
+        <div class="stat-footer text-center">
+          <a href=".?hal=pendapatan" class="text-white text-decoration-none fw-semibold">
+            Lihat semua <i class="fas fa-arrow-circle-right"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+.stat-card {
+  padding: 20px;
+  transition: all 0.3s ease-in-out;
+}
+.stat-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+.stat-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.stat-icon {
+  font-size: 2.5rem;
+  opacity: 0.9;
+}
+
+.stat-number {
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+.stat-label {
+  font-size: 0.95rem;
+  margin: 0;
+  opacity: 0.9;
+}
+
+.stat-footer {
+  margin-top: 15px;
+  background: rgba(255, 255, 255, 0.15);
+  padding: 8px;
+  border-radius: 10px;
+  transition: 0.3s;
+}
+
+.stat-footer:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+</style>

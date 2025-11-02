@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Oct 27, 2025 at 04:04 PM
+-- Generation Time: Nov 02, 2025 at 12:16 PM
 -- Server version: 8.0.30
 -- PHP Version: 8.3.25
 
@@ -33,7 +33,7 @@ CREATE TABLE `users` (
   `email` varchar(255) NOT NULL,
   `telepon` varchar(20) DEFAULT NULL,
   `password` varchar(255) NOT NULL,
-  `role` enum('admin','user') NOT NULL DEFAULT 'user',
+  `role` enum('siswa','guru','admin') NOT NULL DEFAULT 'siswa',
   `tipe_user` enum('free','premium') NOT NULL DEFAULT 'free',
   `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -43,8 +43,9 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `nama`, `email`, `telepon`, `password`, `role`, `tipe_user`, `created_at`) VALUES
-(5, 'admin', 'admin@gmail.com', '083119897273', '$2y$10$FMabx1fR6qDaFJO/bbS5OOw5WMVtmbehJNyz.xTMQUSmyraXfj.fC', 'admin', 'free', '2025-10-27 14:27:33'),
-(6, 'user', 'user@gmail.com', '083119897274', '$2y$10$1xImljuStuDqYG83NsZiEOiJpZpKv7FdZNRYHV4oM6CEDDI5Bako.', 'user', 'free', '2025-10-27 14:28:00');
+(1, 'guru', 'guru@gmail.com', '083119897274', '$2y$10$7czJwSiwJDqXf2O0QUijA.lnbJoHP6oS8nzEPIHBcPqX2qBpgSVMm', 'guru', 'free', '2025-10-29 12:40:04'),
+(2, 'siswa', 'siswa@gmail.com', '083119897274', '$2y$10$KXX.mAB1oFtuI3VmROsvrOBoVzzFpktqr5OZhpR.IzflDLSVzokRy', 'siswa', 'free', '2025-10-29 12:40:42'),
+(3, 'admin', 'admin@gmail.com', '08311989275', '$2y$10$XuCibDUGfdf2qjcoAdZLSekTgF/33jbhdm9HYrokWaxdh6XSkXo.G', 'admin', 'free', '2025-10-29 12:41:15');
 
 --
 -- Indexes for dumped tables
@@ -65,7 +66,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -636,81 +636,137 @@ body {
     .summary-grid { grid-template-columns: repeat(2, 1fr); }
 }
 /* --- [BAGIAN BARU] GAYA HALAMAN TRYOUT --- */
-
-.tryout-list {
+.tryout-section {
     display: flex;
     flex-direction: column;
-    gap: 1rem; /* Jarak antar item tryout */
-    margin-top: 1.5rem; /* Jarak dari subjudul 'Daftar Tryout' */
+    gap: 1.5rem;
+}
+
+.tryout-group {
+    background: #fff;
+    border-radius: 12px;
+    padding: 1rem 1.2rem;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+
+.tryout-heading {
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: #222;
+}
+
+.tryout-box {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
 }
 
 .tryout-item {
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    padding: 1.25rem;
-    border: 1px solid #e5e7eb; /* Border abu-abu muda */
-    border-radius: 0.75rem;
-    background-color: #ffffff;
-    transition: box-shadow 0.2s;
+    justify-content: space-between;
+    background: #fff;
+    border: 1px solid #f0f0f0;
+    border-radius: 12px;
+    padding: 0.8rem 1rem;
+    transition: 0.3s;
 }
 
 .tryout-item:hover {
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); /* Efek shadow saat hover */
+    background: #f9fbff;
 }
 
-/* Gaya untuk item tryout yang sedang aktif/berlangsung */
-.tryout-item.active {
-    background-color: #dbeafe; /* Latar biru muda */
-    border-color: #bfdbfe;
-}
-
-/* Info di sisi kiri (judul, tanggal, skor) */
-.tryout-info {
+.tryout-left {
     display: flex;
-    flex-direction: column;
-    gap: 0.25rem; /* Jarak kecil antar teks */
+    align-items: center;
+    gap: 0.8rem;
+}
+
+.tryout-icon {
+    background: #e9f3ff;
+    color: #007bff;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+}
+
+.tryout-info p {
+    margin: 0;
 }
 
 .tryout-title {
-    font-size: 18px;
-    font-weight: 700;
-    margin: 0;
-    color: #1f2937;
-}
-
-/* Wrapper untuk tanggal dan tag 'Selesai' */
-.tryout-meta {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    margin: 4px 0;
+    font-weight: 600;
+    color: #111;
+    font-size: 1rem;
 }
 
 .tryout-date {
-    font-size: 14px;
-    color: #6b7280;
+    font-size: 0.85rem;
+    color: #666;
 }
 
-/* Badge 'Selesai' kustom */
-.badge-selesai {
-    background-color: #e5e7eb;
-    color: #4b5563;
-    font-size: 12px;
+.btn-tryout {
+    border: none;
+    border-radius: 20px;
+    padding: 7px 16px;
     font-weight: 600;
-    padding: 4px 10px;
-    border-radius: 9999px;
+    text-decoration: none;
+    color: white;
+    font-size: 0.85rem;
+    transition: 0.3s;
+    white-space: nowrap;
 }
 
-/* Teks Skor */
-.tryout-score {
-    font-size: 14px;
-    font-weight: 600;
-    color: #4f46e5; /* Warna ungu kebiruan */
+.btn-tryout.aktif {
+    background-color: #007bff;
 }
 
-/* Tombol menggunakan class .btn-mulai dan .btn-upgrade-item yang sudah ada */
+.btn-tryout.aktif:hover {
+    background-color: #0056b3;
+}
 
+.btn-tryout.premium {
+    background-color: #6fd3ff;
+}
+
+.btn-tryout.premium:hover {
+    background-color: #4ec7ff;
+}
+
+.btn-tryout.coming {
+    background-color: #a1a1a1;
+}
+
+/* ✅ Responsif untuk tampilan HP */
+@media (max-width: 600px) {
+    .tryout-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.6rem;
+    }
+
+    .btn-tryout {
+        align-self: flex-start;
+    }
+
+    .tryout-icon {
+        width: 36px;
+        height: 36px;
+        font-size: 16px;
+    }
+
+    .tryout-title {
+        font-size: 0.95rem;
+    }
+
+    .tryout-date {
+        font-size: 0.8rem;
+    }
+}
 
 /* --- ATURAN RESPONSIVE UNTUK HALAMAN TRYOUT --- */
 @media (max-width: 767px) {
@@ -2154,3 +2210,26 @@ body.tryout-active .bottombar {
                 opacity: 1;
             }
         }
+        /* Style untuk banner premium */
+.premium-banner {
+    width: 100%;
+    /* margin-top dihilangkan karena dia sudah paling atas */
+}
+
+.premium-banner a {
+    display: block; 
+}
+
+.premium-banner img {
+    width: 100%;                
+    height: auto;               
+    display: block;             
+    border-radius: 16px;       
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08); 
+}
+
+/* Beri jarak antara banner dan header selamat datang */
+.welcome-header {
+    margin-top: 24px; /* Sesuaikan jaraknya jika perlu */
+    /* ... (style .welcome-header Anda yang sudah ada) ... */
+}
