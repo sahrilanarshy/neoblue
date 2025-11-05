@@ -92,7 +92,6 @@ $tipe_user = $_SESSION['tipe_user'];
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="../assets/user/js/main.js"></script>
-    <script src="../assets/user/js/tryout.js"></script>
     <script>
         const showListBtn = document.getElementById('showListBtn');
         const showCardBtn = document.getElementById('showCardBtn');

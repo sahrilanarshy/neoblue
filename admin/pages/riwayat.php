@@ -48,20 +48,11 @@
                                 <td>Rp119.000</td>
                                 <td><span class="badge bg-success">Selesai</span></td>
                             </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>Sahril Sidik</td>
-                                <td>Premium</td>
-                                <td>QRIS</td>
-                                <td>27 Okt 2025</td>
-                                <td>Rp119.000</td>
-                                <td><span class="badge bg-success">Selesai</span></td>
-                            </tr>
                         </tbody>
                         <tfoot>
                             <tr>
                                 <th colspan="5" class="text-end">Total Pendapatan</th>
-                                <th colspan="2" class="text-start">Rp238.000</th>
+                                <th colspan="2" class="text-start">Rp199.000</th>
                             </tr>
                         </tfoot>
                     </table>

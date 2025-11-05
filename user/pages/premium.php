@@ -26,13 +26,6 @@
 
         <div class="pembayaran-card">
             <h3>Detail Pembayaran</h3>
-            <div class="form-voucher">
-                <label for="kode-voucher">Kode Voucher (Opsional)</label>
-                <div class="input-grup">
-                    <input type="text" id="kode-voucher" placeholder="Masukkan Kode Voucher">
-                    <button>Terapkan</button>
-                </div>
-            </div>
 
             <div class="ringkasan-harga">
                 <div class="item-harga">
@@ -49,7 +42,6 @@
                 </div>
             </div>
 
-            <!-- ID ditambahkan di sini untuk dihubungkan ke JavaScript -->
             <button class="btn-langganan" id="subscribeButton">Langganan Sekarang</button>
 
             <p class="syarat-ketentuan">
@@ -106,281 +98,141 @@
     </div>
 </main>
 
-<div id="paymentModal">
-    <div class="modal-content">
-
-        <div id="modalStep1" class="modal-step active">
-            <div class="modal-header">
-                <h3>Rincian Belanja</h3>
-                <img src="https://placehold.co/120x30/f0f0f0/666?text=Secured+by+Duitku" alt="Secured by Duitku">
-                <button id="closeModalButton" class="modal-close-button">&times;</button>
-            </div>
-            <div class="modal-body">
-                <div class="modal-tabs">
-                    <button class="active">PESANAN</button>
-                    <button>PELANGGAN</button>
-                </div>
-                <div class="order-details">
-                    <div><span>Id Pemesanan</span> <span>1761575989-3349-5777</span></div>
-                    <div><span>Catatan</span> <span>Langganan Zypia Premium</span></div>
-                    <div><span>Daftar Barang</span> <span>Langganan Zypi... x 1</span></div>
-                    <div><span>Total</span> <span>Rp 199.000</span></div>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <div class="total-payment-display">
-                    <span class="total-label">Total Pembayaran</span>
-                    <span class="total-amount">Rp 199.000</span>
-                </div>
-                <button id="paymentButton">Pembayaran</button>
-            </div>
+<div id="manualPaymentModal" class="modal-overlay">
+    <div class="modal-content-manual">
+        <div class="modal-header">
+            <h3>Konfirmasi Pembayaran Manual</h3>
+            <button id="closeManualModal" class="modal-close-button">&times;</button>
         </div>
 
-        <div id="modalStep2" class="modal-step">
-            <div class="modal-header">
-                <button id="backToStep1" class="modal-back-button"><i class="bi bi-chevron-left"></i> Kembali</button>
-                <h3>Pilih Metode</h3>
-                <img src="https://placehold.co/120x30/f0f0f0/666?text=Secured+by+Duitku" alt="Secured by Duitku">
-            </div>
-            <div class="modal-body">
-                <h4>Bank Transfer</h4>
-                <button class="payment-method-item">
-                    <div>
-                        <img src="https://placehold.co/60x20/ffffff/003366?text=mandiri" alt="Mandiri">
-                        <div>
-                            <span class="method-title">MANDIRI VA H2H</span>
-                            <span class="method-fee">Biaya Rp 4.000</span>
-                        </div>
-                    </div>
-                    <i class="bi bi-chevron-right"></i>
-                </button>
-                <button class="payment-method-item">
-                    <div>
-                        <img src="https://placehold.co/60x20/ffffff/ff6600?text=BNI" alt="BNI">
-                        <div>
-                            <span class="method-title">BNI VA</span>
-                            <span class="method-fee">Biaya Rp 3.000</span>
-                        </div>
-                    </div>
-                    <i class="bi bi-chevron-right"></i>
-                </button>
-                <button class="payment-method-item">
-                    <div>
-                        <img src="https://placehold.co/60x20/ffffff/00529B?text=BRI" alt="BRI">
-                        <div>
-                            <span class="method-title">BRI VA</span>
-                            <span class="method-fee">Biaya Rp 3.000</span>
-                        </div>
-                    </div>
-                    <i class="bi bi-chevron-right"></i>
-                </button>
+        <form id="manualPaymentForm" class="modal-body-manual">
 
-                <h4>QRIS</h4>
-                <button class="payment-method-item">
-                    <div>
-                        <img src="https://placehold.co/60x20/ffffff/4B0082?text=NUSAPAY" alt="Nusapay">
-                        <div>
-                            <span class="method-title">NUSAPAY QRIS</span>
-                            <span class="method-fee">Tanpa Biaya Layanan</span>
-                        </div>
-                    </div>
-                    <i class="bi bi-chevron-right"></i>
-                </button>
-            </div>
-        </div>
-
-        <!-- STEP 3: Detail Pembayaran VA -->
-        <div id="modalStep3" class="modal-step">
-            <div class="modal-header">
-                <button id="backToStep2" class="modal-back-button"><i class="bi bi-chevron-left"></i>
-                    Kembali</button>
-                <h3>MANDIRI VA H2H</h3>
-                <img src="https://placehold.co/120x30/f0f0f0/666?text=Secured+by+Duitku" alt="Secured by Duitku">
-            </div>
-            <div class="modal-body">
-                <p>Dapatkan <strong>nomor akun virtual MANDIRI H2H</strong> Anda setelah menekan tombol
-                    <strong>pembayaran</strong> di bawah.</p>
-                <p>Periksa kembali <strong>data pembayaran</strong> Anda pada menu <strong>detail transaksi</strong>
-                    sebelum melanjutkan transaksi.</p>
-
-                <h5 style="font-weight: 600; margin-bottom: 0.5rem; font-size: 0.875rem;"><i
-                        class="bi bi-wallet2"></i> Cara Pembayaran</h5>
-                <div class="payment-instructions-list">
-                    <a href="#"><span>iBank Mandiri</span> <i class="bi bi-chevron-right"></i></a>
-                    <a href="#"><span>Livin' by Mandiri</span> <i class="bi bi-chevron-right"></i></a>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <div class="total-payment-display">
-                    <span class="total-label">Total Pembayaran</span>
-                    <span class="total-amount">Rp 203.000</span>
-                </div>
-                <button id="confirmPaymentButton">Pembayaran</button>
-            </div>
-        </div>
-
-        <!-- STEP 4: Status Transaksi -->
-        <div id="modalStep4" class="modal-step">
-            <div class="modal-header">
-                <button id="backToStep3" class="modal-back-button"><i class="bi bi-chevron-left"></i>
-                    Kembali</button>
-                <h3>MANDIRI VA H2H</h3>
-                <img src="https://placehold.co/120x30/f0f0f0/666?text=Secured+by+Duitku" alt="Secured by Duitku">
-            </div>
-            <div class="modal-body">
-                <div class="va-display">
-                    <span class="va-label">Nomor Akun Virtual</span>
-                    <h4 class="va-number">
-                        8902 8019 3075 0827 <i class="bi bi-clipboard" title="Salin"></i>
-                    </h4>
-                    <span class="va-status">Transaction pending.</span>
-                </div>
-
-                <div class="pending-warning">
-                    <i class="bi bi-clock-history"></i>
-                    <div>
-                        <strong>Mohon menyelesaikan pembayaran</strong>
-                        <br>Anda sebelum tanggal 10/27/2025 10:41:58 PM.
-                    </div>
-                </div>
-
-                <h5 style="font-weight: 600; margin-bottom: 0.5rem; font-size: 0.875rem; text-align: left;"><i
-                        class="bi bi-wallet2"></i> Cara Pembayaran</h5>
-                <div class="payment-instructions-list">
-                    <a href="#"><span>iBank Mandiri</span> <i class="bi bi-chevron-right"></i></a>
-                    <a href="#"><span>Livin' by Mandiri</span> <i class="bi bi-chevron-right"></i></a>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <div class="total-payment-display">
-                    <span class="total-label">Total Pembayaran</span>
-                    <span class="total-amount">Rp 203.000</span>
-                </div>
-                <button id="checkTransactionButton">Cek Transaksi</button>
-            </div>
-        </div>
-
-        <!-- STEP 5 (Final): Pending -->
-        <div id="modalStep5" class="modal-step">
-            <div class="modal-header">
-                <button id="backToStep4" class="modal-back-button"><i class="bi bi-chevron-left"></i>
-                    Kembali</button>
-                <h3>ZYPIA</h3>
-                <i class="bi bi-three-dots-vertical" style="color: #6b7280;"></i>
-            </div>
-            <div class="pending-final-status">
-                <i class="bi bi-exclamation-triangle-fill"></i>
-                <div class="amount">
-                    <span>Rp</span>
-                    <span>203.000</span>
-                </div>
-                <span class="status-label">Status Pembayaran</span>
-                <h4 class="status-text">Pending</h4>
-
-                <div class="pending-details">
-                    <div>
-                        <span>Nama</span>
-                        <span>NEOBLUE</span>
-                    </div>
-                    <div>
-                        <span>Nomor Invoice</span>
-                        <span>1761576... <i class="bi bi-clipboard" title="Salin"></i></span>
-                    </div>
-                    <div>
-                        <span>Tanggal Transaksi</span>
-                        <span>27 Okt 2025, 21.42.25</span>
-                    </div>
-                </div>
-
-                <p style="font-size: 0.875rem; color: #4b5563;">Transaksi Pending, Silahkan selesaikan pembayaran anda.
+            <div id="form-content">
+                <p>Silakan lakukan transfer sebesar <strong>Rp 199.000</strong> ke salah satu rekening di bawah ini:
                 </p>
-                <img src="https://placehold.co/60x30/f0f0f0/00529B?text=duitku" alt="duitku logo"
-                    class="duitku-logo">
-            </div>
-            <div class="modal-footer" style="padding: 1rem; background: #f1f5f9;">
-                <button id="closeModalButtonFinal" class="modal-button-full">Tutup</button>
-            </div>
-        </div>
 
+                <ul class="rekening-list">
+                    <li><strong>BNI:</strong> 123456789 (a/n Sahril Sidik)</li>
+                    <li><strong>BRI:</strong> 987654321 (a/n Sahril Sidik)</li>
+                    <li><strong>ShopeePay:</strong> 08123456789 (a/n Sahril Sidik)</li>
+                    <li><strong>DANA:</strong> 08123456789 (a/n Sahril Sidik)</li>
+                </ul>
+
+                <hr class="divider">
+
+                <div class="form-grup">
+                    <label for="paymentMethod">Metode yang Digunakan</label>
+                    <select id="paymentMethod" name="metode" required>
+                        <option value="">-- Pilih Metode --</option>
+                        <option value="bni">BNI</option>
+                        <option value="bri">BRI</option>
+                        <option value="shopeepay">ShopeePay</option>
+                        <option value="dana">DANA</option>
+                        <option value="lainnya">Lainnya</option>
+                    </select>
+                </div>
+
+                <div class="form-grup">
+                    <label for="proofOfPayment">Upload Bukti Pembayaran</label>
+                    <input type="file" id="proofOfPayment" name="bukti" accept="image/*" required>
+                    <small>Hanya file gambar (jpg, png, dll).</small>
+                </div>
+
+                <div class="form-grup">
+                    <label for="notes">Catatan (Opsional)</label>
+                    <textarea id="notes" name="catatan" rows="3" placeholder="Misal: Nama pengirim, dll."></textarea>
+                </div>
+
+                <button type="submit" class="btn-kirim-konfirmasi">Saya Sudah Transfer</button>
+            </div>
+
+            <div id="success-message">
+                <i class="bi bi-check-circle-fill"></i>
+                <h4 style="margin-top: 1rem;">Konfirmasi Terkirim!</h4>
+                <p>Terima kasih. Pembayaran Anda akan segera kami verifikasi dalam 1x24 jam.</p>
+                <button type="button" id="closeAfterSuccess" class="btn-kirim-konfirmasi">Tutup</button>
+            </div>
+
+        </form>
     </div>
 </div>
-<!-- [ AKHIR MODAL PEMBAYARAN ] -->
 
 
-<!-- JavaScript untuk Modal -->
 <script>
     document.addEventListener('DOMContentLoaded', function() {
-        // Ambil elemen-elemen modal
-        const paymentModal = document.getElementById('paymentModal');
+        // Ambil elemen-elemen modal baru
+        const manualPaymentModal = document.getElementById('manualPaymentModal');
         const subscribeButton = document.getElementById('subscribeButton');
-        const closeModalButton = document.getElementById('closeModalButton');
-        const closeModalButtonFinal = document.getElementById('closeModalButtonFinal');
+        const closeManualModal = document.getElementById('closeManualModal');
 
-        // Ambil semua step modal
-        const modalStep1 = document.getElementById('modalStep1');
-        const modalStep2 = document.getElementById('modalStep2');
-        const modalStep3 = document.getElementById('modalStep3');
-        const modalStep4 = document.getElementById('modalStep4');
-        const modalStep5 = document.getElementById('modalStep5');
-        const allSteps = [modalStep1, modalStep2, modalStep3, modalStep4, modalStep5];
+        // Form dan elemen di dalamnya
+        const manualPaymentForm = document.getElementById('manualPaymentForm');
+        const formContent = document.getElementById('form-content');
+        const successMessage = document.getElementById('success-message');
+        const closeAfterSuccess = document.getElementById('closeAfterSuccess');
 
-        // Fungsi helper untuk pindah step
-        function goToStep(stepToShow) {
-            allSteps.forEach(step => {
-                if (step) step.style.display = 'none';
-            });
-            if (stepToShow) stepToShow.style.display = 'block';
-        }
-
-        // --- Tombol Navigasi ---
-        if (subscribeButton) {
-            subscribeButton.addEventListener('click', () => {
-                goToStep(modalStep1); // Selalu mulai dari step 1
-                paymentModal.style.display = 'flex';
-            });
-        }
-
-        const paymentButton = document.getElementById('paymentButton');
-        if (paymentButton) paymentButton.addEventListener('click', () => goToStep(modalStep2));
-
-        document.querySelectorAll('.payment-method-item').forEach(button => {
-            button.addEventListener('click', () => goToStep(modalStep3));
-        });
-
-        const confirmPaymentButton = document.getElementById('confirmPaymentButton');
-        if (confirmPaymentButton) confirmPaymentButton.addEventListener('click', () => goToStep(modalStep4));
-
-        const checkTransactionButton = document.getElementById('checkTransactionButton');
-        if (checkTransactionButton) checkTransactionButton.addEventListener('click', () => goToStep(
-        modalStep5));
-
-        // --- Tombol Kembali ---
-        const backToStep1 = document.getElementById('backToStep1');
-        if (backToStep1) backToStep1.addEventListener('click', () => goToStep(modalStep1));
-
-        const backToStep2 = document.getElementById('backToStep2');
-        if (backToStep2) backToStep2.addEventListener('click', () => goToStep(modalStep2));
-
-        const backToStep3 = document.getElementById('backToStep3');
-        if (backToStep3) backToStep3.addEventListener('click', () => goToStep(modalStep3));
-
-        const backToStep4 = document.getElementById('backToStep4');
-        if (backToStep4) backToStep4.addEventListener('click', () => goToStep(modalStep4));
-
-        // --- Tombol Tutup Modal (X) ---
-        function hideModal() {
-            paymentModal.style.display = 'none';
-            setTimeout(() => goToStep(modalStep1), 200);
-        }
-
-        if (closeModalButton) closeModalButton.addEventListener('click', hideModal);
-        if (closeModalButtonFinal) closeModalButtonFinal.addEventListener('click', hideModal);
-
-        // Klik di luar modal untuk menutup
-        paymentModal.addEventListener('click', (event) => {
-            if (event.target === paymentModal) {
-                hideModal();
+        // Fungsi untuk menampilkan modal
+        function showModal() {
+            if (manualPaymentModal) {
+                manualPaymentModal.style.display = 'flex';
+                // Reset form jika modal ditutup lalu dibuka lagi
+                formContent.style.display = 'block';
+                successMessage.style.display = 'none';
+                manualPaymentForm.reset();
             }
-        });
+        }
+
+        // Fungsi untuk menyembunyikan modal
+        function hideModal() {
+            if (manualPaymentModal) {
+                manualPaymentModal.style.display = 'none';
+            }
+        }
+
+        // --- Event Listeners ---
+
+        // Tampilkan modal saat tombol "Langganan Sekarang" diklik
+        if (subscribeButton) {
+            subscribeButton.addEventListener('click', showModal);
+        }
+
+        // Sembunyikan modal saat tombol 'X' diklik
+        if (closeManualModal) {
+            closeManualModal.addEventListener('click', hideModal);
+        }
+
+        // Sembunyikan modal saat tombol 'Tutup' di pesan sukses diklik
+        if (closeAfterSuccess) {
+            closeAfterSuccess.addEventListener('click', hideModal);
+        }
+
+        // Sembunyikan modal saat klik di luar area konten modal
+        if (manualPaymentModal) {
+            manualPaymentModal.addEventListener('click', (event) => {
+                if (event.target === manualPaymentModal) {
+                    hideModal();
+                }
+            });
+        }
+
+        // --- Penanganan Submit Form ---
+        if (manualPaymentForm) {
+            manualPaymentForm.addEventListener('submit', function(event) {
+                // Hentikan pengiriman form bawaan
+                event.preventDefault();
+
+                //
+                // !! PENTING: Di sinilah Anda seharusnya mengirim data 
+                //    form (termasuk file) ke server (backend) Anda.
+                //
+
+                // Untuk sekarang, kita hanya simulasikan sukses di frontend:
+                // 1. Sembunyikan form
+                formContent.style.display = 'none';
+
+                // 2. Tampilkan pesan sukses
+                successMessage.style.display = 'block';
+            });
+        }
     });
 </script>

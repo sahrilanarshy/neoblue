@@ -19,7 +19,7 @@
         <div class="col-lg-4">
             <div class="card profile-card-left">
                 <div class="card-body">
-                    <img src="assets/img/logo/icon profile.png" alt="Avatar" class="profile-avatar">
+                    <img src="../../assets/admin/img/logo/icon profile.png" alt="Avatar" class="profile-avatar">
                     <h5 class="card-title">Sahril Sidik</h5>
                     <p class="text-muted">Administrator</p>
                 </div>

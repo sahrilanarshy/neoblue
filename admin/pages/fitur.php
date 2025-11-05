@@ -20,7 +20,7 @@
                     <button class="btn btn-primary btn-round ms-auto"
                         onclick="window.location.href='.?hal=tambahfitur';">
                         <i class="fa fa-plus"></i>
-                        Tambah Fitur
+                        Tambah
                     </button>
                 </div>
             </div>
@@ -50,8 +50,8 @@
                                 <td>10</td>
                                 <td>
                                     <div class="form-button-action">
-                                        <a href=".?hal=editfitur" data-bs-toggle="tooltip" title="Edit" class="btn btn-link btn-primary"><i class="fa fa-edit"></i></a>
-                                        <a href=".?hal=hapusfitur" data-bs-toggle="tooltip" title="Hapus" class="btn btn-link btn-danger"><i class="fa fa-times"></i></a>
+                                        <a href=".?hal=editfitur" data-bs-toggle="tooltip" title="Edit" class="btn btn-link btn-primary btn-sm"><i class="fa fa-edit"></i></a>
+                                        <a href=".?hal=hapusfitur" data-bs-toggle="tooltip" title="Hapus" class="btn btn-link btn-danger btn-sm"><i class="fa fa-times"></i></a>
                                     </div>
                                 </td>
                             </tr>
@@ -61,8 +61,8 @@
                                 <td>20</td>
                                 <td>
                                     <div class="form-button-action">
-                                        <a href=".?hal=editfitur" data-bs-toggle="tooltip" title="Edit" class="btn btn-link btn-primary"><i class="fa fa-edit"></i></a>
-                                        <a href=".?hal=hapusfitur" data-bs-toggle="tooltip" title="Hapus" class="btn btn-link btn-danger"><i class="fa fa-times"></i></a>
+                                        <a href=".?hal=editfitur" data-bs-toggle="tooltip" title="Edit" class="btn btn-link btn-primary btn-sm"><i class="fa fa-edit"></i></a>
+                                        <a href=".?hal=hapusfitur" data-bs-toggle="tooltip" title="Hapus" class="btn btn-link btn-danger btn-sm"><i class="fa fa-times"></i></a>
                                     </div>
                                 </td>
                             </tr>
@@ -72,8 +72,8 @@
                                 <td>30</td>
                                 <td>
                                     <div class="form-button-action">
-                                        <a href=".?hal=editfitur" data-bs-toggle="tooltip" title="Edit" class="btn btn-link btn-primary"><i class="fa fa-edit"></i></a>
-                                        <a href=".?hal=hapusfitur" data-bs-toggle="tooltip" title="Hapus" class="btn btn-link btn-danger"><i class="fa fa-times"></i></a>
+                                        <a href=".?hal=editfitur" data-bs-toggle="tooltip" title="Edit" class="btn btn-link btn-primary btn-sm"><i class="fa fa-edit"></i></a>
+                                        <a href=".?hal=hapusfitur" data-bs-toggle="tooltip" title="Hapus" class="btn btn-link btn-danger btn-sm"><i class="fa fa-times"></i></a>
                                     </div>
                                 </td>
                             </tr>
@@ -83,8 +83,8 @@
                                 <td>40</td>
                                 <td>
                                     <div class="form-button-action">
-                                        <a href=".?hal=editfitur" data-bs-toggle="tooltip" title="Edit" class="btn btn-link btn-primary"><i class="fa fa-edit"></i></a>
-                                        <a href=".?hal=hapusfitur" data-bs-toggle="tooltip" title="Hapus" class="btn btn-link btn-danger"><i class="fa fa-times"></i></a>
+                                        <a href=".?hal=editfitur" data-bs-toggle="tooltip" title="Edit" class="btn btn-link btn-primary btn-sm"><i class="fa fa-edit"></i></a>
+                                        <a href=".?hal=hapusfitur" data-bs-toggle="tooltip" title="Hapus" class="btn btn-link btn-danger btn-sm"><i class="fa fa-times"></i></a>
                                     </div>
                                 </td>
                             </tr>
@@ -94,8 +94,8 @@
                                 <td>50</td>
                                 <td>
                                     <div class="form-button-action">
-                                        <a href=".?hal=editfitur" data-bs-toggle="tooltip" title="Edit" class="btn btn-link btn-primary"><i class="fa fa-edit"></i></a>
-                                        <a href=".?hal=hapusfitur" data-bs-toggle="tooltip" title="Hapus" class="btn btn-link btn-danger"><i class="fa fa-times"></i></a>
+                                        <a href=".?hal=editfitur" data-bs-toggle="tooltip" title="Edit" class="btn btn-link btn-primary btn-sm"><i class="fa fa-edit"></i></a>
+                                        <a href=".?hal=hapusfitur" data-bs-toggle="tooltip" title="Hapus" class="btn btn-link btn-danger btn-sm"><i class="fa fa-times"></i></a>
                                     </div>
                                 </td>
                             </tr>
@@ -105,8 +105,8 @@
                                 <td>60</td>
                                 <td>
                                     <div class="form-button-action">
-                                        <a href=".?hal=editfitur" data-bs-toggle="tooltip" title="Edit" class="btn btn-link btn-primary"><i class="fa fa-edit"></i></a>
-                                        <a href=".?hal=hapusfitur" data-bs-toggle="tooltip" title="Hapus" class="btn btn-link btn-danger"><i class="fa fa-times"></i></a>
+                                        <a href=".?hal=editfitur" data-bs-toggle="tooltip" title="Edit" class="btn btn-link btn-primary btn-sm"><i class="fa fa-edit"></i></a>
+                                        <a href=".?hal=hapusfitur" data-bs-toggle="tooltip" title="Hapus" class="btn btn-link btn-danger btn-sm"><i class="fa fa-times"></i></a>
                                     </div>
                                 </td>
                             </tr>
@@ -116,8 +116,8 @@
                                 <td>70</td>
                                 <td>
                                     <div class="form-button-action">
-                                        <a href=".?hal=editfitur" data-bs-toggle="tooltip" title="Edit" class="btn btn-link btn-primary"><i class="fa fa-edit"></i></a>
-                                        <a href=".?hal=hapusfitur" data-bs-toggle="tooltip" title="Hapus" class="btn btn-link btn-danger"><i class="fa fa-times"></i></a>
+                                        <a href=".?hal=editfitur" data-bs-toggle="tooltip" title="Edit" class="btn btn-link btn-primary btn-sm"><i class="fa fa-edit"></i></a>
+                                        <a href=".?hal=hapusfitur" data-bs-toggle="tooltip" title="Hapus" class="btn btn-link btn-danger btn-sm"><i class="fa fa-times"></i></a>
                                     </div>
                                 </td>
                             </tr>
@@ -127,8 +127,8 @@
                                 <td>80</td>
                                 <td>
                                     <div class="form-button-action">
-                                        <a href=".?hal=editfitur" data-bs-toggle="tooltip" title="Edit" class="btn btn-link btn-primary"><i class="fa fa-edit"></i></a>
-                                        <a href=".?hal=hapusfitur" data-bs-toggle="tooltip" title="Hapus" class="btn btn-link btn-danger"><i class="fa fa-times"></i></a>
+                                        <a href=".?hal=editfitur" data-bs-toggle="tooltip" title="Edit" class="btn btn-link btn-primary btn-sm"><i class="fa fa-edit"></i></a>
+                                        <a href=".?hal=hapusfitur" data-bs-toggle="tooltip" title="Hapus" class="btn btn-link btn-danger btn-sm"><i class="fa fa-times"></i></a>
                                     </div>
                                 </td>
                             </tr>
@@ -138,8 +138,8 @@
                                 <td>90</td>
                                 <td>
                                     <div class="form-button-action">
-                                        <a href=".?hal=editfitur" data-bs-toggle="tooltip" title="Edit" class="btn btn-link btn-primary"><i class="fa fa-edit"></i></a>
-                                        <a href=".?hal=hapusfitur" data-bs-toggle="tooltip" title="Hapus" class="btn btn-link btn-danger"><i class="fa fa-times"></i></a>
+                                        <a href=".?hal=editfitur" data-bs-toggle="tooltip" title="Edit" class="btn btn-link btn-primary btn-sm"><i class="fa fa-edit"></i></a>
+                                        <a href=".?hal=hapusfitur" data-bs-toggle="tooltip" title="Hapus" class="btn btn-link btn-danger btn-sm"><i class="fa fa-times"></i></a>
                                     </div>
                                 </td>
                             </tr>
@@ -149,8 +149,8 @@
                                 <td>100</td>
                                 <td>
                                     <div class="form-button-action">
-                                        <a href=".?hal=editfitur" data-bs-toggle="tooltip" title="Edit" class="btn btn-link btn-primary"><i class="fa fa-edit"></i></a>
-                                        <a href=".?hal=hapusfitur" data-bs-toggle="tooltip" title="Hapus" class="btn btn-link btn-danger"><i class="fa fa-times"></i></a>
+                                        <a href=".?hal=editfitur" data-bs-toggle="tooltip" title="Edit" class="btn btn-link btn-primary btn-sm"><i class="fa fa-edit"></i></a>
+                                        <a href=".?hal=hapusfitur" data-bs-toggle="tooltip" title="Hapus" class="btn btn-link btn-danger btn-sm"><i class="fa fa-times"></i></a>
                                     </div>
                                 </td>
                             </tr>

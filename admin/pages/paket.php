@@ -20,11 +20,11 @@
             <div class="card-header">
                 <div class="d-flex align-items-center">
                     <h4 class="card-title">Daftar Paket Langganan</h4>
-                        <button class="btn btn-primary btn-round ms-auto"
-                            onclick="window.location.href='.?hal=tambahpaket';">
-                            <i class="fa fa-plus"></i>
-                            Tambah
-                        </button>
+                    <button class="btn btn-primary btn-round ms-auto"
+                        onclick="window.location.href='.?hal=tambahpaket';">
+                        <i class="fa fa-plus"></i>
+                        Tambah
+                    </button>
                 </div>
             </div>
             <div class="card-body">
@@ -61,11 +61,11 @@
                                 <td>
                                     <div class="form-button-action">
                                         <a href=".?hal=editpaket" data-bs-toggle="tooltip" title="Edit"
-                                            class="btn btn-link btn-primary">
+                                            class="btn btn-link btn-primary btn-sm">
                                             <i class="fa fa-edit"></i>
                                         </a>
                                         <a href=".?hal=hapuspaket" data-bs-toggle="tooltip" title="Hapus"
-                                            class="btn btn-link btn-danger"
+                                            class="btn btn-link btn-danger btn-sm"
                                             onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?');">
                                             <i class="fa fa-times"></i>
                                         </a>
@@ -84,11 +84,11 @@
                                 <td>
                                     <div class="form-button-action">
                                         <a href=".?hal=editpaket" data-bs-toggle="tooltip" title="Edit"
-                                            class="btn btn-link btn-primary">
+                                            class="btn btn-link btn-primary btn-sm">
                                             <i class="fa fa-edit"></i>
                                         </a>
                                         <a href=".?hal=hapuspaket" data-bs-toggle="tooltip" title="Hapus"
-                                            class="btn btn-link btn-danger"
+                                            class="btn btn-link btn-danger btn-sm"
                                             onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?');">
                                             <i class="fa fa-times"></i>
                                         </a>

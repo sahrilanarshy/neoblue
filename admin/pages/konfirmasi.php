@@ -21,9 +21,6 @@
             <div class="card-header">
                 <div class="d-flex align-items-center">
                     <h4 class="card-title">Daftar Pembayaran Menunggu Verifikasi</h4>
-                    <button class="btn btn-primary btn-round ms-auto" onclick="window.location.href='.?hal=konfirmasi';">
-                        <i class="fa fa-list"></i> Lihat Semua
-                    </button>
                 </div>
             </div>
 
@@ -37,55 +34,49 @@
                                 <th>Paket</th>
                                 <th>Metode</th>
                                 <th>Tanggal</th>
+                                <th>Catatan</th>
                                 <th>Bukti</th>
                                 <th>Status</th>
                                 <th>Aksi</th>
                             </tr>
                         </thead>
-
+                        <tfoot>
+                            <tr>
+                                <th>No</th>
+                                <th>Nama Siswa</th>
+                                <th>Paket</th>
+                                <th>Metode</th>
+                                <th>Tanggal</th>
+                                <th>Catatan</th>
+                                <th>Bukti</th>
+                                <th>Status</th>
+                                <th>Aksi</th>
+                            </tr>
+                        </tfoot>
                         <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>Rafi Pratama</td>
-                                <td>Premium 1 Bulan</td>
-                                <td>Transfer BRI</td>
-                                <td>28 Okt 2025</td>
-                                <td>
-                                    <a href="uploads/bukti1.jpg" target="_blank" class="btn btn-sm btn-info">Lihat</a>
-                                </td>
-                                <td><span class="badge bg-warning">Menunggu</span></td>
-                                <td>
-                                    <div class="form-button-action">
-                                        <a href="#" class="btn btn-link btn-success" title="Terima">
-                                            <i class="fa fa-check"></i>
-                                        </a>
-                                        <a href="#" class="btn btn-link btn-danger" title="Tolak">
-                                            <i class="fa fa-times"></i>
-                                        </a>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>Siti Rahma</td>
-                                <td>Premium 3 Bulan</td>
-                                <td>QRIS</td>
-                                <td>27 Okt 2025</td>
-                                <td>
-                                    <a href="uploads/bukti2.jpg" target="_blank" class="btn btn-sm btn-info">Lihat</a>
-                                </td>
-                                <td><span class="badge bg-warning">Menunggu</span></td>
-                                <td>
-                                    <div class="form-button-action">
-                                        <a href="#" class="btn btn-link btn-success" title="Terima">
-                                            <i class="fa fa-check"></i>
-                                        </a>
-                                        <a href="#" class="btn btn-link btn-danger" title="Tolak">
-                                            <i class="fa fa-times"></i>
-                                        </a>
-                                    </div>
-                                </td>
-                            </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>Rafi Pratama</td>
+                            <td>Premium</td>
+                            <td>Transfer BRI</td>
+                            <td>28 Okt 2025</td>
+                            <td>Masuk Bos?</td>
+                            <td>
+                                <a href="../../assets/admin/img/uploads/bukti1.jpg" target="_blank"
+                                    class="btn btn-sm btn-info">Lihat</a>
+                            </td>
+                            <td><span class="badge bg-warning">Menunggu</span></td>
+                            <td>
+                                <div class="form-button-action">
+                                    <a href="#" class="btn btn-link btn-success btn-sm" title="Terima">
+                                        <i class="fa fa-check"></i>
+                                    </a>
+                                    <a href="#" class="btn btn-link btn-danger btn-sm" title="Tolak">
+                                        <i class="fa fa-times"></i>
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
                         </tbody>
                     </table>
                 </div>

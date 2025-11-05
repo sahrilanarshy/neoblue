@@ -61,13 +61,13 @@
                             <td>
                                 <div class="form-button-action">
                                     <a href=".?hal=edituser" data-bs-toggle="tooltip" title="Edit"
-                                        class="btn btn-link btn-primary">
+                                        class="btn btn-link btn-primary btn-sm">
                                         <i class="fa fa-edit"></i>
                                     </a>
 
                                     <a href="#" data-bs-toggle="modal" data-bs-target="#confirmDeleteModal"
                                         data-id="1" data-item-name="Operasi Bilangan" title="Hapus"
-                                        class="btn btn-link btn-danger">
+                                        class="btn btn-link btn-danger btn-sm">
                                         <i class="fa fa-times"></i>
                                     </a>
                                 </div>
@@ -84,12 +84,12 @@
                             <td>
                                 <div class="form-button-action">
                                     <a href=".?hal=edituser&id=2" data-bs-toggle="tooltip" title="Edit"
-                                        class="btn btn-link btn-primary">
+                                        class="btn btn-link btn-primary btn-sm">
                                         <i class="fa fa-edit"></i>
                                     </a>
                                     <a href="#" data-bs-toggle="modal" data-bs-target="#confirmDeleteModal"
                                         data-id="2" data-item-name="Budi Santoso" title="Hapus"
-                                        class="btn btn-link btn-danger">
+                                        class="btn btn-link btn-danger btn-sm">
                                         <i class="fa fa-times"></i>
                                     </a>
                                 </div>
@@ -107,12 +107,12 @@
                             <td>
                                 <div class="form-button-action">
                                     <a href=".?hal=edituser&id=3" data-bs-toggle="tooltip" title="Edit"
-                                        class="btn btn-link btn-primary">
+                                        class="btn btn-link btn-primary btn-sm">
                                         <i class="fa fa-edit"></i>
                                     </a>
                                     <a href="#" data-bs-toggle="modal" data-bs-target="#confirmDeleteModal"
                                         data-id="3" data-item-name="Siti Aminah" title="Hapus"
-                                        class="btn btn-link btn-danger">
+                                        class="btn btn-link btn-danger btn-sm">
                                         <i class="fa fa-times"></i>
                                     </a>
                                 </div>
@@ -130,12 +130,12 @@
                             <td>
                                 <div class="form-button-action">
                                     <a href=".?hal=edituser&id=4" data-bs-toggle="tooltip" title="Edit"
-                                        class="btn btn-link btn-primary">
+                                        class="btn btn-link btn-primary btn-sm">
                                         <i class="fa fa-edit"></i>
                                     </a>
                                     <a href="#" data-bs-toggle="modal" data-bs-target="#confirmDeleteModal"
                                         data-id="4" data-item-name="Agus Setiawan" title="Hapus"
-                                        class="btn btn-link btn-danger">
+                                        class="btn btn-link btn-danger btn-sm">
                                         <i class="fa fa-times"></i>
                                     </a>
                                 </div>
@@ -153,150 +153,12 @@
                             <td>
                                 <div class="form-button-action">
                                     <a href=".?hal=edituser&id=5" data-bs-toggle="tooltip" title="Edit"
-                                        class="btn btn-link btn-primary">
+                                        class="btn btn-link btn-primary btn-sm">
                                         <i class="fa fa-edit"></i>
                                     </a>
                                     <a href="#" data-bs-toggle="modal" data-bs-target="#confirmDeleteModal"
                                         data-id="5" data-item-name="Dewi Lestari" title="Hapus"
-                                        class="btn btn-link btn-danger">
-                                        <i class="fa fa-times"></i>
-                                    </a>
-                                </div>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td>6</td>
-                            <td>Joko Widodo</td>
-                            <td>joko.w@example.com</td>
-                            <td>25/11/2026</td>
-                            <td>
-                                <a class="btn btn-primary btn-round btn-xs btn-warning">Premium</a>
-                            </td>
-                            <td>
-                                <div class="form-button-action">
-                                    <a href=".?hal=edituser&id=6" data-bs-toggle="tooltip" title="Edit"
-                                        class="btn btn-link btn-primary">
-                                        <i class="fa fa-edit"></i>
-                                    </a>
-                                    <a href="#" data-bs-toggle="modal" data-bs-target="#confirmDeleteModal"
-                                        data-id="6" data-item-name="Joko Widodo" title="Hapus"
-                                        class="btn btn-link btn-danger">
-                                        <i class="fa fa-times"></i>
-                                    </a>
-                                </div>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td>7</td>
-                            <td>Anisa Rahmawati</td>
-                            <td>anisa.r@example.com</td>
-                            <td>01/12/2026</td>
-                            <td>
-                                <a class="btn btn-primary btn-round btn-xs btn-success">Free</a>
-                            </td>
-                            <td>
-                                <div class="form-button-action">
-                                    <a href=".?hal=edituser&id=7" data-bs-toggle="tooltip" title="Edit"
-                                        class="btn btn-link btn-primary">
-                                        <i class="fa fa-edit"></i>
-                                    </a>
-                                    <a href="#" data-bs-toggle="modal" data-bs-target="#confirmDeleteModal"
-                                        data-id="7" data-item-name="Anisa Rahmawati" title="Hapus"
-                                        class="btn btn-link btn-danger">
-                                        <i class="fa fa-times"></i>
-                                    </a>
-                                </div>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td>8</td>
-                            <td>Rian Hidayat</td>
-                            <td>rian.hidayat@example.com</td>
-                            <td>03/12/2026</td>
-                            <td>
-                                <a class="btn btn-primary btn-round btn-xs btn-warning">Premium</a>
-                            </td>
-                            <td>
-                                <div class="form-button-action">
-                                    <a href=".?hal=edituser&id=8" data-bs-toggle="tooltip" title="Edit"
-                                        class="btn btn-link btn-primary">
-                                        <i class="fa fa-edit"></i>
-                                    </a>
-                                    <a href="#" data-bs-toggle="modal" data-bs-target="#confirmDeleteModal"
-                                        data-id="8" data-item-name="Rian Hidayat" title="Hapus"
-                                        class="btn btn-link btn-danger">
-                                        <i class="fa fa-times"></i>
-                                    </a>
-                                </div>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td>9</td>
-                            <td>Putri Handayani</td>
-                            <td>putri.h@example.com</td>
-                            <td>10/12/2026</td>
-                            <td>
-                                <a class="btn btn-primary btn-round btn-xs btn-success">Free</a>
-                            </td>
-                            <td>
-                                <div class="form-button-action">
-                                    <a href=".?hal=edituser&id=9" data-bs-toggle="tooltip" title="Edit"
-                                        class="btn btn-link btn-primary">
-                                        <i class="fa fa-edit"></i>
-                                    </a>
-                                    <a href="#" data-bs-toggle="modal" data-bs-target="#confirmDeleteModal"
-                                        data-id="9" data-item-name="Putri Handayani" title="Hapus"
-                                        class="btn btn-link btn-danger">
-                                        <i class="fa fa-times"></i>
-                                    </a>
-                                </div>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td>10</td>
-                            <td>Eko Prasetyo</td>
-                            <td>eko.prasetyo@example.com</td>
-                            <td>11/01/2027</td>
-                            <td>
-                                <a class="btn btn-primary btn-round btn-xs btn-warning">Premium</a>
-                            </td>
-                            <td>
-                                <div class="form-button-action">
-                                    <a href=".?hal=edituser&id=10" data-bs-toggle="tooltip" title="Edit"
-                                        class="btn btn-link btn-primary">
-                                        <i class="fa fa-edit"></i>
-                                    </a>
-                                    <a href="#" data-bs-toggle="modal" data-bs-target="#confirmDeleteModal"
-                                        data-id="10" data-item-name="Eko Prasetyo" title="Hapus"
-                                        class="btn btn-link btn-danger">
-                                        <i class="fa fa-times"></i>
-                                    </a>
-                                </div>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td>11</td>
-                            <td>Fitriani Indah</td>
-                            <td>fitri.indah@example.com</td>
-                            <td>15/01/2027</td>
-                            <td>
-                                <a class="btn btn-primary btn-round btn-xs btn-success">Free</a>
-                            </td>
-                            <td>
-                                <div class="form-button-action">
-                                    <a href=".?hal=edituser&id=11" data-bs-toggle="tooltip" title="Edit"
-                                        class="btn btn-link btn-primary">
-                                        <i class="fa fa-edit"></i>
-                                    </a>
-                                    <a href="#" data-bs-toggle="modal" data-bs-target="#confirmDeleteModal"
-                                        data-id="11" data-item-name="Fitriani Indah" title="Hapus"
-                                        class="btn btn-link btn-danger">
+                                        class="btn btn-link btn-danger btn-sm">
                                         <i class="fa fa-times"></i>
                                     </a>
                                 </div>

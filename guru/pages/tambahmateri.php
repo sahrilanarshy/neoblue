@@ -50,10 +50,6 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="tanggal">Tanggal</label>
-                            <input type="date" class="form-control" id="tanggal" name="tanggal" required />
-                        </div>
-                        <div class="form-group">
                             <label for="link_video">Link Video</label>
                             <input type="url" class="form-control" id="link_video" name="link_video"
                                 placeholder="https://www.youtube.com/watch?v=..." />

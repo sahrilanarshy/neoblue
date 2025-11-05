@@ -18,8 +18,8 @@ ob_start();
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>NeoBlue</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="icon" href="../assets/admin/img/logo/icon.png" type="image/x-icon" />
-    <script src="../assets/admin/js/tinymce/js/tinymce/tinymce.min.js"></script>
+    <link rel="icon" href="../assets/guru/img/logo/icon.png" type="image/x-icon" />
+    <script src="../assets/guru/js/tinymce/js/tinymce/tinymce.min.js"></script>
     <script>
         tinymce.init({
             selector: '#editor',
@@ -30,7 +30,7 @@ ob_start();
             height: 400
         });
     </script>
-    <script src="../assets/admin/js/plugin/webfont/webfont.min.js"></script>
+    <script src="../assets/guru/js/plugin/webfont/webfont.min.js"></script>
     <script>
         WebFont.load({
             google: {
@@ -43,7 +43,7 @@ ob_start();
                     "Font Awesome 5 Brands",
                     "simple-line-icons",
                 ],
-                urls: ["../assets/admin/css/fonts.min.css"],
+                urls: ["../assets/guru/css/fonts.min.css"],
             },
             active: function() {
                 sessionStorage.fonts = true;
@@ -51,11 +51,11 @@ ob_start();
         });
     </script>
 
-    <link rel="stylesheet" href="../assets/admin/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="../assets/admin/css/plugins.min.css" />
-    <link rel="stylesheet" href="../assets/admin/css/kaiadmin.min.css" />
+    <link rel="stylesheet" href="../assets/guru/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../assets/guru/css/plugins.min.css" />
+    <link rel="stylesheet" href="../assets/guru/css/kaiadmin.min.css" />
 
-    <link rel="stylesheet" href="../assets/admin/css/demo.css" />
+    <link rel="stylesheet" href="../assets/guru/css/demo.css" />
 </head>
 
 <body>
@@ -70,9 +70,6 @@ ob_start();
                     case 'beranda':
                         $page_to_include = 'pages/beranda.php';
                         break;
-                    case 'coba':
-                        $page_to_include = 'pages/coba.php';
-                        break;
                     case 'editbacaan':
                         $page_to_include = 'pages/editbacaan.php';
                         break;
@@ -81,9 +78,6 @@ ob_start();
                         break;
                     case 'editmateri':
                         $page_to_include = 'pages/editmateri.php';
-                        break;
-                    case 'editpaket':
-                        $page_to_include = 'pages/editpaket.php';
                         break;
                     case 'editshort':
                         $page_to_include = 'pages/editshort.php';
@@ -100,29 +94,14 @@ ob_start();
                     case 'edituser':
                         $page_to_include = 'pages/edituser.php';
                         break;
-                    case 'fitur':
-                        $page_to_include = 'pages/fitur.php';
-                        break;
                     case 'habit':
                         $page_to_include = 'pages/habit.php';
                         break;
                     case 'hapusmateri':
                         $page_to_include = 'pages/hapusmateri.php';
                         break;
-                    case 'kontak':
-                        $page_to_include = 'pages/kontak.php';
-                        break;
-                    case 'langganan':
-                        $page_to_include = 'pages/langganan.php';
-                        break;
-                    case 'lihatpesan':
-                        $page_to_include = 'pages/lihatpesan.php';
-                        break;
                     case 'materi':
                         $page_to_include = 'pages/materi.php';
-                        break;
-                    case 'paket':
-                        $page_to_include = 'pages/paket.php';
                         break;
                     case 'profile':
                         $page_to_include = 'pages/profile.php';
@@ -139,14 +118,8 @@ ob_start();
                     case 'tambahbacaan':
                         $page_to_include = 'pages/tambahbacaan.php';
                         break;
-                    case 'tambahfitur':
-                        $page_to_include = 'pages/tambahfitur.php';
-                        break;
                     case 'tambahmateri':
                         $page_to_include = 'pages/tambahmateri.php';
-                        break;
-                    case 'tambahpaket':
-                        $page_to_include = 'pages/tambahpaket.php';
                         break;
                     case 'tambahshort':
                         $page_to_include = 'pages/tambahshort.php';
@@ -156,6 +129,9 @@ ob_start();
                         break;
                     case 'tambahsoaltryout':
                         $page_to_include = 'pages/tambahsoaltryout.php';
+                        break;
+                    case 'editsoaltryout':
+                        $page_to_include = 'pages/editsoaltryout.php';
                         break;
                     case 'tambahsubtest':
                         $page_to_include = 'pages/tambahsubtest.php';
@@ -181,8 +157,6 @@ ob_start();
                     case 'editpengumuman':
                         $page_to_include = 'pages/editpengumuman.php';
                         break;
-                    case 'guru':
-                        $page_to_include = 'pages/guru.php';
 
                     default:
                         $page_to_include = 'pages/beranda.php';

@@ -70,44 +70,17 @@ ob_start();
                     case 'beranda':
                         $page_to_include = 'pages/beranda.php';
                         break;
-                    case 'coba':
-                        $page_to_include = 'pages/coba.php';
-                        break;
-                    case 'editbacaan':
-                        $page_to_include = 'pages/editbacaan.php';
-                        break;
                     case 'editfitur':
                         $page_to_include = 'pages/editfitur.php';
                         break;
-                    case 'editmateri':
-                        $page_to_include = 'pages/editmateri.php';
-                        break;
                     case 'editpaket':
                         $page_to_include = 'pages/editpaket.php';
-                        break;
-                    case 'editshort':
-                        $page_to_include = 'pages/editshort.php';
-                        break;
-                    case 'editsoal':
-                        $page_to_include = 'pages/editsoal.php';
-                        break;
-                    case 'editsubtest':
-                        $page_to_include = 'pages/editsubtest.php';
-                        break;
-                    case 'edittryout':
-                        $page_to_include = 'pages/edittryout.php';
                         break;
                     case 'edituser':
                         $page_to_include = 'pages/edituser.php';
                         break;
                     case 'fitur':
                         $page_to_include = 'pages/fitur.php';
-                        break;
-                    case 'habit':
-                        $page_to_include = 'pages/habit.php';
-                        break;
-                    case 'hapusmateri':
-                        $page_to_include = 'pages/hapusmateri.php';
                         break;
                     case 'kontak':
                         $page_to_include = 'pages/kontak.php';
@@ -117,9 +90,6 @@ ob_start();
                         break;
                     case 'lihatpesan':
                         $page_to_include = 'pages/lihatpesan.php';
-                        break;
-                    case 'materi':
-                        $page_to_include = 'pages/materi.php';
                         break;
                     case 'paket':
                         $page_to_include = 'pages/paket.php';
@@ -136,15 +106,6 @@ ob_start();
                     case 'tambahartikel':
                         $page_to_include = 'pages/tambahartikel.php';
                         break;
-                    case 'soaltryout':
-                        $page_to_include = 'pages/soaltryout.php';
-                        break;
-                    case 'subtest':
-                        $page_to_include = 'pages/subtest.php';
-                        break;
-                    case 'tambahbacaan':
-                        $page_to_include = 'pages/tambahbacaan.php';
-                        break;
                     case 'tambahfitur':
                         $page_to_include = 'pages/tambahfitur.php';
                         break;
@@ -154,26 +115,8 @@ ob_start();
                     case 'tambahpaket':
                         $page_to_include = 'pages/tambahpaket.php';
                         break;
-                    case 'tambahshort':
-                        $page_to_include = 'pages/tambahshort.php';
-                        break;
-                    case 'tambahsoal':
-                        $page_to_include = 'pages/tambahsoal.php';
-                        break;
-                    case 'tambahsoaltryout':
-                        $page_to_include = 'pages/tambahsoaltryout.php';
-                        break;
-                    case 'tambahsubtest':
-                        $page_to_include = 'pages/tambahsubtest.php';
-                        break;
-                    case 'tambahtryout':
-                        $page_to_include = 'pages/tambahtryout.php';
-                        break;
                     case 'tambahuser':
                         $page_to_include = 'pages/tambahuser.php';
-                        break;
-                    case 'tryout':
-                        $page_to_include = 'pages/tryout.php';
                         break;
                     case 'user':
                         $page_to_include = 'pages/user.php';
@@ -196,7 +139,15 @@ ob_start();
                     case 'pendapatan':
                         $page_to_include = 'pages/pendapatan.php';
                         break;
-                        
+                    case 'metodepembayaran':
+                        $page_to_include = 'pages/metodepembayaran.php';
+                        break;
+                    case 'tambahmetodepembayaran';
+                        $page_to_include = 'pages/tambahmetodepembayaran.php';
+                        break;
+                    case 'editmetodepembayaran';
+                        $page_to_include = 'pages/editmetodepembayaran.php';
+                        break;
                     default:
                         $page_to_include = 'pages/beranda.php';
                 }

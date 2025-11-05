@@ -24,9 +24,10 @@
     <div class="sidebar-wrapper scrollbar scrollbar-inner">
         <div class="sidebar-content">
             <ul class="nav nav-secondary">
+
                 <!-- Dashboard -->
                 <li class="nav-item">
-                    <a href=".?hal=beranda">
+                    <a href=".?hal=beranda" class="active">
                         <i class="fas fa-home"></i>
                         <p>Dashboard</p>
                     </a>
@@ -95,23 +96,21 @@
                     <h4 class="text-section">Payment Management</h4>
                 </li>
                 <li class="nav-item">
-                    <a href=".?hal=konfirmasi">
-                        <i class="fas fa-receipt"></i>
-                        <p>Konfirmasi Pembayaran</p>
+                    <a data-bs-toggle="collapse" href="#payment">
+                        <i class="fas fa-credit-card"></i>
+                        <p>Manajemen Pembayaran</p>
+                        <span class="caret"></span>
                     </a>
+                    <div class="collapse" id="payment">
+                        <ul class="nav nav-collapse">
+                            <li><a href=".?hal=metodepembayaran"><span class="sub-item">Metode Pembayaran</span></a></li>
+                            <li><a href=".?hal=konfirmasi"><span class="sub-item">Konfirmasi Pembayaran</span></a></li>
+                            <li><a href=".?hal=riwayat"><span class="sub-item">Riwayat Pembayaran</span></a></li>
+                            <li><a href=".?hal=pendapatan"><span class="sub-item">Pendapatan Bulanan</span></a></li>
+                        </ul>
+                    </div>
                 </li>
-                <li class="nav-item">
-                    <a href=".?hal=riwayat">
-                        <i class="fas fa-history"></i>
-                        <p>Riwayat Pembayaran</p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href=".?hal=pendapatan">
-                        <i class="fas fa-chart-line"></i>
-                        <p>Pendapatan Bulanan</p>
-                    </a>
-                </li>
+
             </ul>
         </div>
     </div>

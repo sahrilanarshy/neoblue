@@ -63,11 +63,11 @@
                                 <td>
                                     <div class="form-button-action">
                                         <a href=".?hal=lihatpesan" data-bs-toggle="tooltip" title="Lihat Pesan"
-                                            class="btn btn-link btn-primary">
+                                            class="btn btn-link btn-primary btn-sm">
                                             <i class="fa fa-eye"></i>
                                         </a>
                                         <a href=".?hal=hapuspesan" data-bs-toggle="tooltip" title="Hapus"
-                                            class="btn btn-link btn-danger"
+                                            class="btn btn-link btn-danger btn-sm"
                                             onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?');">
                                             <i class="fa fa-times"></i>
                                         </a>
@@ -89,11 +89,11 @@
                                 <td>
                                     <div class="form-button-action">
                                         <a href=".?hal=lihatpesan" data-bs-toggle="tooltip" title="Lihat Pesan"
-                                            class="btn btn-link btn-primary">
+                                            class="btn btn-link btn-primary btn-sm">
                                             <i class="fa fa-eye"></i>
                                         </a>
                                         <a href=".?hal=hapuspesan" data-bs-toggle="tooltip" title="Hapus"
-                                            class="btn btn-link btn-danger"
+                                            class="btn btn-link btn-danger btn-sm"
                                             onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?');">
                                             <i class="fa fa-times"></i>
                                         </a>
@@ -115,11 +115,11 @@
                                 <td>
                                     <div class="form-button-action">
                                         <a href=".?hal=lihatpesan" data-bs-toggle="tooltip" title="Lihat Pesan"
-                                            class="btn btn-link btn-primary">
+                                            class="btn btn-link btn-primary btn-sm">
                                             <i class="fa fa-eye"></i>
                                         </a>
                                         <a href=".?hal=hapuspesan" data-bs-toggle="tooltip" title="Hapus"
-                                            class="btn btn-link btn-danger"
+                                            class="btn btn-link btn-danger btn-sm"
                                             onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?');">
                                             <i class="fa fa-times"></i>
                                         </a>

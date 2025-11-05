@@ -61,12 +61,12 @@
                                 <td>
                                     <div class="form-button-action">
                                         <a href=".?hal=editshort" data-bs-toggle="tooltip" title="Edit"
-                                            class="btn btn-link btn-primary">
+                                            class="btn btn-link btn-primary btn-sm">
                                             <i class="fa fa-edit"></i>
                                         </a>
 
                                         <a href=".?hal=short-delete" data-bs-toggle="tooltip" title="Hapus"
-                                            class="btn btn-link btn-danger"
+                                            class="btn btn-link btn-danger btn-sm"
                                             onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?');">
                                             <i class="fa fa-times"></i>
                                         </a>
@@ -85,12 +85,12 @@
                                 <td>
                                     <div class="form-button-action">
                                         <a href=".?hal=editsubtest" data-bs-toggle="tooltip" title="Edit"
-                                            class="btn btn-link btn-primary">
+                                            class="btn btn-link btn-primary btn-sm">
                                             <i class="fa fa-edit"></i>
                                         </a>
 
                                         <a href=".?hal=hapusubtest" data-bs-toggle="tooltip" title="Hapus"
-                                            class="btn btn-link btn-danger"
+                                            class="btn btn-link btn-danger btn-sm"
                                             onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?');">
                                             <i class="fa fa-times"></i>
                                         </a>

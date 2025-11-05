@@ -65,12 +65,12 @@
                                 <td>
                                     <div class="form-button-action">
                                         <a href=".?hal=editguru" data-bs-toggle="tooltip" title="Edit"
-                                            class="btn btn-link btn-primary">
+                                            class="btn btn-link btn-primary btn-sm">
                                             <i class="fa fa-edit"></i>
                                         </a>
                                         <a href="#" data-bs-toggle="modal" data-bs-target="#confirmDeleteModal"
                                             data-id="1" data-item-name="Sahril Sidik" title="Hapus"
-                                            class="btn btn-link btn-danger">
+                                            class="btn btn-link btn-danger btn-sm">
                                             <i class="fa fa-times"></i>
                                         </a>
                                     </div>
