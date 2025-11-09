@@ -58,61 +58,71 @@
                     <h4 class="text-section">User Management</h4>
                 </li>
                 <li class="nav-item">
-                    <a href=".?hal=user">
+                    <a data-bs-toggle="collapse" href="#user">
                         <i class="fas fa-user-graduate"></i>
                         <p>Siswa</p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href=".?hal=guru">
-                        <i class="fas fa-user-tie"></i>
-                        <p>Guru</p>
-                    </a>
-                </li>
-
-                <!-- Subscription Management -->
-                <li class="nav-section">
-                    <span class="sidebar-mini-icon"><i class="fa fa-ellipsis-h"></i></span>
-                    <h4 class="text-section">Subscription Management</h4>
-                </li>
-                <li class="nav-item">
-                    <a data-bs-toggle="collapse" href="#subscription">
-                        <i class="fas fa-calendar-check"></i>
-                        <p>Paket Langganan</p>
                         <span class="caret"></span>
                     </a>
-                    <div class="collapse" id="subscription">
-                        <ul class="nav nav-collapse">
-                            <li><a href=".?hal=paket"><span class="sub-item">Daftar Paket</span></a></li>
-                            <li><a href=".?hal=fitur"><span class="sub-item">Fitur Langganan</span></a></li>
-                            <li><a href=".?hal=langganan"><span class="sub-item">Manajemen Langganan</span></a></li>
-                        </ul>
-                    </div>
-                </li>
-
-                <!-- Payment Management -->
-                <li class="nav-section">
-                    <span class="sidebar-mini-icon"><i class="fa fa-ellipsis-h"></i></span>
-                    <h4 class="text-section">Payment Management</h4>
                 </li>
                 <li class="nav-item">
-                    <a data-bs-toggle="collapse" href="#payment">
-                        <i class="fas fa-credit-card"></i>
-                        <p>Manajemen Pembayaran</p>
-                        <span class="caret"></span>
-                    </a>
-                    <div class="collapse" id="payment">
+                    <div class="collapse" id="user">
                         <ul class="nav nav-collapse">
-                            <li><a href=".?hal=metodepembayaran"><span class="sub-item">Metode Pembayaran</span></a></li>
-                            <li><a href=".?hal=konfirmasi"><span class="sub-item">Konfirmasi Pembayaran</span></a></li>
-                            <li><a href=".?hal=riwayat"><span class="sub-item">Riwayat Pembayaran</span></a></li>
-                            <li><a href=".?hal=pendapatan"><span class="sub-item">Pendapatan Bulanan</span></a></li>
-                        </ul>
-                    </div>
+                            <li><a href=".?hal=user"><span class="sub-item">Free</span></a></li>
+                            <li><a href=".?hal=userpremium"><span class="sub-item">Premium</span></a></li>
                 </li>
-
             </ul>
         </div>
+        <li class="nav-item">
+            <a href=".?hal=guru">
+                <i class="fas fa-user-tie"></i>
+                <p>Guru</p>
+            </a>
+        </li>
+
+        <!-- Subscription Management -->
+        <li class="nav-section">
+            <span class="sidebar-mini-icon"><i class="fa fa-ellipsis-h"></i></span>
+            <h4 class="text-section">Subscription Management</h4>
+        </li>
+        <li class="nav-item">
+            <a data-bs-toggle="collapse" href="#subscription">
+                <i class="fas fa-calendar-check"></i>
+                <p>Paket Langganan</p>
+                <span class="caret"></span>
+            </a>
+            <div class="collapse" id="subscription">
+                <ul class="nav nav-collapse">
+                    <li><a href=".?hal=paket"><span class="sub-item">Daftar Paket</span></a></li>
+                    <li><a href=".?hal=fitur"><span class="sub-item">Fitur Langganan</span></a></li>
+                    <li><a href=".?hal=langganan"><span class="sub-item">Manajemen Langganan</span></a></li>
+                </ul>
+            </div>
+        </li>
+
+        <!-- Payment Management -->
+        <li class="nav-section">
+            <span class="sidebar-mini-icon"><i class="fa fa-ellipsis-h"></i></span>
+            <h4 class="text-section">Payment Management</h4>
+        </li>
+        <li class="nav-item">
+            <a data-bs-toggle="collapse" href="#payment">
+                <i class="fas fa-credit-card"></i>
+                <p>Manajemen Pembayaran</p>
+                <span class="caret"></span>
+            </a>
+            <div class="collapse" id="payment">
+                <ul class="nav nav-collapse">
+                    <li><a href=".?hal=metodepembayaran"><span class="sub-item">Metode Pembayaran</span></a>
+                    </li>
+                    <li><a href=".?hal=konfirmasi"><span class="sub-item">Konfirmasi Pembayaran</span></a></li>
+                    <li><a href=".?hal=riwayat"><span class="sub-item">Riwayat Pembayaran</span></a></li>
+                    <li><a href=".?hal=pendapatan"><span class="sub-item">Pendapatan Bulanan</span></a></li>
+                </ul>
+            </div>
+        </li>
+
+        </ul>
     </div>
+</div>
 </div>
 <!-- End Sidebar -->

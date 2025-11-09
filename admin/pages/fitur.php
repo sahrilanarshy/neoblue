@@ -3,12 +3,10 @@
         <h3 class="fw-bold mb-3">Fitur Langganan</h3>
         <ul class="breadcrumbs mb-3">
             <li class="nav-home">
-                <a href="#"><i class="icon-home"></i></a>
+                <a href=".?hal=beranda"><i class="icon-home"></i></a>
             </li>
             <li class="separator"><i class="icon-arrow-right"></i></li>
-            <li class="nav-item"><a href="#">Fitur</a></li>
-            <li class="separator"><i class="icon-arrow-right"></i></li>
-            <li class="nav-item"><a href="#">Daftar Fitur</a></li>
+            <li class="nav-item"><a href=".?hal=fitur">Daftar Fitur</a></li>
         </ul>
     </div>
 

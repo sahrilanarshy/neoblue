@@ -3,7 +3,7 @@
         <h3 class="fw-bold mb-3">Metode Pembayaran</h3>
         <ul class="breadcrumbs mb-3">
             <li class="nav-home">
-                <a href="#">
+                <a href=".?hal=beranda">
                     <i class="icon-home"></i>
                 </a>
             </li>
@@ -33,17 +33,20 @@
                     <form>
                         <div class="form-group mb-3">
                             <label for="nama_metode">Nama Metode Pembayaran</label>
-                            <input type="text" class="form-control" id="nama_metode" placeholder="Contoh: BCA Transfer / QRIS / Gopay" required />
+                            <input type="text" class="form-control" id="nama_metode"
+                                placeholder="Contoh: BCA Transfer / QRIS / Gopay" required />
                         </div>
 
                         <div class="form-group mb-3">
                             <label for="nomor_rekening">Nomor Rekening / ID Pembayaran</label>
-                            <input type="text" class="form-control" id="nomor_rekening" placeholder="Masukkan nomor rekening atau ID pembayaran" required />
+                            <input type="text" class="form-control" id="nomor_rekening"
+                                placeholder="Masukkan nomor rekening atau ID pembayaran" required />
                         </div>
 
                         <div class="form-group mb-3">
                             <label for="atas_nama">Atas Nama</label>
-                            <input type="text" class="form-control" id="atas_nama" placeholder="Masukkan nama pemilik akun" required />
+                            <input type="text" class="form-control" id="atas_nama"
+                                placeholder="Masukkan nama pemilik akun" required />
                         </div>
 
                         <div class="form-group mb-3">

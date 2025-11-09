@@ -2,11 +2,11 @@
     <div class="page-header">
         <h3 class="fw-bold mb-3">Siswa</h3>
         <ul class="breadcrumbs mb-3">
-            <li class="nav-home"><a href="#"><i class="icon-home"></i></a></li>
+            <li class="nav-home"><a href=".?hal=beranda"><i class="icon-home"></i></a></li>
             <li class="separator"><i class="icon-arrow-right"></i></li>
             <li class="nav-item"><a href=".?hal=daftaruser">Daftar Siswa</a></li>
             <li class="separator"><i class="icon-arrow-right"></i></li>
-            <li class="nav-item"><a href="#">Tambah Siswa</a></li>
+            <li class="nav-item"><a href="#">Edit Siswa</a></li>
         </ul>
     </div>
 

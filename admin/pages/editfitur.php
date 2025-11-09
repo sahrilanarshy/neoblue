@@ -3,7 +3,7 @@
         <h3 class="fw-bold mb-3">Fitur Langganan</h3>
         <ul class="breadcrumbs mb-3">
             <li class="nav-home">
-                <a href="#">
+                <a href=".?hal=beranda">
                     <i class="icon-home"></i>
                 </a>
             </li>
@@ -40,8 +40,8 @@
 
                         <div class="form-group">
                             <label for="urutan">Nomor Urut</label>
-                            <input type="number" class="form-control" id="urutan" name="urutan"
-                                value="10" required />
+                            <input type="number" class="form-control" id="urutan" name="urutan" value="10"
+                                required />
                             <small class="form-text text-muted">Digunakan untuk mengurutkan tampilan fitur.</small>
                         </div>
 

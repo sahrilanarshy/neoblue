@@ -15,16 +15,12 @@
             </li>
         </ul>
     </div>
+    
     <div class="col-md-12">
         <div class="card">
             <div class="card-header">
                 <div class="d-flex align-items-center">
-                    <h4 class="card-title">Daftar Siswa</h4>
-                    <button class="btn btn-primary btn-round ms-auto"
-                        onclick="window.location.href='.?hal=tambahuser';">
-                        <i class="fa fa-plus"></i>
-                        Tambah
-                    </button>
+                    <h4 class="card-title">Daftar Siswa(Premium)</h4>
                 </div>
             </div>
             <div class="card-body">
@@ -35,6 +31,7 @@
                                 <th>No</th>
                                 <th>Nama</th>
                                 <th>Email</th>
+                                <th>aktif sampai</th>
                                 <th>Status</th>
                                 <th>Aksi</th>
                             </tr>
@@ -44,6 +41,7 @@
                                 <th>No</th>
                                 <th>Nama</th>
                                 <th>Email</th>
+                                <th>aktif sampai</th>
                                 <th>Status</th>
                                 <th>Aksi</th>
                             </tr>
@@ -52,12 +50,13 @@
                             <td>1</td>
                             <td>Sahril Sidik</td>
                             <td>sahrilwfc@gmail.com</td>
+                            <td>10/10/2026</td>
                             <td>
-                                <a class="btn btn-primary btn-round btn-xs btn-success">Free</a>
+                                <a class="btn btn-primary btn-round btn-xs btn-warning">Premium</a>
                             </td>
                             <td>
                                 <div class="form-button-action">
-                                    <a href=".?hal=edituser" data-bs-toggle="tooltip" title="Edit"
+                                    <a href=".?hal=edituserpremium" data-bs-toggle="tooltip" title="Edit"
                                         class="btn btn-link btn-primary btn-sm">
                                         <i class="fa fa-edit"></i>
                                     </a>

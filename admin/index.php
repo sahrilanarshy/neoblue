@@ -121,6 +121,12 @@ ob_start();
                     case 'user':
                         $page_to_include = 'pages/user.php';
                         break;
+                    case 'userpremium':
+                        $page_to_include = 'pages/userpremium.php';
+                        break;
+                    case 'edituserpremium':
+                        $page_to_include = 'pages/edituserpremium.php';
+                        break;
                     case 'guru':
                         $page_to_include = 'pages/guru.php';
                         break;
@@ -152,11 +158,10 @@ ob_start();
                         $page_to_include = 'pages/beranda.php';
                 }
 
-                // 3. Include file HANYA jika file-nya ada
                 if (file_exists($page_to_include)) {
                     include $page_to_include;
                 } else {
-                    // Tampilkan pesan error jika file tidak ditemukan
+
                     echo "<h4>Error: Halaman tidak ditemukan.</h4>";
                     echo "<p>File <b>" . htmlspecialchars($page_to_include) . "</b> tidak ada di server.</p>";
                 }

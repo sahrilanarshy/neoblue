@@ -60,7 +60,7 @@
                                             <i class="fa fa-edit"></i>
                                         </a>
 
-                                        <a href="#" data-bs-toggle="modal" data-bs-target="#confirmDeleteModal"
+                                        <a href="#" data-bs-toggle="modal" data-bs-target="#hapusMateriModal"
                                             data-id="1" data-item-name="Operasi Bilangan" title="Hapus"
                                             class="btn btn-link btn-danger btn-sm">
                                             <i class="fa fa-times"></i>
@@ -83,7 +83,7 @@
                                             <i class="fa fa-edit"></i>
                                         </a>
 
-                                        <a href="#" data-bs-toggle="modal" data-bs-target="#confirmDeleteModal"
+                                        <a href="#" data-bs-toggle="modal" data-bs-target="#hapusMateriModal"
                                             data-id="2" data-item-name="Logika Matematika" title="Hapus"
                                             class="btn btn-link btn-danger btn-sm">
                                             <i class="fa fa-times"></i>
@@ -98,45 +98,4 @@
         </div>
     </div>
 </div>
-
-<div class="modal fade" id="confirmDeleteModal" tabindex="-1" aria-labelledby="confirmDeleteModalLabel"
-    aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="confirmDeleteModalLabel">Konfirmasi Penghapusan</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                Apakah Anda yakin ingin menghapus materi <strong id="modal-item-name"></strong>?
-                <p class="text-danger small mt-2">Aksi ini tidak dapat dibatalkan.</p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-                <a href="#" id="confirmDeleteButton" class="btn btn-danger">Ya, Hapus</a>
-            </div>
-        </div>
-    </div>
-</div>
-
-<script>
-    const confirmDeleteModal = document.getElementById('confirmDeleteModal');
-
-    confirmDeleteModal.addEventListener('show.bs.modal', event => {
-        // Tombol yang memicu modal
-        const button = event.relatedTarget;
-
-        // Ekstrak informasi dari atribut data-*
-        const itemId = button.getAttribute('data-id');
-        const itemName = button.getAttribute('data-item-name');
-
-        // Perbarui konten modal
-        const modalItemName = confirmDeleteModal.querySelector('#modal-item-name');
-        const confirmButton = confirmDeleteModal.querySelector('#confirmDeleteButton');
-
-        modalItemName.textContent = `"${itemName}"`;
-
-        // Atur link href untuk tombol hapus di dalam modal
-        confirmButton.href = `.?hal=hapusmateri&id=${itemId}`;
-    });
-</script>
+<?php include 'hapusmateri.php'; ?>
