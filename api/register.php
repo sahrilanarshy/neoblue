@@ -1,31 +1,30 @@
 <?php
-require_once("../config/koneksi.php");
+require_once __DIR__ . "/config/config.php";
 
-if ($_SERVER["REQUEST_METHOD"] !== "POST") {
-    echo json_encode(["status" => "error", "message" => "Invalid method"]);
+$username = trim($_POST['username'] ?? '');
+$password = $_POST['password'] ?? '';
+$nama = $_POST['nama_lengkap'] ?? '';
+$email = $_POST['email'] ?? '';
+
+if (!$username || !$password || !$nama || !$email) {
+    echo json_encode(["success"=>false,"message"=>"Missing fields"]);
     exit;
 }
 
-$data = json_decode(file_get_contents("php://input"), true);
-$fullname = $data["nama_lengkap"] ?? "";
-$username = $data["username"] ?? "";
-$password = $data["password"] ?? "";
-$role = $data["role"] ?? "siswa";
-
-if (!$fullname || !$username || !$password) {
-    echo json_encode(["status" => "error", "message" => "Field tidak boleh kosong"]);
+$check = $conn->prepare("SELECT id FROM users WHERE username=?");
+$check->bind_param("s", $username);
+$check->execute();
+if ($check->get_result()->num_rows > 0) {
+    echo json_encode(["success"=>false,"message"=>"Username already used"]);
     exit;
 }
 
-$hash = password_hash($password, PASSWORD_DEFAULT);
-
-$stmt = $conn->prepare("INSERT INTO users (nama_lengkap, username, password_hash, role) VALUES (?, ?, ?, ?)");
-$stmt->bind_param("ssss", $fullname, $username, $hash, $role);
-
-if ($stmt->execute()) {
-    echo json_encode(["status" => "success", "message" => "Registrasi berhasil"]);
+$hash = password_hash($password, PASSWORD_BCRYPT);
+$ins = $conn->prepare("INSERT INTO users (username,password_hash,nama_lengkap,email) VALUES (?,?,?,?)");
+$ins->bind_param("ssss", $username, $hash, $nama, $email);
+if ($ins->execute()) {
+    echo json_encode(["success"=>true,"message"=>"Registered"]);
 } else {
-    echo json_encode(["status" => "error", "message" => "Gagal registrasi"]);
+    echo json_encode(["success"=>false,"message"=>"Register failed"]);
 }
-$stmt->close();
 ?>
