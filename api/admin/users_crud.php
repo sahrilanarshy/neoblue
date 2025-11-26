@@ -37,7 +37,7 @@ switch($method) {
         if (!$password) { echo json_encode(['success'=>false,'message'=>'Missing password']); exit; }
         if (!$nama_lengkap) { echo json_encode(['success'=>false,'message'=>'Missing nama_lengkap']); exit; }
         $stmt = $conn->prepare("INSERT INTO users (username,password_hash,nama_lengkap,role,email) VALUES (?,?,?,?,?)");
-        $stmt->bind_param("sssss", username, password_hash, nama_lengkap, role, email);
+        $stmt->bind_param("sssss", $username, $password_hash, $nama_lengkap, $role, $email);
         if ($stmt->execute()) {
             echo json_encode(["success"=>true,"message"=>"Created","id"=>$stmt->insert_id]);
         } else {
