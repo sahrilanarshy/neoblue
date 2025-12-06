@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+
+    <!-- Paper shape with folded corner -->
+    <path
+        android:fillColor="#FF3B82F6"
+        android:pathData="M14,2 H6a2,2 0 0 0-2,2v16a2,2 0 0 0 2,2h12a2,2 0 0 0 2-2V8z" />
+
+    <path
+        android:fillColor="#FFFFFFFF"
+        android:pathData="M14,2v6h6"
+        android:strokeWidth="0" />
+
+    <!-- folded corner overlay -->
+    <path
+        android:fillColor="#FF3B82F6"
+        android:pathData="M14,2v6h6"
+        android:fillAlpha="0.15" />
+
+    <!-- Lines inside the document -->
+    <path
+        android:fillColor="#FFFFFFFF"
+        android:pathData="M7,9h10v1H7zM7,12h10v1H7zM7,15h6v1H7z" />
+</vector>

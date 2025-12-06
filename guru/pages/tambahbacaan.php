@@ -19,7 +19,7 @@
                     <h4 class="card-title">Tambah Bacaan Harian</h4>
                 </div>
                 <div class="card-body">
-                    <form action="proses_simpan_bacaan.php" method="POST">
+                    <form action=".?hal=proses_habit&aksi=tambah_bacaan" method="POST">
 
                         <div class="form-group mb-3">
                             <label for="tanggal" class="form-label">Tanggal</label>
@@ -28,12 +28,16 @@
 
                         <div class="form-group mb-3">
                             <label for="subtest" class="form-label">Pilih Subtest</label>
-                            <select class="form-select form-control" id="subtest" name="subtest" required>
+                            <select class="form-select form-control" id="subtest_id" name="subtest_id" required>
                                 <option value="" disabled selected>-- Pilih Subtest --</option>
-                                <option value="1">Penalaran Umum</option>
-                                <option value="2">Pemahaman Bacaan dan Menulis</option>
-                                <option value="3">Pengetahuan dan Pemahaman Umum</option>
-                                <option value="4">Literasi Bahasa Inggris</option>
+                                <?php
+                                include '../config/koneksi.php';
+                                $query_subtest = "SELECT * FROM subtest ORDER BY nama_subtest ASC";
+                                $result_subtest = mysqli_query($koneksi, $query_subtest);
+                                while ($row_subtest = mysqli_fetch_assoc($result_subtest)) {
+                                    echo "<option value='{$row_subtest['id']}'>" . htmlspecialchars($row_subtest['nama_subtest']) . "</option>";
+                                }
+                                ?>
                             </select>
                         </div>
 
@@ -45,8 +49,8 @@
 
                         <div class="form-group mb-3" id="container_isi_materi">
                             <label for="editor">Isi Bacaan</label>
-                            <textarea id="editor" name="isi_materi" class="form-control" rows="10"></textarea>
-                            <small class="form-text text-muted">Gunakan editor ini untuk menulis materi teks dan
+                            <textarea id="editor" name="isi_bacaan" class="form-control" rows="10"></textarea>
+                            <small class="form-text text-muted">Gunakan editor ini untuk menulis isi bacaan dan
                                 menyisipkan gambar.</small>
                         </div>
 

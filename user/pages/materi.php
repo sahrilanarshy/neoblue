@@ -1,17 +1,38 @@
+<?php
+// 1. Ambil data pengguna dari sesi
+$nama_user = isset($_SESSION['nama']) ? $_SESSION['nama'] : 'Pengguna';
+$tipe_user = isset($_SESSION['tipe_user']) ? $_SESSION['tipe_user'] : 'Gratis';
+
+// 2. Tentukan status premium dan gambar banner
+$is_premium = (strtolower($tipe_user) == 'premium');
+$banner_image = $is_premium ? 'premium.png' : 'free.png';
+$banner_alt = $is_premium ? 'Selamat menikmati fitur Premium!' : 'Upgrade Premium Sekarang!';
+
+?>
 <main class="dashboard-content">
-    <section class="premium-banner">
-        <img src="../assets/user/img/konten.png" alt="Upgrade Premium Sekarang!">
-    </section>
+    <?php if ($is_premium): ?>
+        <section class="premium-banner">
+            <img src="../assets/user/img/premium.png" alt="<?= htmlspecialchars($banner_alt); ?>">
+        </section>
+    <?php else: ?>
+        <section class="premium-banner">
+            <a href=".?hal=premium">
+                <img src="../assets/user/img/free.png" alt="<?= htmlspecialchars($banner_alt); ?>">
+            </a>
+        </section>
+    <?php endif; ?>
     <section class="welcome-header">
         <div class="welcome-text">
-            <h1>Selamat Datang, Sahril Sidik!</h1>
+            <h1>Selamat Datang, <?= htmlspecialchars($nama_user); ?>!</h1>
             <div class="user-status">
-                <span class="status-badge">Gratis</span>
+                <span class="status-badge"><?= $is_premium ? 'Premium' : 'Gratis'; ?></span>
             </div>
         </div>
-        <div class="action-button">
-            <a href=".?hal=premium" class="btn-upgrade">Upgrade Premium</a>
-        </div>
+        <?php if (!$is_premium): ?>
+            <div class="action-button">
+                <a href=".?hal=premium" class="btn-upgrade">Upgrade Premium</a>
+            </div>
+        <?php endif; ?>
     </section>
 
     <section class="main-menu">
@@ -42,44 +63,26 @@
 
 
 
+<?php
+// Ambil data subtest dari database
+// Variabel $koneksi sudah tersedia dari index.php
+$query_subtest = mysqli_query($koneksi, "SELECT id, nama_subtest, singkatan FROM subtest ORDER BY id ASC");
+$subtests = mysqli_fetch_all($query_subtest, MYSQLI_ASSOC);
+?>
     <section class="learning-materials">
         <h2>Materi Pembelajaran</h2>
         <div class="materials-grid">
-            <div class="material-card">
-                <h3>PU</h3>
-                <p>Penalaran Umum</p>
-                <a href=".?hal=materisubtest" class="btn-start-learning">Mulai Belajar</a>
-            </div>
-            <div class="material-card">
-                <h3>PBM</h3>
-                <p>Pemahamaan Bacaan dan menulis</p>
-                <a href=".?hal=materisubtest" class="btn-start-learning">Mulai Belajar</a>
-            </div>
-            <div class="material-card">
-                <h3>PPU</h3>
-                <p>Pengetahuan dan Pemahaman Umum</p>
-                <a href=".?hal=materisubtest" class="btn-start-learning">Mulai Belajar</a>
-            </div>
-            <div class="material-card">
-                <h3>LBE</h3>
-                <p>Literasi Bahasa Inggris</p>
-                <a href=".?hal=materisubtest" class="btn-start-learning">Mulai Belajar</a>
-            </div>
-            <div class="material-card">
-                <h3>PK</h3>
-                <p>Penalaran Kuantitatif</p>
-                <a href=".?hal=materisubtest" class="btn-start-learning">Mulai Belajar</a>
-            </div>
-            <div class="material-card">
-                <h3>PM</h3>
-                <p>Penalaran Matematika</p>
-                <a href=".?hal=materisubtest" class="btn-start-learning">Mulai Belajar</a>
-            </div>
-            <div class="material-card">
-                <h3>TKA</h3>
-                <p>Tes Kemampuan Akademik</p>
-                <a href=".?hal=materisubtest" class="btn-start-learning">Mulai Belajar</a>
-            </div>
+            <?php if (empty($subtests)): ?>
+                <p class="text-center text-muted">Belum ada materi yang tersedia.</p>
+            <?php else: ?>
+                <?php foreach ($subtests as $subtest): ?>
+                    <div class="material-card">
+                        <h3><?= htmlspecialchars($subtest['singkatan']); ?></h3>
+                        <p><?= htmlspecialchars($subtest['nama_subtest']); ?></p>
+                        <a href=".?hal=materisubtest&id=<?= $subtest['id']; ?>" class="btn-start-learning">Mulai Belajar</a>
+                    </div>
+                <?php endforeach; ?>
+            <?php endif; ?>
         </div>
     </section>
 </main>

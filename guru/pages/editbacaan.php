@@ -1,3 +1,17 @@
+<?php
+include '../config/koneksi.php';
+$id = isset($_GET['id']) ? intval($_GET['id']) : 0;
+$habit = null;
+if ($id > 0) {
+    $query = "SELECT * FROM habit_harian WHERE id = $id AND jenis = 'bacaan'";
+    $result = mysqli_query($koneksi, $query);
+    $habit = mysqli_fetch_assoc($result);
+}
+if (!$habit) {
+    echo "<script>alert('Data habit bacaan tidak ditemukan.'); window.location.href='.?hal=habit';</script>";
+    exit;
+}
+?>
 <div class="page-inner">
     <div class="page-header">
         <h3 class="fw-bold mb-3">Habit Harian</h3>
@@ -19,34 +33,39 @@
                     <h4 class="card-title">Edit Bacaan Harian</h4>
                 </div>
                 <div class="card-body">
-                    <form action="proses_simpan_bacaan.php" method="POST">
+                    <form action=".?hal=proses_habit&aksi=edit_bacaan" method="POST">
+                        <input type="hidden" name="id" value="<?= $habit['id']; ?>">
 
                         <div class="form-group mb-3">
                             <label for="tanggal" class="form-label">Tanggal</label>
-                            <input type="date" class="form-control" id="tanggal" name="tanggal" required />
+                            <input type="date" class="form-control" id="tanggal" name="tanggal" value="<?= htmlspecialchars($habit['tanggal']); ?>" required />
                         </div>
 
                         <div class="form-group mb-3">
                             <label for="subtest" class="form-label">Pilih Subtest</label>
-                            <select class="form-select form-control" id="subtest" name="subtest" required>
+                            <select class="form-select form-control" id="subtest_id" name="subtest_id" required>
                                 <option value="" disabled selected>-- Pilih Subtest --</option>
-                                <option value="1">Penalaran Umum</option>
-                                <option value="2">Pemahaman Bacaan dan Menulis</option>
-                                <option value="3">Pengetahuan dan Pemahaman Umum</option>
-                                <option value="4">Literasi Bahasa Inggris</option>
+                                <?php
+                                $query_subtest = "SELECT * FROM subtest ORDER BY nama_subtest ASC";
+                                $result_subtest = mysqli_query($koneksi, $query_subtest);
+                                while ($row_subtest = mysqli_fetch_assoc($result_subtest)) {
+                                    $selected = ($row_subtest['id'] == $habit['subtest_id']) ? 'selected' : '';
+                                    echo "<option value='{$row_subtest['id']}' $selected>" . htmlspecialchars($row_subtest['nama_subtest']) . "</option>";
+                                }
+                                ?>
                             </select>
                         </div>
 
                         <div class="form-group mb-3">
                             <label for="judul_bacaan" class="form-label">Judul Bacaan</label>
                             <input type="text" class="form-control" id="judul_bacaan" name="judul_bacaan"
-                                placeholder="Contoh: Peran Energi Geotermal dalam Pembangunan Berkelanjutan" required />
+                                placeholder="Contoh: Peran Energi Geotermal..." value="<?= htmlspecialchars($habit['judul']); ?>" required />
                         </div>
 
                         <div class="form-group mb-3" id="container_isi_materi">
                             <label for="editor">Isi Bacaan</label>
-                            <textarea id="editor" name="isi_materi" class="form-control" rows="10"></textarea>
-                            <small class="form-text text-muted">Gunakan editor ini untuk menulis materi teks dan
+                            <textarea id="editor" name="isi_bacaan" class="form-control" rows="10"><?= htmlspecialchars($habit['isi_bacaan']); ?></textarea>
+                            <small class="form-text text-muted">Gunakan editor ini untuk menulis isi bacaan dan
                                 menyisipkan gambar.</small>
                         </div>
 
@@ -60,4 +79,3 @@
         </div>
     </div>
 </div>
-

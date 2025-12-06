@@ -7,122 +7,165 @@ $success = '';
 
 // Cek apakah ada pesan sukses dari halaman registrasi
 if (isset($_GET['status']) && $_GET['status'] == 'registrasi_sukses') {
-    $success = 'Registrasi berhasil! Silakan login.';
-}
-
-// 2. Cek apakah form telah disubmit (metode POST)
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    // 3. Sertakan koneksi HANYA saat diperlukan
-    include 'config/koneksi.php';
-
-    // Ambil data dari form login
-    $email = $_POST['email'];
-    $password = $_POST['password'];
-
-    // 4. Validasi (Sederhana)
-    if (empty($email) || empty($password)) {
-        $error = 'Email dan Password wajib diisi!';
-    } else {
-        // 5. Siapkan query untuk mencari user berdasarkan email
-        $stmt = $koneksi->prepare('SELECT * FROM users WHERE email = ?');
-        $stmt->bind_param('s', $email);
-        $stmt->execute();
-        $result = $stmt->get_result();
-
-        // 6. Cek apakah user ditemukan
-        if ($result->num_rows === 1) {
-            // User ditemukan, ambil datanya
-            $user = $result->fetch_assoc();
-
-            // 7. Verifikasi password
-            if (password_verify($password, $user['password'])) {
-                // Password cocok!
-
-                // 8. Simpan data user ke dalam session
-                $_SESSION['status_login'] = true;
-                $_SESSION['user_id'] = $user['id'];
-                $_SESSION['nama'] = $user['nama'];
-                $_SESSION['email'] = $user['email'];
-                $_SESSION['role'] = $user['role'];
-                $_SESSION['tipe_user'] = $user['tipe_user'];
-
-                // 9. Logika Redirect berdasarkan ROLE (PERBAIKAN DI SINI)
-                if ($user['role'] === 'admin') {
-                    // Jika dia admin
-                    header('Location: admin/index.php');
-                    exit();
-                } elseif ($user['role'] === 'guru') {
-                    // Jika dia guru, arahkan ke dashboard guru
-                    // (Asumsi Anda punya folder 'guru/')
-                    header('Location: guru/index.php');
-                    exit();
-                } else {
-                    // Jika bukan admin atau guru (berarti 'siswa')
-                    // (Menggunakan folder 'user/' dari kode Anda sebelumnya)
-                    header('Location: user/index.php');
-                    exit();
-                }
-            } else {
-                // Password salah
-                $error = 'Login gagal. Email atau Password salah.';
-            }
-        } else {
-            // Email tidak ditemukan
-            $error = 'Login gagal. Email atau Password salah.';
-        }
-
-        $stmt->close();
-        $koneksi->close();
-    }
-    // Jika validasi gagal atau login gagal, script akan lanjut ke HTML di bawah
+    $success = 'Registrasi berhasil! Silakan login untuk melanjutkan.';
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="id">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - NeoBlue</title>
+    <title>Login - NeoBlue Platform</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link href="assets/user/img/profile_neoblue.png" rel="icon">
     <link rel="stylesheet" href="assets/landingpage/css/style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-    <link href="assets/landingpage/img/logo/profile_neoblue.png" rel="icon">
-    <link href="assets/landingpage/img/logo/profile_neoblue.png" type="image/png" rel="apple-touch-icon">
+
+
 </head>
 
 <body>
-    <div class="form-container">
-        <div class="form-box">
-            <img src="assets/landingpage/img/logo/logo neoblue.png" alt="Habitutor Logo" width="100" height="100">
-            <div class="logo">
-                <span class="logo-text">Login - NeoBlue</span>
+
+    <div class="login-wrapper">
+        <div class="header-section">
+            <img src="assets/landingpage/img/logo/logo neoblue.png" alt="NeoBlue Logo" class="logo-img">
+            <h2>Welcome Back!</h2>
+            <p>Belum punya akun? <a href="register.php">Daftar Sekarang</a></p>
+        </div>
+
+        <?php if (!empty($success)): ?>
+            <div class="alert alert-success">
+                <i class="fas fa-check-circle"></i> 
+                <span><?= htmlspecialchars($success) ?></span>
             </div>
-            <h2>Selamat Datang di NeoBlue</h2>
-            <p class="subtitle">Belum punya akun? <a href="register.php">Daftar Sekarang</a></p>
+        <?php endif; ?>
+        
+        <div class="alert alert-error" style="display:none;" id="alert-error">
+            <i class="fas fa-exclamation-circle"></i>
+            <span id="error-text"></span>
+        </div>
 
-            <?php if (!empty($success)): ?>
-            <div class="success-message" style="color:green; margin-bottom:10px;"> <?= htmlspecialchars($success) ?>
+        <form id="loginForm" autocomplete="off">
+            <div class="form-group">
+                <label for="login-email">Email Address</label>
+                <div class="input-wrapper">
+                    <input type="email" id="login-email" name="email" class="form-control" placeholder="Masukan email anda" required>
+                    <i class="fas fa-envelope icon"></i>
+                </div>
             </div>
-            <?php endif; ?>
 
-            <?php if (!empty($error)): ?>
-            <div class="error-message" style="color:red; margin-bottom:10px;"> <?= htmlspecialchars($error) ?> </div>
-            <?php endif; ?>
+            <div class="form-group">
+                <label for="login-password">Password</label>
+                <div class="input-wrapper">
+                    <input type="password" id="login-password" name="password" class="form-control" placeholder="Masukan password anda" required>
+                    <i class="fas fa-lock icon"></i>
+                    <button type="button" class="toggle-password" onclick="togglePassword()">
+                        <i class="fas fa-eye" id="toggleIcon"></i>
+                    </button>
+                </div>
+                <a href="forgot-password.php" class="forgot-link">Lupa Password?</a>
+            </div>
 
-            <form method="post" action="" autocomplete="off">
-                <div class="input-group">
-                    <label for="login-email">Email</label>
-                    <input type="email" id="login-email" name="email" required>
-                </div>
-                <div class="input-group">
-                    <label for="login-password">Password</label>
-                    <input type="password" id="login-password" name="password" required>
-                </div>
-                <button type="submit" class="btn">Masuk</button>
-                <a href="forgot-password.php" class="form-link">Lupa Password?</a>
-            </form>
+            <button type="submit" class="btn-login" id="submitBtn">
+                <span id="btnText">Masuk Sekarang</span>
+                <span class="spinner" id="btnSpinner" style="display:none;"></span>
+            </button>
+        </form>
+        
+        <div style="text-align: center; margin-top: 25px;">
+            <p style="font-size: 12px; color: #aaa;">&copy; <?= date('Y'); ?> NeoBlue Platform. All rights reserved.</p>
         </div>
     </div>
-</body>
 
+    <script>
+        // 1. Toggle Password Visibility
+        function togglePassword() {
+            const passwordInput = document.getElementById('login-password');
+            const toggleIcon = document.getElementById('toggleIcon');
+            
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                toggleIcon.classList.remove('fa-eye');
+                toggleIcon.classList.add('fa-eye-slash');
+            } else {
+                passwordInput.type = 'password';
+                toggleIcon.classList.remove('fa-eye-slash');
+                toggleIcon.classList.add('fa-eye');
+            }
+        }
+
+        // 2. Login Logic
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('loginForm');
+            const errorDiv = document.getElementById('alert-error');
+            const errorText = document.getElementById('error-text');
+            const submitBtn = document.getElementById('submitBtn');
+            const btnText = document.getElementById('btnText');
+            const btnSpinner = document.getElementById('btnSpinner');
+
+            form.addEventListener('submit', async function(event) {
+                event.preventDefault();
+
+                // Reset Error
+                errorDiv.style.display = 'none';
+                
+                // Loading State
+                submitBtn.disabled = true;
+                btnText.textContent = 'Memverifikasi...';
+                btnSpinner.style.display = 'inline-block';
+
+                const email = document.getElementById('login-email').value;
+                const password = document.getElementById('login-password').value;
+
+                try {
+                    // Panggil API
+                    const response = await fetch('api/api_login.php', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ email: email, password: password })
+                    });
+
+                    // Cek jika response bukan JSON valid
+                    const contentType = response.headers.get("content-type");
+                    if (!contentType || !contentType.includes("application/json")) {
+                        throw new Error("Respon server tidak valid (bukan JSON).");
+                    }
+
+                    const result = await response.json();
+
+                    if (response.ok && result.status === 'success') {
+                        // Redirect Logic
+                        const role = result.data.role;
+                        
+                        // Efek sukses sebentar
+                        btnText.textContent = 'Berhasil! Mengalihkan...';
+                        submitBtn.style.background = '#10b981'; // Green
+
+                        setTimeout(() => {
+                            if (role === 'admin') window.location.href = 'admin/index.php';
+                            else if (role === 'guru') window.location.href = 'guru/index.php';
+                            else window.location.href = 'user/index.php';
+                        }, 800);
+
+                    } else {
+                        // Tampilkan Error
+                        throw new Error(result.message || 'Email atau password salah.');
+                    }
+                } catch (error) {
+                    // Tampilkan Error UI
+                    errorDiv.style.display = 'flex';
+                    errorText.textContent = error.message;
+                    
+                    // Reset Tombol
+                    submitBtn.disabled = false;
+                    btnText.textContent = 'Masuk Sekarang';
+                    btnSpinner.style.display = 'none';
+                }
+            });
+        });
+    </script>
+</body>
 </html>

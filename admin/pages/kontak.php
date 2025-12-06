@@ -49,83 +49,47 @@
                             </tr>
                         </tfoot>
                         <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>26/10/2025</td>
-                                <td>Budi Santoso</td>
-                                <td>budi.s@example.com</td>
-                                <td>Pertanyaan tentang paket</td>
-                                <td>
-                                    <span class="btn btn-primary btn-round btn-xs btn-danger">
-                                        Baru
-                                    </span>
-                                </td>
-                                <td>
-                                    <div class="form-button-action">
-                                        <a href=".?hal=lihatpesan" data-bs-toggle="tooltip" title="Lihat Pesan"
-                                            class="btn btn-link btn-primary btn-sm">
-                                            <i class="fa fa-eye"></i>
-                                        </a>
-                                        <a href=".?hal=hapuspesan" data-bs-toggle="tooltip" title="Hapus"
-                                            class="btn btn-link btn-danger btn-sm"
-                                            onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?');">
-                                            <i class="fa fa-times"></i>
-                                        </a>
-                                    </div>
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <td>2</td>
-                                <td>25/10/2025</td>
-                                <td>Siti Aminah</td>
-                                <td>siti@example.com</td>
-                                <td>Laporan Bug di Halaman Materi</td>
-                                <td>
-                                    <span class="btn btn-primary btn-round btn-xs btn-info">
-                                        Sudah Dibaca
-                                    </span>
-                                </td>
-                                <td>
-                                    <div class="form-button-action">
-                                        <a href=".?hal=lihatpesan" data-bs-toggle="tooltip" title="Lihat Pesan"
-                                            class="btn btn-link btn-primary btn-sm">
-                                            <i class="fa fa-eye"></i>
-                                        </a>
-                                        <a href=".?hal=hapuspesan" data-bs-toggle="tooltip" title="Hapus"
-                                            class="btn btn-link btn-danger btn-sm"
-                                            onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?');">
-                                            <i class="fa fa-times"></i>
-                                        </a>
-                                    </div>
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <td>3</td>
-                                <td>24/10/2025</td>
-                                <td>Joko Widodo</td>
-                                <td>joko.w@example.com</td>
-                                <td>Kerjasama Partnership</td>
-                                <td>
-                                    <span class="btn btn-primary btn-round btn-xs btn-success">
-                                        Sudah Dibalas
-                                    </span>
-                                </td>
-                                <td>
-                                    <div class="form-button-action">
-                                        <a href=".?hal=lihatpesan" data-bs-toggle="tooltip" title="Lihat Pesan"
-                                            class="btn btn-link btn-primary btn-sm">
-                                            <i class="fa fa-eye"></i>
-                                        </a>
-                                        <a href=".?hal=hapuspesan" data-bs-toggle="tooltip" title="Hapus"
-                                            class="btn btn-link btn-danger btn-sm"
-                                            onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?');">
-                                            <i class="fa fa-times"></i>
-                                        </a>
-                                    </div>
-                                </td>
-                            </tr>
+                            <?php
+                            include '../config/koneksi.php';
+                            $query = mysqli_query($koneksi, "SELECT * FROM kontak ORDER BY id DESC");
+                            $no = 1;
+                            while ($data = mysqli_fetch_assoc($query)) {
+                                $status_badge = '';
+                                switch ($data['status']) {
+                                    case 'Baru':
+                                        $status_badge = '<span class="badge bg-danger">Baru</span>';
+                                        break;
+                                    case 'Sudah Dibaca':
+                                        $status_badge = '<span class="badge bg-info">Sudah Dibaca</span>';
+                                        break;
+                                    case 'Sudah Dibalas':
+                                        $status_badge = '<span class="badge bg-success">Sudah Dibalas</span>';
+                                        break;
+                                }
+                            ?>
+                                <tr>
+                                    <td><?= $no++; ?></td>
+                                    <td><?= date('d M Y, H:i', strtotime($data['tanggal_kirim'])); ?></td>
+                                    <td><?= htmlspecialchars($data['nama']); ?></td>
+                                    <td><?= htmlspecialchars($data['email']); ?></td>
+                                    <td><?= htmlspecialchars($data['subjek']); ?></td>
+                                    <td><?= $status_badge; ?></td>
+                                    <td>
+                                        <div class="form-button-action">
+                                            <a href=".?hal=lihatpesan&id=<?= $data['id']; ?>" data-bs-toggle="tooltip" title="Lihat Pesan"
+                                                class="btn btn-link btn-primary btn-sm">
+                                                <i class="fa fa-eye"></i>
+                                            </a>
+                                            <a href="#" data-bs-toggle="modal" data-bs-target="#confirmDeleteModal"
+                                                data-id="<?= $data['id']; ?>" data-item-name="Pesan dari <?= htmlspecialchars($data['nama']); ?>"
+                                                data-url-delete="?hal=proses_hapus_pesan" title="Hapus"
+                                                class="btn btn-link btn-danger btn-sm">
+                                                <i class="fa fa-times"></i>
+                                            </a>
+                                        </div>
+                                    </td>
+                                </tr>
+                            <?php } ?>
                         </tbody>
                     </table>
                 </div>

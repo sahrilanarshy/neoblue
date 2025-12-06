@@ -1,3 +1,12 @@
+<?php
+if (isset($_SESSION['sukses'])) {
+    $pesan_sukses = $_SESSION['sukses'];
+    unset($_SESSION['sukses']);
+} elseif (isset($_SESSION['gagal'])) {
+    $pesan_gagal = $_SESSION['gagal'];
+    unset($_SESSION['gagal']);
+}
+?>
 <div class="page-inner">
     <div class="page-header">
         <h3 class="fw-bold mb-3">Siswa</h3>
@@ -48,28 +57,35 @@
                                 <th>Aksi</th>
                             </tr>
                         </tfoot>
-                        <tr>
-                            <td>1</td>
-                            <td>Sahril Sidik</td>
-                            <td>sahrilwfc@gmail.com</td>
-                            <td>
-                                <a class="btn btn-primary btn-round btn-xs btn-success">Free</a>
-                            </td>
-                            <td>
-                                <div class="form-button-action">
-                                    <a href=".?hal=edituser" data-bs-toggle="tooltip" title="Edit"
-                                        class="btn btn-link btn-primary btn-sm">
-                                        <i class="fa fa-edit"></i>
-                                    </a>
-
-                                    <a href="#" data-bs-toggle="modal" data-bs-target="#confirmDeleteModal"
-                                        data-id="1" data-item-name="Operasi Bilangan" title="Hapus"
-                                        class="btn btn-link btn-danger btn-sm">
-                                        <i class="fa fa-times"></i>
-                                    </a>
-                                </div>
-                            </td>
-                        </tr>
+                        <tbody>
+                            <?php
+                            include '../config/koneksi.php';
+                            $query = mysqli_query($koneksi, "SELECT * FROM users WHERE role = 'siswa' AND tipe_user = 'free' ORDER BY id DESC");
+                            $no = 1;
+                            while ($data = mysqli_fetch_assoc($query)) {
+                            ?>
+                                <tr>
+                                    <td><?= $no++; ?></td>
+                                    <td><?= htmlspecialchars($data['nama']); ?></td>
+                                    <td><?= htmlspecialchars($data['email']); ?></td>
+                                    <td>
+                                        <span class="badge bg-success">Free</span>
+                                    </td>
+                                    <td>
+                                        <div class="form-button-action">
+                                            <a href=".?hal=edituser&id=<?= $data['id']; ?>" data-bs-toggle="tooltip" title="Edit"
+                                                class="btn btn-link btn-primary btn-sm">
+                                                <i class="fa fa-edit"></i>
+                                            </a>
+                                            <a href="#" data-bs-toggle="modal" data-bs-target="#confirmDeleteModal"
+                                                data-id="<?= $data['id']; ?>" data-item-name="<?= htmlspecialchars($data['nama']); ?>" data-url-delete="?hal=proses_hapus_user" title="Hapus"
+                                                class="btn btn-link btn-danger btn-sm">
+                                                <i class="fa fa-times"></i>
+                                            </a>
+                                        </div>
+                                    </td>
+                                </tr>
+                            <?php } ?>
                         </tbody>
                     </table>
                 </div>
@@ -77,3 +93,22 @@
         </div>
     </div>
 </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    function showModal(modalId, message) {
+        const modalElement = document.getElementById(modalId);
+        if (modalElement) {
+            const messageElementId = modalId === 'suksesModal' ? 'pesanSuksesModal' : 'pesanGagalModal';
+            document.getElementById(messageElementId).innerText = message;
+            new bootstrap.Modal(modalElement).show();
+        }
+    }
+
+    <?php if (isset($pesan_sukses)): ?>
+        showModal('suksesModal', '<?= addslashes($pesan_sukses); ?>');
+    <?php elseif (isset($pesan_gagal)): ?>
+        showModal('gagalModal', '<?= addslashes($pesan_gagal); ?>');
+    <?php endif; ?>
+});
+</script>

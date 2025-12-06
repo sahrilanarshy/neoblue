@@ -17,25 +17,11 @@
                 <div class="card-header">
                     <div class="card-title">Tambah Tryout</div>
                 </div>
-                <form action=".?hal=proses_tambah_tryout" method="POST">
+                <form action=".?hal=proses_tryout&aksi=tambah" method="POST">
                     <div class="card-body">
-                                <div class="form-group">
-                                    <label for="subtest">Pilih Tryout</label>
-                                    <select class="form-select form-control" id="subtest" name="subtest" required>
-                                        <option value="" disabled selected>-- Pilih Tryout --</option>
-                                        <option value="1">Tryout UTBK - SNBT #1</option>
-                                        <option value="2">Tryout UTBK - SNBT #2</option>
-                                        <option value="3">Tryout UTBK - SNBT #3</option>
-                                        <option value="4">Tryout UTBK - SNBT #4</option>
-                                        <option value="5">Tryout UTBK - SNBT #5</option>
-                                    </select>
-                                </div>
-
                         <div class="form-group">
-                            <label for="waktu">Waktu Pengerjaan (Menit)</label>
-                            <input type="number" class="form-control" id="waktu" name="waktu"
-                                placeholder="Contoh: 30" required>
-                            <small class="form-text text-muted">Masukkan durasi tryout dalam satuan menit.</small>
+                            <label for="nama_tryout">Nama Tryout</label>
+                            <input type="text" class="form-control" id="nama_tryout" name="nama_tryout" placeholder="Contoh: Tryout UTBK - SNBT #1" required>
                         </div>
 
                         <div class="row">
@@ -54,20 +40,10 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="status">Status (Ketersediaan)</label>
-                            <select class="form-control" id="status" name="status">
-                                <option value="Mendatang">Mendatang</option>
-                                <option value="Aktif">Aktif</option>
-                                <option value="Selesai">Selesai</option>
-                            </select>
-                            <small class="form-text text-muted">Status berdasarkan tanggal.</small>
-                        </div>
-                        
-                        <div class="form-group">
                             <label>Tipe Akses (Free / Premium)</label>
                             <div class="form-check form-switch">
                                 <input class="form-check-input" type="checkbox" role="switch" id="is_premium"
-                                    name="is_premium" value="1">
+                                    name="is_premium" value="1" checked>
                                 <label class="form-check-label" for="is_premium">Jadikan Tryout ini Premium (Berbayar)</label>
                                 <small class="form-text text-muted d-block">Non-aktifkan (matikan) jika tryout ini gratis (Free).</small>
                             </div>

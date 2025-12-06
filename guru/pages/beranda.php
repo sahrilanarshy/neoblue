@@ -1,80 +1,106 @@
+
+
+<?php
+// --- LOGIKA TANGGAL INDONESIA ---
+$hari = array("Sunday" => "Minggu", "Monday" => "Senin", "Tuesday" => "Selasa", "Wednesday" => "Rabu", "Thursday" => "Kamis", "Friday" => "Jumat", "Saturday" => "Sabtu");
+$bulan = array("01" => "Januari", "02" => "Februari", "03" => "Maret", "04" => "April", "05" => "Mei", "06" => "Juni", "07" => "Juli", "08" => "Agustus", "09" => "September", "10" => "Oktober", "11" => "November", "12" => "Desember");
+
+$tgl_sekarang = $hari[date("l")] . ", " . date("d") . " " . $bulan[date("m")] . " " . date("Y");
+
+// --- LOGIKA DATA (Tetap Sama) ---
+$query_materi = mysqli_query($koneksi, "SELECT COUNT(*) AS total_materi FROM materi");
+$total_materi = mysqli_fetch_assoc($query_materi)['total_materi'];
+
+$query_habit = mysqli_query($koneksi, "SELECT COUNT(*) AS total_habit FROM habit_harian");
+$total_habit = mysqli_fetch_assoc($query_habit)['total_habit'];
+
+$query_tryout = mysqli_query($koneksi, "SELECT COUNT(*) AS total_tryout FROM tryout");
+$total_tryout = mysqli_fetch_assoc($query_tryout)['total_tryout'];
+
+$query_short = mysqli_query($koneksi, "SELECT COUNT(*) AS total_short FROM shorts");
+$total_short = mysqli_fetch_assoc($query_short)['total_short'];
+?>
+
 <div class="page-inner">
-    <div class="d-flex align-items-left align-items-md-center flex-column flex-md-row pt-2 pb-3 mb-3 border-bottom">
-        <div class="col-md-12">
-            <h3 class="fw-bold text-dark mb-1">Dashboard Guru</h3>
-            <h6 class="text-muted">Kelola pembelajaran dan pantau progres siswa</h6>
+    <div class="d-flex align-items-center justify-content-between flex-wrap pt-2 pb-4 mb-3">
+        <div>
+            <?php $admin_name = htmlspecialchars($_SESSION['nama'] ?? 'Admin'); ?>
+            <h2 class="fw-bold text-dark mb-1">Halo, <?= $admin_name; ?>!</h2>
+            <p class="text-muted mb-0">Berikut adalah ringkasan data pembelajaran hari ini.</p>
+        </div>
+        <div class="mt-2 mt-md-0">
+            <div class="date-badge">
+                <i class="fas fa-calendar-alt text-primary"></i>
+                <?= $tgl_sekarang; ?>
+            </div>
         </div>
     </div>
 
-    <div class="row g-3">
-        <!-- Materi -->
+    <div class="row g-4">
         <div class="col-sm-6 col-md-3">
-            <div class="info-box bg-gradient-primary text-white shadow-lg">
-                <div class="inner">
-                    <div class="d-flex justify-content-between align-items-center">
-                        <div>
-                            <h3>6</h3>
-                            <p>Total Materi</p>
-                        </div>
-                        <i class="fas fa-book icon"></i>
+            <div class="stats-card">
+                <div class="card-body">
+                    <div>
+                        <h5 class="stats-title">Total Materi</h5>
+                        <span class="stats-number"><?= $total_materi; ?></span>
+                    </div>
+                    <div class="icon-shape bg-gradient-blue">
+                        <i class="fas fa-book"></i>
                     </div>
                 </div>
-                <a href=".?hal=materi" class="info-link">
-                    Lihat semua <i class="fas fa-arrow-circle-right ms-1"></i>
+                <a href=".?hal=materi" class="stats-link">
+                    Lihat Detail <i class="fas fa-arrow-right float-end mt-1"></i>
                 </a>
             </div>
         </div>
 
-        <!-- Habit -->
         <div class="col-sm-6 col-md-3">
-            <div class="info-box bg-gradient-info text-white shadow-lg">
-                <div class="inner">
-                    <div class="d-flex justify-content-between align-items-center">
-                        <div>
-                            <h3>9</h3>
-                            <p>Total Habit</p>
-                        </div>
-                        <i class="fas fa-calendar-check icon"></i>
+            <div class="stats-card">
+                <div class="card-body">
+                    <div>
+                        <h5 class="stats-title">Total Habit</h5>
+                        <span class="stats-number"><?= $total_habit; ?></span>
+                    </div>
+                    <div class="icon-shape bg-gradient-cyan">
+                        <i class="fas fa-calendar-check"></i>
                     </div>
                 </div>
-                <a href=".?hal=habit" class="info-link">
-                    Lihat semua <i class="fas fa-arrow-circle-right ms-1"></i>
+                <a href=".?hal=habit" class="stats-link">
+                    Lihat Detail <i class="fas fa-arrow-right float-end mt-1"></i>
                 </a>
             </div>
         </div>
 
-        <!-- Tryout -->
         <div class="col-sm-6 col-md-3">
-            <div class="info-box bg-gradient-success text-white shadow-lg">
-                <div class="inner">
-                    <div class="d-flex justify-content-between align-items-center">
-                        <div>
-                            <h3>8</h3>
-                            <p>Total Tryout</p>
-                        </div>
-                        <i class="fas fa-clipboard-check icon"></i>
+            <div class="stats-card">
+                <div class="card-body">
+                    <div>
+                        <h5 class="stats-title">Total Tryout</h5>
+                        <span class="stats-number"><?= $total_tryout; ?></span>
+                    </div>
+                    <div class="icon-shape bg-gradient-green">
+                        <i class="fas fa-clipboard-check"></i>
                     </div>
                 </div>
-                <a href=".?hal=tryout" class="info-link">
-                    Lihat semua <i class="fas fa-arrow-circle-right ms-1"></i>
+                <a href=".?hal=tryout" class="stats-link">
+                    Lihat Detail <i class="fas fa-arrow-right float-end mt-1"></i>
                 </a>
             </div>
         </div>
 
-        <!-- Short -->
         <div class="col-sm-6 col-md-3">
-            <div class="info-box bg-gradient-secondary text-white shadow-lg">
-                <div class="inner">
-                    <div class="d-flex justify-content-between align-items-center">
-                        <div>
-                            <h3>3</h3>
-                            <p>Total Short</p>
-                        </div>
-                        <i class="fas fa-video icon"></i>
+            <div class="stats-card">
+                <div class="card-body">
+                    <div>
+                        <h5 class="stats-title">Total Short</h5>
+                        <span class="stats-number"><?= $total_short; ?></span>
+                    </div>
+                    <div class="icon-shape bg-gradient-purple">
+                        <i class="fas fa-video"></i>
                     </div>
                 </div>
-                <a href=".?hal=short" class="info-link">
-                    Lihat semua <i class="fas fa-arrow-circle-right ms-1"></i>
+                <a href=".?hal=short" class="stats-link">
+                    Lihat Detail <i class="fas fa-arrow-right float-end mt-1"></i>
                 </a>
             </div>
         </div>

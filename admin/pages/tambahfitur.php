@@ -29,7 +29,7 @@
                     <h4 class="card-title">Tambah Fitur Baru</h4>
                 </div>
                 <div class="card-body">
-                    <form action="proses_simpan_fitur.php" method="POST">
+                    <form action="?hal=proses_simpan_fitur" method="POST">
 
                         <div class="form-group">
                             <label for="nama_fitur">Nama Fitur</label>

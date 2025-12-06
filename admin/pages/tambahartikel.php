@@ -1,3 +1,53 @@
+<?php
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    include '../config/koneksi.php';
+
+    $judul = mysqli_real_escape_string($koneksi, $_POST['judul']);
+    $kategori = mysqli_real_escape_string($koneksi, $_POST['kategori']);
+    $tanggal_publikasi = mysqli_real_escape_string($koneksi, $_POST['tanggal']);
+    $konten = mysqli_real_escape_string($koneksi, $_POST['konten']);
+
+    if (empty(trim($konten))) {
+        $_SESSION['gagal'] = "Isi artikel tidak boleh kosong.";
+        header("Location: ./?hal=tambahartikel");
+        exit();
+    }
+
+    $gambar_path = '';
+
+    // Proses upload gambar jika ada
+    if (isset($_FILES['gambar']) && $_FILES['gambar']['error'] == 0) {
+        $target_dir = "uploads/artikel/";
+        if (!file_exists('../' . $target_dir)) {
+            mkdir('../' . $target_dir, 0777, true);
+        }
+        $file_name = time() . '_' . basename($_FILES["gambar"]["name"]);
+        $target_file = '../' . $target_dir . $file_name;
+
+        if (move_uploaded_file($_FILES["gambar"]["tmp_name"], $target_file)) {
+            $gambar_path = $target_dir . $file_name;
+        } else {
+            $_SESSION['gagal'] = "Gagal mengunggah gambar.";
+            header("Location: ./?hal=tambahartikel");
+            exit();
+        }
+    }
+
+    $query = "INSERT INTO artikel (judul, kategori, tanggal_publikasi, gambar, konten) VALUES ('$judul', '$kategori', '$tanggal_publikasi', '$gambar_path', '$konten')";
+    if (mysqli_query($koneksi, $query)) {
+        $_SESSION['sukses'] = "Artikel berhasil ditambahkan.";
+        header("Location: ./?hal=artikel");
+        exit();
+    } else {
+        $_SESSION['gagal'] = "Gagal menambahkan artikel: " . mysqli_error($koneksi);
+        if (!empty($gambar_path) && file_exists('../' . $gambar_path)) {
+            unlink('../' . $gambar_path);
+        }
+        header("Location: ./?hal=tambahartikel");
+        exit();
+    }
+}
+?>
 <div class="page-inner">
     <div class="page-header">
         <h3 class="fw-bold mb-3">Artikel</h3>
@@ -19,13 +69,7 @@
 
                 <div class="card-body">
 
-                    <?php
-                    if (isset($error_message)) {
-                        echo '<div class="alert alert-danger" role="alert">' . $error_message . '</div>';
-                    }
-                    ?>
-
-                    <form action="proses_tambahartikel.php" method="POST" enctype="multipart/form-data">
+                    <form action="?hal=tambahartikel" method="POST" enctype="multipart/form-data">
 
                         <div class="form-group mb-3">
                             <label for="judul">Judul Artikel</label>
@@ -50,14 +94,13 @@
 
                         <div class="form-group mb-3">
                             <label for="gambar">Gambar Artikel</label>
-                            <input type="file" class="form-control" id="gambar" name="gambar" accept="image/*" required />
+                            <input type="file" class="form-control" id="gambar" name="gambar" accept="image/*" />
                             <small class="form-text text-muted d-block">Gunakan format JPG/PNG, ukuran maks. 2MB</small>
                         </div>
 
                         <div class="form-group mb-3">
                             <label for="konten">Isi Artikel</label>
-                            <textarea class="form-control" id="konten" name="konten" rows="6"
-                                placeholder="Tulis isi artikel di sini..." required></textarea>
+                            <textarea class="form-control" id="editor" name="konten" rows="6" placeholder="Tulis isi artikel di sini..."></textarea>
                         </div>
 
                         <div class="form-group mt-4">

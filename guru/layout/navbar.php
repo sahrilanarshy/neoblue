@@ -1,9 +1,30 @@
+<?php
+$user_id = $_SESSION['user_id'] ?? 0;
+$user_data = [
+    'nama' => 'Guest',
+    'email' => 'guest@example.com',
+    'role' => 'guest',
+    'foto_profil' => '../assets/admin/img/logo/icon profile.png' // Default image
+];
+
+if ($user_id > 0) {
+    // Menggunakan prepared statement untuk keamanan
+    $stmt = mysqli_prepare($koneksi, "SELECT nama, email, role, foto_profil FROM users WHERE id = ?");
+    mysqli_stmt_bind_param($stmt, "i", $user_id);
+    mysqli_stmt_execute($stmt);
+    $result = mysqli_stmt_get_result($stmt);
+    if ($row = mysqli_fetch_assoc($result)) {
+        $user_data = $row;
+        $user_data['foto_profil'] = (!empty($row['foto_profil']) && file_exists('../' . $row['foto_profil'])) ? '../' . $row['foto_profil'] : '../assets/admin/img/logo/icon profile.png';
+    }
+}
+?>
 <div class="main-header">
     <div class="main-header-logo">
         <!-- Logo Header -->
         <div class="logo-header" data-background-color="blue">
             <a href="index.php" class="logo">
-                <img src="../assets/admin/img/logo/logo.png" alt="navbar brand" class="navbar-brand" height="20" />
+                <img src="../assets/guru/img/logo/logo.png" alt="navbar brand" class="navbar-brand" height="20" />
             </a>
             <div class="nav-toggle">
                 <button class="btn btn-toggle toggle-sidebar">
@@ -40,26 +61,26 @@
                 <li class="nav-item topbar-user dropdown hidden-caret">
                     <a class="dropdown-toggle profile-pic" data-bs-toggle="dropdown" href="#"
                         aria-expanded="false">
-                        <div class="avatar-sm">
-                            <img src="../assets/admin/img/logo/icon profile.png" alt="..."
+                        <div class="avatar-sm avatar-img rounded-circle">
+                            <img src="<?= htmlspecialchars($user_data['foto_profil']); ?>" alt="Foto Profil"
                                 class="avatar-img rounded-circle" />
                         </div>
                         <span class="profile-username">
                             <span class="op-7">Hi,</span>
-                            <span class="fw-bold">Guru</span>
+                            <span class="fw-bold"><?= htmlspecialchars($user_data['nama']); ?></span>
                         </span>
                     </a>
                     <ul class="dropdown-menu dropdown-user animated fadeIn">
                         <div class="dropdown-user-scroll scrollbar-outer">
                             <li>
                                 <div class="user-box">
-                                    <div class="avatar-lg">
-                                        <img src="../assets/admin/img/logo/icon profile.png" alt="image profile"
+                                    <div class="avatar-lg avatar-img rounded">
+                                        <img src="<?= htmlspecialchars($user_data['foto_profil']); ?>" alt="Foto Profil"
                                             class="avatar-img rounded" />
                                     </div>
                                     <div class="u-text">
-                                        <h4>Guru</h4>
-                                        <p class="text-muted">sahrilwfc@mail.com</p>
+                                        <h4><?= htmlspecialchars($user_data['nama']); ?></h4>
+                                        <p class="text-muted"><?= htmlspecialchars($user_data['email']); ?></p>
                                     </div>
                             </li>
                             <li>

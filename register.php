@@ -1,116 +1,178 @@
 <?php
-// register.php
-
-// 1. Inisialisasi variabel untuk pesan dan "sticky form"
-$error = "";
-$success = "";
-$nama = "";
-$email = "";
-$no_telp = ""; // Sesuaikan nama variabel ini
-
-// 2. Cek apakah form disubmit (method POST)
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    
-    // 3. Sertakan koneksi HANYA saat diperlukan
-    include 'config/koneksi.php';
-
-    // 4. Ambil data dari form dan masukkan ke variabel
-    $nama = $_POST['nama'];
-    $email = $_POST['email'];
-    $telepon = $_POST['no_telp']; // PERBAIKAN: Sesuaikan dengan 'name' di HTML
-    $password = $_POST['password'];
-
-    // 5. Validasi (Sederhana)
-    if (empty($nama) || empty($email) || empty($password) || empty($telepon)) {
-        $error = "Semua field wajib diisi!";
-    } else {
-        // 6. Cek apakah email sudah terdaftar
-        $stmt = $koneksi->prepare("SELECT email FROM users WHERE email = ?");
-        $stmt->bind_param("s", $email);
-        $stmt->execute();
-        $stmt->store_result();
-
-        if ($stmt->num_rows > 0) {
-            $error = "Email sudah terdaftar. Silakan gunakan email lain atau login.";
-            $stmt->close();
-        } else {
-            $stmt->close(); // Tutup statement pengecekan
-
-            // 7. HASH PASSWORD
-            $hashed_password = password_hash($password, PASSWORD_DEFAULT);
-
-            // 8. Insert ke database
-            $stmt_insert = $koneksi->prepare("INSERT INTO users (nama, email, telepon, password) VALUES (?, ?, ?, ?)");
-            // PERBAIKAN: Pastikan urutan dan tipe datanya benar (nama, email, telepon, password)
-            $stmt_insert->bind_param("ssss", $nama, $email, $telepon, $hashed_password);
-
-            if ($stmt_insert->execute()) {
-                // Registrasi berhasil, JANGAN 'echo' apapun.
-                // Langsung arahkan (redirect) ke halaman login.
-                header("Location: login.php?status=registrasi_sukses"); // 'status' opsional
-                exit(); // Penting untuk menghentikan eksekusi script setelah redirect
-            } else {
-                $error = "Registrasi gagal: " . $stmt_insert->error;
-            }
-            $stmt_insert->close();
-        }
-    }
-    // Tutup koneksi setelah semua operasi POST selesai
-    $koneksi->close();
-}
-// Jika BUKAN method POST, script PHP di atas akan dilewati dan langsung menampilkan HTML di bawah.
+session_start();
 ?>
-
 <!DOCTYPE html>
 <html lang="id">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registrasi - NeoBlue</title> <link rel="stylesheet" href="assets/landingpage/css/style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-    <link href="assets/landingpage/img/logo/profile_neoblue.png" rel="icon">
-    <link href="assets/landingpage/img/logo/profile_neoblue.png" type="image/png" rel="apple-touch-icon"> </head>
+    <title>Daftar Akun - NeoBlue</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link href="assets/landingpage/img/logo/logo_neoblue.png" rel="icon">
+    <link rel="stylesheet" href="assets/landingpage/css/style.css">
+</head>
 
 <body>
-    <div class="form-container">
-        <div class="form-box">
-            <img src="assets/landingpage/img/logo/logo neoblue.png" alt="Habitutor Logo" width="100" height="100">
-            <div class="logo">
-                <span class="logo-text">Registrasi - NeoBlue</span>
+
+    <div class="login-wrapper">
+        <div class="header-section">
+            <img src="assets/landingpage/img/logo/logo neoblue.png" alt="NeoBlue Logo" class="logo-img">
+            <h2>Buat Akun Baru</h2>
+            <p>Sudah punya akun? <a href="login.php">Masuk sekarang</a></p>
+        </div>
+
+        <div class="alert alert-error" style="display:none;" id="alert-error">
+            <i class="fas fa-exclamation-circle"></i>
+            <span id="error-text"></span>
+        </div>
+
+        <form id="register-form" autocomplete="off">
+            <div class="form-group">
+                <label for="nama">Nama Lengkap</label>
+                <div class="input-wrapper">
+                    <input type="text" id="nama" name="nama" class="form-control" placeholder="Masukkan nama lengkap" required>
+                    <i class="fas fa-user icon"></i>
+                </div>
             </div>
-            <h2>Langkah Awal Menuju PTN Impian</h2>
-            <p class="subtitle">Dimulai dari Sekarang</p>
 
-            <?php if (!empty($error)): ?>
-                <div class="error-message" style="color:red; margin-bottom:10px;"><?= htmlspecialchars($error) ?></div>
-            <?php endif; ?>
-            <?php if (!empty($success)): ?>
-                <div class="success-message" style="color:green; margin-bottom:10px;"><?= htmlspecialchars($success) ?></div>
-            <?php endif; ?>
+            <div class="form-group">
+                <label for="email">Alamat Email</label>
+                <div class="input-wrapper">
+                    <input type="email" id="email" name="email" class="form-control" placeholder="Masukkan email" required>
+                    <i class="fas fa-envelope icon"></i>
+                </div>
+            </div>
 
-            <form method="post" action="" autocomplete="off">
-                <div class="input-group">
-                    <label for="nama">Nama</label>
-                    <input type="text" id="nama" name="nama" value="<?= htmlspecialchars($nama) ?>" required>
+            <div class="form-group">
+                <label for="telepon">Nomor Telepon</label>
+                <div class="input-wrapper">
+                    <input type="tel" id="telepon" name="telepon" class="form-control" placeholder="Masukkan nomor telepon" required 
+                           pattern="[0-9]+" oninput="this.value=this.value.replace(/[^0-9]/g,'');">
+                    <i class="fas fa-phone icon"></i>
                 </div>
-                <div class="input-group">
-                    <label for="register-email">Email</label>
-                    <input type="email" id="register-email" name="email" value="<?= htmlspecialchars($email) ?>" required>
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password</label>
+                <div class="input-wrapper">
+                    <input type="password" id="password" name="password" class="form-control" placeholder="Buat password yang aman" required>
+                    <i class="fas fa-lock icon"></i>
+                    <button type="button" class="toggle-password" onclick="togglePassword()">
+                        <i class="fas fa-eye" id="toggleIcon"></i>
+                    </button>
                 </div>
-                <div class="input-group">
-                    <label for="telepon">Telepon</label>
-                    <input type="tel" id="telepon" name="no_telp" value="<?= htmlspecialchars($no_telp) ?>" required pattern="[0-9]+" oninput="this.value=this.value.replace(/[^0-9]/g,'');">
-                </div>
-                <div class="input-group">
-                    <label for="register-password">Password</label>
-                    <input type="password" id="register-password" name="password" required>
-                </div>
-                <button type="submit" class="btn">Daftar</button>
-                <p class="bottom-text">Sudah punya akun? <a href="login.php">Masuk Sekarang</a></p>
-            </form>
+            </div>
+
+            <button type="submit" class="btn-login" id="submitBtn">
+                <span id="btnText">Daftar Sekarang</span>
+                <span class="spinner" id="btnSpinner" style="display:none;"></span>
+            </button>
+        </form>
+        
+        <div style="text-align: center; margin-top: 25px;">
+            <p style="font-size: 12px; color: #aaa;">&copy; <?= date('Y'); ?> NeoBlue Platform. All rights reserved.</p>
         </div>
     </div>
-</body>
 
+    <script>
+        // 1. Fitur Toggle Password
+        function togglePassword() {
+            const passwordInput = document.getElementById('password');
+            const toggleIcon = document.getElementById('toggleIcon');
+            
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                toggleIcon.classList.remove('fa-eye');
+                toggleIcon.classList.add('fa-eye-slash');
+            } else {
+                passwordInput.type = 'password';
+                toggleIcon.classList.remove('fa-eye-slash');
+                toggleIcon.classList.add('fa-eye');
+            }
+        }
+
+        // 2. Logic Registrasi
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('register-form');
+            const errorDiv = document.getElementById('alert-error');
+            const errorText = document.getElementById('error-text');
+            const submitBtn = document.getElementById('submitBtn');
+            const btnText = document.getElementById('btnText');
+            const btnSpinner = document.getElementById('btnSpinner');
+
+            form.addEventListener('submit', async function(event) {
+                event.preventDefault();
+
+                // Reset Error
+                errorDiv.style.display = 'none';
+
+                // Ambil Value
+                const nama = document.getElementById('nama').value.trim();
+                const email = document.getElementById('email').value.trim();
+                const telepon = document.getElementById('telepon').value.trim();
+                const password = document.getElementById('password').value;
+
+                // Validasi Sederhana
+                if (!nama || !email || !telepon || !password) {
+                    errorText.textContent = 'Semua kolom wajib diisi.';
+                    errorDiv.style.display = 'flex';
+                    return;
+                }
+
+                // Loading State
+                submitBtn.disabled = true;
+                btnText.textContent = 'Memproses...';
+                btnSpinner.style.display = 'inline-block';
+
+                try {
+                    const response = await fetch('api/api_register.php', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                            nama: nama,
+                            email: email,
+                            telepon: telepon,
+                            password: password
+                        })
+                    });
+
+                    // Validasi Content Type
+                    const contentType = response.headers.get("content-type");
+                    if (!contentType || !contentType.includes("application/json")) {
+                        throw new Error("Terjadi kesalahan pada server (Respon bukan JSON).");
+                    }
+
+                    const result = await response.json();
+
+                    if (result.status === 'success') {
+                        // Sukses
+                        btnText.textContent = 'Berhasil! Mengalihkan...';
+                        submitBtn.style.background = '#10b981'; // Ubah warna jadi hijau (Inline style, akan menimpa CSS)
+                        
+                        // Redirect ke Login setelah 0.8 detik
+                        setTimeout(() => {
+                            window.location.href = 'login.php?status=registrasi_sukses';
+                        }, 800);
+                    } else {
+                        // Gagal (Email duplikat, dll)
+                        throw new Error(result.message || 'Gagal mendaftar.');
+                    }
+                } catch (error) {
+                    // Tampilkan Error UI
+                    errorDiv.style.display = 'flex';
+                    errorText.textContent = error.message;
+                    
+                    // Reset Tombol
+                    submitBtn.disabled = false;
+                    btnText.textContent = 'Daftar Sekarang';
+                    btnSpinner.style.display = 'none';
+                    submitBtn.style.background = ''; // Reset warna default
+                }
+            });
+        });
+    </script>
+</body>
 </html>

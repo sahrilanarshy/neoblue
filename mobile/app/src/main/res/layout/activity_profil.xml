@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#F5F5F5"
+    android:fitsSystemWindows="true">
+
+    <include layout="@layout/layout_header" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:padding="16dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingBottom="40dp">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card_premium_status"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                app:cardCornerRadius="12dp"
+                app:cardBackgroundColor="@color/white">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:id="@+id/tv_label_premium"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Paket Premium"
+                        android:textStyle="bold"
+                        android:textColor="@color/black"
+                        android:textSize="16sp"/>
+
+                    <TextView
+                        android:id="@+id/tv_desc_premium"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/tv_label_premium"
+                        android:layout_marginTop="4dp"
+                        android:text="Anda memiliki akses penuh ke semua fitur."
+                        android:textSize="12sp"
+                        android:textColor="@color/text_grey"/>
+
+                    <TextView
+                        android:id="@+id/tv_status_user"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:text="Aktif"
+                        android:background="@drawable/bg_input_field"
+                        android:backgroundTint="@color/neo_blue"
+                        android:textColor="@color/white"
+                        android:textStyle="bold"
+                        android:paddingHorizontal="16dp"
+                        android:paddingVertical="6dp"/>
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                app:cardCornerRadius="12dp"
+                app:cardBackgroundColor="@color/white">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:id="@+id/tv_label_komunitas"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Komunitas NeoBlue\nPremium"
+                        android:textStyle="bold"
+                        android:textColor="@color/black"
+                        android:textSize="16sp"
+                        android:layout_centerVertical="true"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/tv_label_komunitas"
+                        android:layout_marginTop="8dp"
+                        android:text="Grup Whatsapp khusus member Premium"
+                        android:textSize="12sp"
+                        android:textColor="@color/text_grey"/>
+
+                    <Button
+                        android:id="@+id/btn_gabung_komunitas"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:text="Gabung\nKomunitas"
+                        android:textSize="10sp"
+                        android:backgroundTint="@color/neo_green_wa"
+                        android:textColor="@color/white"
+                        android:textAllCaps="false"/>
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="12dp"
+                app:cardBackgroundColor="@color/white">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="20dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Edit Profil"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/black"
+                        android:layout_marginBottom="20dp"/>
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        app:cardCornerRadius="50dp"
+                        android:layout_gravity="center">
+                        <ImageView
+                            android:id="@+id/iv_profile_photo"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:src="@drawable/ic_user"
+                            android:scaleType="centerCrop"/>
+                    </androidx.cardview.widget.CardView>
+
+                    <Button
+                        android:id="@+id/btn_ganti_foto"
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="8dp"
+                        android:text="📷 Ganti Foto"
+                        android:backgroundTint="#F5F5F5"
+                        android:textColor="@color/black"
+                        android:textAllCaps="false"
+                        android:layout_marginBottom="24dp"/>
+
+                    <TextView android:text="Nama Lengkap" style="@style/LabelInputBold"/>
+                    <EditText
+                        android:id="@+id/et_nama_profil"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:background="@drawable/bg_input_field"
+                        android:paddingHorizontal="12dp"
+                        android:hint="Nama Lengkap"
+                        android:textColor="@color/black"
+                        android:layout_marginBottom="16dp"/>
+
+                    <TextView android:text="Email" style="@style/LabelInputBold"/>
+                    <EditText
+                        android:id="@+id/et_email_profil"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:background="@color/bg_input_disabled"
+                        android:paddingHorizontal="12dp"
+                        android:hint="Email"
+                        android:textColor="@color/text_grey"
+                        android:enabled="false"
+                        android:layout_marginBottom="16dp"/>
+
+                    <TextView android:text="Nomor HP" style="@style/LabelInputBold"/>
+                    <EditText
+                        android:id="@+id/et_nomor_hp"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:background="@drawable/bg_input_field"
+                        android:paddingHorizontal="12dp"
+                        android:hint="Nomor HP"
+                        android:inputType="phone"
+                        android:textColor="@color/black"
+                        android:layout_marginBottom="24dp"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Isi bagian di bawah ini hanya jika Anda ingin mengubah password."
+                        android:textSize="12sp"
+                        android:textColor="@color/text_grey"
+                        android:layout_marginBottom="12dp"/>
+
+                    <TextView android:text="Password Sekarang" style="@style/LabelInputBold"/>
+                    <EditText
+                        android:id="@+id/et_password_lama"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:background="@drawable/bg_input_field"
+                        android:paddingHorizontal="12dp"
+                        android:hint="Kosongkan jika tidak diubah"
+                        android:inputType="textPassword"
+                        android:layout_marginBottom="16dp"/>
+
+                    <TextView android:text="Password Baru" style="@style/LabelInputBold"/>
+                    <EditText
+                        android:id="@+id/et_password_baru"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:background="@drawable/bg_input_field"
+                        android:paddingHorizontal="12dp"
+                        android:hint="Kosongkan jika tidak diubah"
+                        android:inputType="textPassword"
+                        android:layout_marginBottom="24dp"/>
+
+                    <Button
+                        android:id="@+id/btn_simpan_profil"
+                        android:layout_width="match_parent"
+                        android:layout_height="55dp"
+                        android:text="Simpan Perubahan"
+                        android:backgroundTint="@color/neo_yellow"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+                        android:layout_marginBottom="16dp"/>
+
+                    <Button
+                        android:id="@+id/btn_keluar"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Keluar"
+                        android:backgroundTint="@color/neo_red"
+                        android:textColor="@color/white"
+                        android:textStyle="bold"
+                        android:layout_gravity="center"/>
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+    </ScrollView>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation_profile"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        app:menu="@menu/bottom_nav_menu"
+        app:itemIconTint="@color/neo_blue"
+        app:itemTextColor="@color/text_dark"
+        app:labelVisibilityMode="labeled"/>
+
+</LinearLayout>

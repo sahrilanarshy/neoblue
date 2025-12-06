@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/nav_materi"
+        android:icon="@drawable/ic_materi"
+        android:title="Materi" />
+    <item
+        android:id="@+id/nav_habit"
+        android:icon="@drawable/ic_habit"
+        android:title="Habit" />
+    <item
+        android:id="@+id/nav_short"
+        android:icon="@drawable/ic_short"
+        android:title="Short" />
+    <item
+        android:id="@+id/nav_tryout"
+        android:icon="@drawable/ic_tryout"
+        android:title="Tryout" />
+    <item
+        android:id="@+id/nav_jadwal"
+        android:icon="@drawable/ic_jadwal"
+        android:title="Jadwal" />
+</menu>

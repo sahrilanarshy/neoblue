@@ -1,0 +1,26 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.Neoblue" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Customize your light theme here. -->
+        <item name="colorPrimary">@color/neo_blue</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorSecondary">@color/neo_yellow</item>
+        <item name="colorOnSecondary">@color/black</item>
+
+        <!-- Status Bar Color -->
+        <item name="android:statusBarColor">@color/neo_blue</item>
+        <item name="android:windowLightStatusBar">false</item>
+        <!-- Use Nunito (bundle) for app-wide font. Place TTFs in res/font/ -->
+        <item name="android:fontFamily">@font/nunito</item>
+        <item name="fontFamily">@font/nunito</item>
+    </style>
+
+    <style name="Theme.Neoblue" parent="Base.Theme.Neoblue" />
+
+    <!-- Splash Screen Theme -->
+    <style name="Theme.Neoblue.Splash" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="android:windowBackground">@color/neo_blue</item>
+        <item name="android:statusBarColor">@color/neo_blue</item>
+        <item name="android:windowLightStatusBar">false</item>
+    </style>
+</resources>

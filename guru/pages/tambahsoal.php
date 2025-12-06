@@ -1,6 +1,6 @@
 <div class="page-inner">
     <div class="page-header">
-        <h3 class="fw-bold mb-3">Habit Harian</h3>
+        <h3 class="fw-bold mb-3">Tambah Soal Habit</h3>
         <ul class="breadcrumbs mb-3">
             <li class="nav-home"><a href="#"><i class="icon-home"></i></a></li>
             <li class="separator"><i class="icon-arrow-right"></i></li>
@@ -17,7 +17,7 @@
                     <h4 class="card-title">Tambah Soal Harian</h4>
                 </div>
                 <div class="card-body">
-                    <form action="proses_simpan_paket_soal.php" method="POST">
+                    <form action=".?hal=proses_habit&aksi=tambah_soal" method="POST">
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group mb-3">
@@ -27,21 +27,25 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="subtest">Pilih Subtest</label>
-                                    <select class="form-select form-control" id="subtest" name="subtest" required>
+                                    <label for="subtest_id">Pilih Subtest</label>
+                                    <select class="form-select form-control" id="subtest_id" name="subtest_id" required>
                                         <option value="" disabled selected>-- Pilih Subtest --</option>
-                                        <option value="1">Penalaran Umum</option>
-                                        <option value="2">Pemahaman Bacaan dan Menulis</option>
-                                        <option value="3">Pengetahuan dan Pemahaman Umum</option>
-                                        <option value="4">Literasi Bahasa Inggris</option>
+                                        <?php
+                                        include '../config/koneksi.php';
+                                        $query_subtest = 'SELECT * FROM subtest ORDER BY nama_subtest ASC';
+                                        $result_subtest = mysqli_query($koneksi, $query_subtest);
+                                        while ($row_subtest = mysqli_fetch_assoc($result_subtest)) {
+                                            echo "<option value='{$row_subtest['id']}'>" . htmlspecialchars($row_subtest['nama_subtest']) . '</option>';
+                                        }
+                                        ?>
                                     </select>
                                 </div>
                             </div>
                         </div>
                         <div class="form-group mb-3">
-                            <label for="judul_bacaan" class="form-label">Judul Soal</label>
-                            <input type="text" class="form-control" id="judul_bacaan" name="judul_bacaan"
-                                placeholder="Contoh: Peran Energi Geotermal dalam Pembangunan Berkelanjutan" required />
+                            <label for="judul_soal" class="form-label">Judul Soal</label>
+                            <input type="text" class="form-control" id="judul_soal" name="judul_soal"
+                                placeholder="Contoh: Latihan Soal Penalaran Umum #1" required />
                         </div>
 
                         <hr class="my-4">

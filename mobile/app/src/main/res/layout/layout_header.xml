@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:minHeight="60dp"
+    android:background="@color/neo_blue"
+    android:paddingHorizontal="16dp">
+
+    <LinearLayout
+        android:layout_width="195dp"
+        android:layout_height="28dp"
+        android:layout_centerVertical="true"
+        android:orientation="horizontal">
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true">
+
+        <ImageView
+            android:id="@+id/btn_notifikasi"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/ic_bell"
+            app:tint="@color/white"
+            android:layout_marginEnd="16dp"/>
+
+        <ImageView
+            android:id="@+id/btn_profil"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/ic_menu_profile"
+            app:tint="@color/white"/>
+    </LinearLayout>
+
+    <ImageView
+        android:layout_width="174dp"
+        android:layout_height="40dp"
+        android:layout_centerVertical="true"
+        android:layout_marginEnd="8dp"
+        android:src="@drawable/ic_logo" />
+</RelativeLayout>

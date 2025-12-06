@@ -1,3 +1,12 @@
+<?php
+if (isset($_SESSION['sukses'])) {
+    $pesan_sukses = $_SESSION['sukses'];
+    unset($_SESSION['sukses']);
+} elseif (isset($_SESSION['gagal'])) {
+    $pesan_gagal = $_SESSION['gagal'];
+    unset($_SESSION['gagal']);
+}
+?>
 <div class="page-inner">
     <div class="page-header">
         <h3 class="fw-bold mb-3">Metode Pembayaran</h3>
@@ -53,47 +62,40 @@
                             </tr>
                         </tfoot>
                         <tbody>
-                            <tr class="align-middle">
-                                <td>1</td>
-                                <td>BCA</td>
-                                <td>1234567890</td>
-                                <td>Sahril Sidik</td>
-                                <td><span class="badge bg-success">Aktif</span></td>
-                                <td class="text-center">
-                                    <div class="form-button-action">
-                                        <a href=".?hal=editmetodepembayaran" data-bs-toggle="tooltip" title="Edit"
-                                            class="btn btn-link btn-primary btn-sm">
-                                            <i class="fa fa-edit"></i>
-                                        </a>
-                                        <a href="#" data-bs-toggle="modal" data-bs-target="#confirmDeleteModal"
-                                            data-id="1" data-item-name="BCA Transfer" title="Hapus"
-                                            class="btn btn-link btn-danger btn-sm">
-                                            <i class="fa fa-times"></i>
-                                        </a>
-                                    </div>
-                                </td>
-                            </tr>
-
-                            <tr class="align-middle">
-                                <td>2</td>
-                                <td>BRI</td>
-                                <td>2944 2934 222</td>
-                                <td>Sahril Sidik</td>
-                                <td><span class="badge bg-secondary">Nonaktif</span></td>
-                                <td class="text-center">
-                                    <div class="form-button-action">
-                                        <a href=".?hal=editmetodepembayaran" data-bs-toggle="tooltip" title="Edit"
-                                            class="btn btn-link btn-primary btn-sm">
-                                            <i class="fa fa-edit"></i>
-                                        </a>
-                                        <a href="#" data-bs-toggle="modal" data-bs-target="#confirmDeleteModal"
-                                            data-id="2" data-item-name="QRIS" title="Hapus"
-                                            class="btn btn-link btn-danger btn-sm">
-                                            <i class="fa fa-times"></i>
-                                        </a>
-                                    </div>
-                                </td>
-                            </tr>
+                            <?php
+                            include '../config/koneksi.php';
+                            $query = mysqli_query($koneksi, "SELECT * FROM metode_pembayaran ORDER BY id DESC");
+                            $no = 1;
+                            while ($data = mysqli_fetch_assoc($query)) {
+                            ?>
+                                <tr class="align-middle">
+                                    <td class="text-center"><?= $no++; ?></td>
+                                    <td><?= htmlspecialchars($data['nama_metode']); ?></td>
+                                    <td><?= htmlspecialchars($data['nomor_rekening']); ?></td>
+                                    <td><?= htmlspecialchars($data['atas_nama']); ?></td>
+                                    <td class="text-center">
+                                        <?php if ($data['status'] == 'Aktif') : ?>
+                                            <span class="badge bg-success">Aktif</span>
+                                        <?php else : ?>
+                                            <span class="badge bg-secondary">Nonaktif</span>
+                                        <?php endif; ?>
+                                    </td>
+                                    <td class="text-center">
+                                        <div class="form-button-action">
+                                            <a href=".?hal=editmetodepembayaran&id=<?= $data['id']; ?>" data-bs-toggle="tooltip" title="Edit"
+                                                class="btn btn-link btn-primary btn-sm">
+                                                <i class="fa fa-edit"></i>
+                                            </a>
+                                            <a href="#" data-bs-toggle="modal" data-bs-target="#confirmDeleteModal"
+                                                data-id="<?= $data['id']; ?>" data-item-name="<?= htmlspecialchars($data['nama_metode']); ?>"
+                                                data-url-delete="?hal=proses_hapus_metode" title="Hapus"
+                                                class="btn btn-link btn-danger btn-sm">
+                                                <i class="fa fa-times"></i>
+                                            </a>
+                                        </div>
+                                    </td>
+                                </tr>
+                            <?php } ?>
                         </tbody>
                     </table>
                 </div>
@@ -101,3 +103,22 @@
         </div>
     </div>
 </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    function showModal(modalId, message) {
+        const modalElement = document.getElementById(modalId);
+        if (modalElement) {
+            const messageElementId = modalId === 'suksesModal' ? 'pesanSuksesModal' : 'pesanGagalModal';
+            document.getElementById(messageElementId).innerText = message;
+            new bootstrap.Modal(modalElement).show();
+        }
+    }
+
+    <?php if (isset($pesan_sukses)): ?>
+        showModal('suksesModal', '<?= addslashes($pesan_sukses); ?>');
+    <?php elseif (isset($pesan_gagal)): ?>
+        showModal('gagalModal', '<?= addslashes($pesan_gagal); ?>');
+    <?php endif; ?>
+});
+</script>

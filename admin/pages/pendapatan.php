@@ -34,44 +34,82 @@
                                 <th>Rata-rata per Transaksi</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>Januari 2025</td>
-                                <td>45</td>
-                                <td>Rp2.100.000</td>
-                                <td>Rp46.666</td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>Februari 2025</td>
-                                <td>52</td>
-                                <td>Rp2.480.000</td>
-                                <td>Rp47.692</td>
-                            </tr>
-                            <tr>
-                                <td>3</td>
-                                <td>Maret 2025</td>
-                                <td>60</td>
-                                <td>Rp2.940.000</td>
-                                <td>Rp49.000</td>
-                            </tr>
-                            <tr class="table-success">
-                                <th colspan="3" class="text-end">Total Pendapatan 2025</th>
-                                <th colspan="2" class="text-start">Rp7.520.000</th>
-                            </tr>
+                        <tbody id="pendapatan-table-body">
+                            <tr><td colspan="5" class="text-center">Memuat data...</td></tr>
                         </tbody>
+                        <tfoot id="pendapatan-table-foot" class="table-success">
+                            <!-- Total akan di-generate oleh JavaScript -->
+                        </tfoot>
                     </table>
                 </div>
                 <div class="mt-3 text-end">
-                    <button class="btn btn-success">
+                    <a href=".?hal=export_pendapatan" class="btn btn-success" target="_blank">
                         <i class="fa fa-file-excel"></i> Ekspor ke Excel
-                    </button>
-                    <button class="btn btn-danger">
+                    </a>
+                    <a href=".?hal=export_pendapatan_pdf" class="btn btn-danger" target="_blank">
                         <i class="fa fa-file-pdf"></i> Ekspor ke PDF
-                    </button>
+                    </a>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', async function() {
+    const tableBody = document.getElementById('pendapatan-table-body');
+    const tableFoot = document.getElementById('pendapatan-table-foot');
+
+    const formatRupiah = (number) => {
+        return new Intl.NumberFormat('id-ID', {
+            style: 'currency',
+            currency: 'IDR',
+            minimumFractionDigits: 0
+        }).format(number);
+    };
+
+    try {
+        const response = await fetch('../api/api_pendapatan.php');
+        const result = await response.json();
+
+        if (result.status === 'success') {
+            tableBody.innerHTML = ''; // Kosongkan isi tabel
+            let totalPendapatanKeseluruhan = 0;
+
+            if (result.data.length === 0) {
+                tableBody.innerHTML = '<tr><td colspan="5" class="text-center text-muted">Belum ada data pendapatan.</td></tr>';
+            } else {
+                result.data.forEach((item, index) => {
+                    const totalPendapatan = parseFloat(item.total_pendapatan);
+                    const jumlahTransaksi = parseInt(item.jumlah_transaksi);
+                    const rataRata = jumlahTransaksi > 0 ? totalPendapatan / jumlahTransaksi : 0;
+                    totalPendapatanKeseluruhan += totalPendapatan;
+
+                    const row = `
+                        <tr>
+                            <td>${index + 1}</td>
+                            <td>${item.bulan}</td>
+                            <td>${jumlahTransaksi}</td>
+                            <td>${formatRupiah(totalPendapatan)}</td>
+                            <td>${formatRupiah(rataRata)}</td>
+                        </tr>
+                    `;
+                    tableBody.innerHTML += row;
+                });
+            }
+
+            // Update footer dengan total keseluruhan
+            tableFoot.innerHTML = `
+                <tr>
+                    <th colspan="3" class="text-end fw-bold">Total Pendapatan Keseluruhan</th>
+                    <th colspan="2" class="text-start fw-bold">${formatRupiah(totalPendapatanKeseluruhan)}</th>
+                </tr>`;
+        } else {
+            tableBody.innerHTML = `<tr><td colspan="5" class="text-center text-danger">Gagal memuat data: ${result.message}</td></tr>`;
+        }
+    } catch (error) {
+        tableBody.innerHTML = `<tr><td colspan="5" class="text-center text-danger">Terjadi kesalahan saat menghubungi server.</td></tr>`;
+        console.error('Fetch error:', error);
+    }
+});
+</script>

@@ -1,3 +1,31 @@
+<?php
+include '../config/koneksi.php';
+$id = $_GET['id'] ?? 0;
+
+if ($id == 0) {
+    $_SESSION['gagal'] = "ID Pesan tidak valid.";
+    header("Location: ./?hal=kontak");
+    exit();
+}
+
+// Ambil data pesan
+$query = mysqli_query($koneksi, "SELECT * FROM kontak WHERE id = '$id'");
+$data = mysqli_fetch_assoc($query);
+
+if (!$data) {
+    $_SESSION['gagal'] = "Pesan tidak ditemukan.";
+    header("Location: ./?hal=kontak");
+    exit();
+}
+
+// Jika status pesan 'Baru', update menjadi 'Sudah Dibaca'
+if ($data['status'] == 'Baru') {
+    mysqli_query($koneksi, "UPDATE kontak SET status = 'Sudah Dibaca' WHERE id = '$id'");
+    // Refresh data untuk mendapatkan status terbaru (opsional, karena tidak ditampilkan di halaman ini)
+    $data['status'] = 'Sudah Dibaca';
+}
+
+?>
 <div class="page-inner">
     <div class="page-header">
         <h3 class="fw-bold mb-3">Manajemen Pesan</h3>
@@ -11,13 +39,13 @@
                 <i class="icon-arrow-right"></i>
             </li>
             <li class="nav-item">
-                <a href=".?hal=pesan">Daftar Pesan Masuk</a>
+                <a href=".?hal=kontak">Daftar Pesan Masuk</a>
             </li>
             <li class="separator">
                 <i class="icon-arrow-right"></i>
             </li>
             <li class="nav-item">
-                <a href=".?hal=lihatpesan">Lihat Pesan</a>
+                <a href="#">Lihat Pesan</a>
             </li>
         </ul>
     </div>
@@ -37,31 +65,26 @@
                 <div class="card-body">
 
                     <div class="message-info mb-3">
-                        <p><strong>Tanggal:</strong> 26/10/2025</p>
-                        <p><strong>Pengirim:</strong> Budi Santoso</p>
-                        <p><strong>Email:</strong> budi.s@example.com</p>
-                        <p><strong>Subjek:</strong> Pertanyaan tentang paket</p>
+                        <p><strong>Tanggal:</strong> <?= date('d M Y, H:i', strtotime($data['tanggal_kirim'])); ?></p>
+                        <p><strong>Pengirim:</strong> <?= htmlspecialchars($data['nama']); ?></p>
+                        <p><strong>Email:</strong> <?= htmlspecialchars($data['email']); ?></p>
+                        <p><strong>Subjek:</strong> <?= htmlspecialchars($data['subjek']); ?></p>
                     </div>
 
                     <hr>
 
                     <div class="form-group">
                         <label class="fw-bold">Isi Pesan:</label>
-                        <div class="message-display-field">
-                            Halo Admin,
-
-                            Saya mau bertanya, apakah untuk Paket Premium fiturnya akan ditambah lagi ke depannya?
-                            Saya tertarik untuk mendaftar.
-
-                            Terima kasih.
+                        <div class="message-display-field ps-2">
+                            <?= nl2br(htmlspecialchars($data['pesan'])); ?>
                         </div>
                     </div>
 
                     <div class="form-group mt-4">
-                        <a href="mailto:budi.s@example.com" class="btn btn-primary">
+                        <a href="mailto:<?= htmlspecialchars($data['email']); ?>?subject=Re: <?= htmlspecialchars($data['subjek']); ?>" class="btn btn-primary">
                             <i class="fa fa-reply"></i> Balas via Email
                         </a>
-                        <a href=".?hal=tandaisudahdibaca" class="btn btn-info">
+                        <a href=".?hal=proses_update_status_pesan&id=<?= $data['id']; ?>&status=Sudah Dibalas" class="btn btn-info" onclick="return confirm('Anda yakin ingin menandai pesan ini sudah dibalas?');">
                             Tandai Sudah Dibalas
                         </a>
                     </div>

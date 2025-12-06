@@ -52,8 +52,7 @@
   function php_email_form_submit(thisForm, action, formData) {
     fetch(action, {
       method: 'POST',
-      body: formData,
-      headers: {'X-Requested-With': 'XMLHttpRequest'}
+      body: formData
     })
     .then(response => {
       if( response.ok ) {
@@ -66,7 +65,18 @@
       thisForm.querySelector('.loading').classList.remove('d-block');
       if (data.trim() == 'OK') {
         thisForm.querySelector('.sent-message').classList.add('d-block');
-        thisForm.reset(); 
+        thisForm.reset();
+        // Show Bootstrap modal popup if available
+        try {
+          var modalEl = document.getElementById('contactSuccessModal');
+          if (modalEl) {
+            var bsModal = new bootstrap.Modal(modalEl);
+            bsModal.show();
+          }
+        } catch (e) {
+          // fallback to alert if Bootstrap not available
+          try { alert('Pesan berhasil dikirim. Terima kasih!'); } catch (err) {}
+        }
       } else {
         throw new Error(data ? data : 'Form submission failed and no error message returned from: ' + action); 
       }

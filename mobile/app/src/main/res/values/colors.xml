@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="neo_blue">#FF3B82F6</color>
+    <color name="text_grey">#FF6B7280</color>
+    <color name="neo_yellow">#F59E0B</color>
+
+    <!-- Colors from Web CSS -->
+    <color name="colorPrimary">#4e73df</color>
+    <color name="colorPrimaryDark">#2e59d9</color>
+    <color name="colorTextDark">#333333</color>
+    <color name="colorTextMuted">#6c757d</color>
+    <color name="colorBgInput">#f8f9fc</color>
+    <color name="colorBorderInput">#e1e5ea</color>
+    <color name="colorErrorBg">#fee2e2</color>
+    <color name="colorErrorText">#991b1b</color>
+    <color name="colorIcon">#aaa</color>
+    <color name="colorButtonDisabled">#ccc</color>
+    <color name="colorGradientStart">#0066FF</color>
+    <color name="colorGradientEnd">#0091FF</color>
+
+    <!-- Missing Colors Added -->
+    <color name="neo_green">#10B981</color>
+    <color name="bg_input_disabled">#E9ECEF</color>
+    <color name="text_dark">#333333</color>
+    <color name="bg_grey">#F3F4F6</color>
+    <color name="neo_purple_light">#EDE9FE</color>
+    <color name="neo_green_wa">#25D366</color>
+    <color name="neo_red">#EF4444</color>
+    
+    <!-- Additional Missing Colors -->
+    <color name="bg_premium_light">#FFFBEB</color>
+    <color name="neo_green_bg">#D1FAE5</color>
+    <color name="neo_red_bg">#FEE2E2</color>
+    <color name="nav_item_color">#6B7280</color>
+
+    <!-- New Text Colors for Status Pills -->
+    <color name="text_green_dark">#558B2F</color>
+    <color name="text_red_dark">#B91C1C</color>
+</resources>

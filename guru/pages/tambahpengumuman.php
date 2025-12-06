@@ -18,7 +18,7 @@
                 <div class="card-header">
                     <div class="card-title">Tambah Pengumuman</div>
                 </div>
-                <form action=".?hal=proses_tambah_pengumuman" method="POST">
+                <form action=".?hal=proses_pengumuman&aksi=tambah" method="POST">
                     <div class="card-body">
 
                         <div class="form-group">
@@ -37,16 +37,20 @@
                         </div>
 
                         <div class="row">
-                            <div class="col-md-6">
+                            <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="tgl_terbit">Tanggal Terbit</label>
-                                    <input type="date" class="form-control" id="tgl_terbit" name="tgl_terbit"
-                                        required>
-                                    <small class="form-text text-muted">Pengumuman akan mulai tampil pada tanggal
-                                        ini.</small>
+                                    <input type="date" class="form-control" id="tgl_terbit" name="tgl_terbit" required>
                                 </div>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="tgl_selesai">Tanggal Selesai (Opsional)</label>
+                                    <input type="date" class="form-control" id="tgl_selesai" name="tgl_selesai">
+                                    <small class="form-text text-muted">Biarkan kosong jika tidak ada batas waktu.</small>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="status">Status</label>
                                     <select class="form-control" id="status" name="status">
@@ -55,7 +59,6 @@
                                     </select>
                                 </div>
                             </div>
-
                     </div>
                     <div class="form-group mt-4">
                         <button type="submit" class="btn btn-primary">Simpan</button>

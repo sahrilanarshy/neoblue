@@ -1,16 +1,13 @@
 <?php
 session_start();
 
+include '../config/koneksi.php';
 if (!isset($_SESSION['status_login']) || $_SESSION['status_login'] !== true || $_SESSION['role'] !== 'guru') {
     header('Location: ../login.php');
     exit();
 }
 
-ob_start();
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<?php ob_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -97,8 +94,8 @@ ob_start();
                     case 'habit':
                         $page_to_include = 'pages/habit.php';
                         break;
-                    case 'hapusmateri':
-                        $page_to_include = 'pages/hapusmateri.php';
+                    case 'proses_habit':
+                        $page_to_include = 'pages/proses_habit.php';
                         break;
                     case 'materi':
                         $page_to_include = 'pages/materi.php';
@@ -106,8 +103,14 @@ ob_start();
                     case 'profile':
                         $page_to_include = 'pages/profile.php';
                         break;
+                    case 'proses_profile':
+                        $page_to_include = 'pages/proses_profile.php';
+                        break;
                     case 'short':
                         $page_to_include = 'pages/short.php';
+                        break;
+                    case 'proses_short':
+                        $page_to_include = 'pages/proses_short.php';
                         break;
                     case 'soaltryout':
                         $page_to_include = 'pages/soaltryout.php';
@@ -121,14 +124,26 @@ ob_start();
                     case 'tambahmateri':
                         $page_to_include = 'pages/tambahmateri.php';
                         break;
+                    case 'proses_materi':
+                        $page_to_include = 'pages/proses_materi.php';
+                        break;
                     case 'tambahshort':
                         $page_to_include = 'pages/tambahshort.php';
+                        break;
+                    case 'proses_subtest':
+                        $page_to_include = 'pages/proses_subtest.php';
                         break;
                     case 'tambahsoal':
                         $page_to_include = 'pages/tambahsoal.php';
                         break;
                     case 'tambahsoaltryout':
                         $page_to_include = 'pages/tambahsoaltryout.php';
+                        break;
+                    case 'proses_soal_tryout':
+                        $page_to_include = 'pages/proses_soal_tryout.php';
+                        break;
+                    case 'api_soaltryout':
+                        $page_to_include = '../api/api_soaltryout.php';
                         break;
                     case 'editsoaltryout':
                         $page_to_include = 'pages/editsoaltryout.php';
@@ -141,6 +156,9 @@ ob_start();
                         break;
                     case 'tambahuser':
                         $page_to_include = 'pages/tambahuser.php';
+                        break;
+                    case 'proses_tryout':
+                        $page_to_include = 'pages/proses_tryout.php';
                         break;
                     case 'tryout':
                         $page_to_include = 'pages/tryout.php';
@@ -157,6 +175,14 @@ ob_start();
                     case 'editpengumuman':
                         $page_to_include = 'pages/editpengumuman.php';
                         break;
+                    case 'proses_pengumuman':
+                        $page_to_include = 'pages/proses_pengumuman.php';
+                        break;
+                    case 'riwayat_tryout':
+                        $page_to_include = 'pages/riwayat_tryout.php';
+                        break;
+                    case 'hapusriwayattryout':
+                        $page_to_include = 'pages/hapusriwayattryout.php';
 
                     default:
                         $page_to_include = 'pages/beranda.php';
@@ -175,8 +201,28 @@ ob_start();
             <?php include 'layout/footer.php'; ?>
         </div>
     </div>
-    </div>
+
+    <script>
+        // Fungsi untuk memeriksa status login dan role melalui API
+        async function verifyUserRole() {
+            try {
+                const response = await fetch('../api/api_role.php');
+                const result = await response.json();
+
+                // Jika status bukan success atau role tidak sesuai, redirect ke login
+                if (result.status !== 'success' || result.data.role !== 'guru') {
+                    window.location.href = '../login.php';
+                }
+            } catch (error) {
+                // Jika ada error koneksi, redirect juga untuk keamanan
+                console.error('API call failed:', error);
+                window.location.href = '../login.php';
+            }
+        }
+
+        // Panggil fungsi ini saat halaman dimuat
+        document.addEventListener('DOMContentLoaded', verifyUserRole);
+    </script>
 </body>
 
 </html>
-<?php ob_end_flush(); ?>

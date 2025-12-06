@@ -28,17 +28,17 @@
                     <h4 class="card-title">Tambah Subtest</h4>
                 </div>
                 <div class="card-body">
-                    <form action="" method="POST">
+                    <form action=".?hal=proses_subtest&aksi=tambah" method="POST">
                         <div class="form-group mb-3">
-                            <label for="nim">Subtest</label>
-                            <input type="text" class="form-control" required>
+                            <label for="nama_subtest">Nama Subtest</label>
+                            <input type="text" name="nama_subtest" id="nama_subtest" class="form-control" placeholder="Contoh: Penalaran Umum" required>
                         </div>
                         <div class="form-group mb-3">
-                            <label for="nim">Singkatan</label>
-                            <input type="text" class="form-control" required>
+                            <label for="singkatan">Singkatan</label>
+                            <input type="text" name="singkatan" id="singkatan" class="form-control" placeholder="Contoh: PU" required>
                         </div>
                         <button type="submit" class="btn btn-primary">Simpan</button>
-                        <a href=".?hal=mahasiswa" class="btn btn-secondary">Batal</a>
+                        <a href=".?hal=subtest" class="btn btn-secondary">Batal</a>
                     </form>
                 </div>
             </div>

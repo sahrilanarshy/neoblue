@@ -29,7 +29,7 @@
                     <h4 class="card-title">Tambah Short</h4>
                 </div>
                 <div class="card-body">
-                    <form action="proses_simpan_short.php" method="POST" enctype="multipart/form-data">
+                    <form action=".?hal=proses_short&aksi=tambah" method="POST" enctype="multipart/form-data">
 
                         <div class="form-group">
                             <label for="tanggal_upload">Tanggal</label>
@@ -49,6 +49,12 @@
                                 accept="video/*" required />
                             <small class="form-text text-muted">Pilih file video dari komputer Anda (format .mp4, .mov,
                                 dll).</small>
+                        </div>
+
+                        <!-- Pratinjau Video -->
+                        <div id="preview_container" class="form-group" style="display: none;">
+                            <label>Pratinjau Video</label>
+                            <video id="video_preview" width="100%" controls style="max-height: 300px; border-radius: 8px; background-color: #f0f0f0;"></video>
                         </div>
 
                         <div class="form-group">
@@ -71,3 +77,23 @@
         </div>
     </div>
 </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const videoInput = document.getElementById('video_short');
+    const videoPreview = document.getElementById('video_preview');
+    const previewContainer = document.getElementById('preview_container');
+
+    videoInput.addEventListener('change', function() {
+        const file = this.files[0];
+        if (file) {
+            const fileURL = URL.createObjectURL(file);
+            videoPreview.src = fileURL;
+            previewContainer.style.display = 'block';
+        } else {
+            previewContainer.style.display = 'none';
+            videoPreview.src = '';
+        }
+    });
+});
+</script>

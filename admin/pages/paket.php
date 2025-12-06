@@ -1,3 +1,12 @@
+<?php
+if (isset($_SESSION['sukses'])) {
+    $pesan_sukses = $_SESSION['sukses'];
+    unset($_SESSION['sukses']);
+} elseif (isset($_SESSION['gagal'])) {
+    $pesan_gagal = $_SESSION['gagal'];
+    unset($_SESSION['gagal']);
+}
+?>
 <div class="page-inner">
     <div class="page-header">
         <h3 class="fw-bold mb-3">Paket Langganan</h3>
@@ -49,52 +58,35 @@
                             </tr>
                         </tfoot>
                         <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>Paket Gratis</td>
-                                <td>Rp 0</td>
-                                <td>
-                                    <span class="btn btn-primary btn-round btn-xs btn-secondary">
-                                        Standar
-                                    </span>
-                                </td>
-                                <td>
-                                    <div class="form-button-action">
-                                        <a href=".?hal=editpaket" data-bs-toggle="tooltip" title="Edit"
-                                            class="btn btn-link btn-primary btn-sm">
-                                            <i class="fa fa-edit"></i>
-                                        </a>
-                                        <a href=".?hal=hapuspaket" data-bs-toggle="tooltip" title="Hapus"
-                                            class="btn btn-link btn-danger btn-sm"
-                                            onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?');">
-                                            <i class="fa fa-times"></i>
-                                        </a>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>Paket Premium</td>
-                                <td>Rp 199.000</td>
-                                <td>
-                                    <span class="btn btn-primary btn-round btn-xs btn-success">
-                                        Unggulan
-                                    </span>
-                                </td>
-                                <td>
-                                    <div class="form-button-action">
-                                        <a href=".?hal=editpaket" data-bs-toggle="tooltip" title="Edit"
-                                            class="btn btn-link btn-primary btn-sm">
-                                            <i class="fa fa-edit"></i>
-                                        </a>
-                                        <a href=".?hal=hapuspaket" data-bs-toggle="tooltip" title="Hapus"
-                                            class="btn btn-link btn-danger btn-sm"
-                                            onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?');">
-                                            <i class="fa fa-times"></i>
-                                        </a>
-                                    </div>
-                                </td>
-                            </tr>
+                            <?php
+                            include '../config/koneksi.php';
+                            $query = mysqli_query($koneksi, "SELECT * FROM paket ORDER BY harga ASC");
+                            $no = 1;
+                            while ($data = mysqli_fetch_assoc($query)) {
+                            ?>
+                                <tr>
+                                    <td><?= $no++; ?></td>
+                                    <td><?= htmlspecialchars($data['nama_paket']); ?></td>
+                                    <td>Rp <?= number_format($data['harga'], 0, ',', '.'); ?></td>
+                                    <td>
+                                        <?php if ($data['is_unggulan'] == 1) : ?>
+                                            <span class="badge bg-success">Unggulan</span>
+                                        <?php else : ?>
+                                            <span class="badge bg-secondary">Standar</span>
+                                        <?php endif; ?>
+                                    </td>
+                                    <td>
+                                        <div class="form-button-action">
+                                            <a href=".?hal=editpaket&id=<?= $data['id']; ?>" data-bs-toggle="tooltip" title="Edit" class="btn btn-link btn-primary btn-sm">
+                                                <i class="fa fa-edit"></i>
+                                            </a>
+                                            <a href="#" data-bs-toggle="modal" data-bs-target="#confirmDeleteModal" data-id="<?= $data['id']; ?>" data-item-name="<?= htmlspecialchars($data['nama_paket']); ?>" data-url-delete="?hal=proses_hapus_paket" title="Hapus" class="btn btn-link btn-danger btn-sm">
+                                                <i class="fa fa-times"></i>
+                                            </a>
+                                        </div>
+                                    </td>
+                                </tr>
+                            <?php } ?>
                         </tbody>
                     </table>
                 </div>
@@ -102,3 +94,22 @@
         </div>
     </div>
 </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    function showModal(modalId, message) {
+        const modalElement = document.getElementById(modalId);
+        if (modalElement) {
+            const messageElementId = modalId === 'suksesModal' ? 'pesanSuksesModal' : 'pesanGagalModal';
+            document.getElementById(messageElementId).innerText = message;
+            new bootstrap.Modal(modalElement).show();
+        }
+    }
+
+    <?php if (isset($pesan_sukses)): ?>
+        showModal('suksesModal', '<?= addslashes($pesan_sukses); ?>');
+    <?php elseif (isset($pesan_gagal)): ?>
+        showModal('gagalModal', '<?= addslashes($pesan_gagal); ?>');
+    <?php endif; ?>
+});
+</script>

@@ -7,21 +7,18 @@
 
     <div class="premium-layout">
         <div class="paket-premium-card">
-            <h2>Paket Premium</h2>
+            <h2 id="paket-nama">Memuat...</h2>
             <div class="harga">
-                <span class="harga-dicoret">Rp1.000.000</span>
-                <span class="harga-promo">Rp199.000</span>
+                <span class="harga-dicoret" id="paket-harga-normal" style="display: none;"></span>
+                <span class="harga-promo" id="paket-harga-promo">Rp...</span>
             </div>
-            <p class="info-berlaku">Berlaku sampai 7 Oktober 2025</p>
+            <p class="info-berlaku" id="paket-info-berlaku">Memuat detail...</p>
 
-            <ul class="fitur-list">
-                <li><i class="bi bi-check-circle-fill"></i> Akses ke semua Materi Pembelajaran</li>
-                <li><i class="bi bi-check-circle-fill"></i> Tryout Unlimited dengan pembahasan detail</li>
-                <li><i class="bi bi-check-circle-fill"></i> Komunitas Premium Whatsapps</li>
-                <li><i class="bi bi-check-circle-fill"></i> Download Materi Offline</li>
-                <li><i class="bi bi-check-circle-fill"></i> Priority Support 24/7</li>
-                <li><i class="bi bi-check-circle-fill"></i> Sertifikat Kelulusan</li>
+            <ul class="fitur-list" id="paket-fitur-list">
+                <li><i class="bi bi-arrow-repeat"></i> Memuat fitur...</li>
             </ul>
+            <!-- Hidden input to store package id -->
+            <input type="hidden" id="selected-paket-id" value="">
         </div>
 
         <div class="pembayaran-card">
@@ -30,15 +27,15 @@
             <div class="ringkasan-harga">
                 <div class="item-harga">
                     <span>Paket Premium</span>
-                    <span>Rp1.000.000</span>
+                    <span id="summary-harga-normal">Rp...</span>
                 </div>
                 <div class="item-harga">
                     <span>Promo</span>
-                    <span>-Rp801.000</span>
+                    <span id="summary-promo">Rp...</span>
                 </div>
                 <div class="total-harga">
                     <span>Total</span>
-                    <span class="harga-final">Rp199.000</span>
+                    <span class="harga-final" id="summary-total">Rp...</span>
                 </div>
             </div>
 
@@ -101,41 +98,33 @@
 <div id="manualPaymentModal" class="modal-overlay">
     <div class="modal-content-manual">
         <div class="modal-header">
-            <h3>Konfirmasi Pembayaran Manual</h3>
+            <h3>Konfirmasi Pembayaran</h3>
             <button id="closeManualModal" class="modal-close-button">&times;</button>
         </div>
 
         <form id="manualPaymentForm" class="modal-body-manual">
 
             <div id="form-content">
-                <p>Silakan lakukan transfer sebesar <strong>Rp 199.000</strong> ke salah satu rekening di bawah ini:
+                <p>Silakan lakukan transfer sebesar <strong id="modal-total-harga">Rp...</strong> ke salah satu rekening di bawah ini:
                 </p>
 
-                <ul class="rekening-list">
-                    <li><strong>BNI:</strong> 123456789 (a/n Sahril Sidik)</li>
-                    <li><strong>BRI:</strong> 987654321 (a/n Sahril Sidik)</li>
-                    <li><strong>ShopeePay:</strong> 08123456789 (a/n Sahril Sidik)</li>
-                    <li><strong>DANA:</strong> 08123456789 (a/n Sahril Sidik)</li>
+                <ul class="rekening-list" id="rekening-list">
+                    <li>Memuat metode pembayaran...</li>
                 </ul>
 
                 <hr class="divider">
 
                 <div class="form-grup">
                     <label for="paymentMethod">Metode yang Digunakan</label>
-                    <select id="paymentMethod" name="metode" required>
+                    <select id="paymentMethod" name="metode_pembayaran_id" required>
                         <option value="">-- Pilih Metode --</option>
-                        <option value="bni">BNI</option>
-                        <option value="bri">BRI</option>
-                        <option value="shopeepay">ShopeePay</option>
-                        <option value="dana">DANA</option>
-                        <option value="lainnya">Lainnya</option>
                     </select>
                 </div>
 
                 <div class="form-grup">
                     <label for="proofOfPayment">Upload Bukti Pembayaran</label>
-                    <input type="file" id="proofOfPayment" name="bukti" accept="image/*" required>
-                    <small>Hanya file gambar (jpg, png, dll).</small>
+                    <input type="file" id="proofOfPayment" name="bukti_pembayaran" accept="image/jpeg,image/png,application/pdf" required>
+                    <small>Hanya file JPG, PNG, atau PDF (Maks 2MB).</small>
                 </div>
 
                 <div class="form-grup">
@@ -143,7 +132,7 @@
                     <textarea id="notes" name="catatan" rows="3" placeholder="Misal: Nama pengirim, dll."></textarea>
                 </div>
 
-                <button type="submit" class="btn-kirim-konfirmasi">Saya Sudah Transfer</button>
+                <button type="submit" id="submit-payment-btn" class="btn-kirim-konfirmasi">Saya Sudah Transfer</button>
             </div>
 
             <div id="success-message">
@@ -159,11 +148,18 @@
 
 
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        // Ambil elemen-elemen modal baru
+    document.addEventListener('DOMContentLoaded', async function() {
+        // --- Elemen UI ---
         const manualPaymentModal = document.getElementById('manualPaymentModal');
         const subscribeButton = document.getElementById('subscribeButton');
         const closeManualModal = document.getElementById('closeManualModal');
+        const rekeningList = document.getElementById('rekening-list');
+        const paymentMethodSelect = document.getElementById('paymentMethod');
+        const modalTotalHarga = document.getElementById('modal-total-harga');
+        const selectedPaketIdInput = document.getElementById('selected-paket-id');
+        const submitPaymentBtn = document.getElementById('submit-payment-btn');
+
+        let selectedPaket = null; // Untuk menyimpan data paket yang dipilih
 
         // Form dan elemen di dalamnya
         const manualPaymentForm = document.getElementById('manualPaymentForm');
@@ -171,12 +167,109 @@
         const successMessage = document.getElementById('success-message');
         const closeAfterSuccess = document.getElementById('closeAfterSuccess');
 
+        // --- Fungsi Helper ---
+        const formatRupiah = (number) => new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', minimumFractionDigits: 0 }).format(number);
+
+        // --- Fungsi Load Data ---
+        // Gabungkan pemanggilan paket + metode pembayaran menjadi 1 request (lebih efisien untuk mobile)
+        async function loadPremiumData() {
+            try {
+                const response = await fetch('../api/api_premium_data.php');
+                const result = await response.json();
+                if (result.status === 'success') {
+                    const paketList = result.data.paket || [];
+                    const metodeList = result.data.metode_pembayaran || [];
+
+                    if (paketList.length > 0) {
+                        selectedPaket = paketList.find(p => p.is_unggulan == '1' || p.is_unggulan === 1) || paketList[0];
+                        if (selectedPaket) updatePaketUI(selectedPaket);
+                    } else {
+                        console.error('Tidak ada data paket yang ditemukan.');
+                    }
+
+                    if (metodeList.length > 0) {
+                        updateMetodePembayaranUI(metodeList);
+                    } else {
+                        rekeningList.innerHTML = '<li>Metode pembayaran tidak tersedia saat ini.</li>';
+                    }
+                } else {
+                    console.error('Gagal memuat data premium:', result.message || 'Unknown');
+                }
+            } catch (error) {
+                console.error('Gagal memuat data premium:', error);
+            }
+        }
+
+        // --- Fungsi Update UI ---
+        function updatePaketUI(paket) {
+            const hargaNormal = parseFloat(paket.harga_normal || paket.harga); // Asumsi ada harga normal
+            const hargaPromo = parseFloat(paket.harga);
+            const diskon = hargaNormal - hargaPromo;
+
+            document.getElementById('paket-nama').textContent = paket.nama_paket;
+            document.getElementById('paket-harga-promo').textContent = formatRupiah(hargaPromo);
+            if (hargaNormal > hargaPromo) {
+                const hargaNormalEl = document.getElementById('paket-harga-normal');
+                hargaNormalEl.textContent = formatRupiah(hargaNormal);
+                hargaNormalEl.style.display = 'inline';
+            }
+            document.getElementById('paket-info-berlaku').textContent = `Berlaku untuk ${paket.nama_paket}`;
+            
+            // Update fitur list
+            const fiturList = document.getElementById('paket-fitur-list');
+            fiturList.innerHTML = '';
+            paket.fitur.forEach(fitur => {
+                fiturList.innerHTML += `<li><i class="bi bi-check-circle-fill"></i> ${fitur.nama_fitur}</li>`;
+            });
+
+            // Update ringkasan pembayaran
+            document.getElementById('summary-harga-normal').textContent = formatRupiah(hargaNormal);
+            document.getElementById('summary-promo').textContent = `- ${formatRupiah(diskon)}`;
+            document.getElementById('summary-total').textContent = formatRupiah(hargaPromo);
+            
+            // Update total di modal
+            modalTotalHarga.textContent = formatRupiah(hargaPromo);
+
+            // Simpan ID paket yang dipilih
+            selectedPaketIdInput.value = paket.id;
+        }
+
+        function updateMetodePembayaranUI(metodeList) {
+            rekeningList.innerHTML = '';
+            paymentMethodSelect.innerHTML = '<option value="">-- Pilih Metode --</option>';
+
+            metodeList.forEach(metode => {
+                // Tambahkan ke daftar rekening di modal
+                rekeningList.innerHTML += `<li><strong>${metode.nama_metode}:</strong> ${metode.nomor_rekening} (a/n ${metode.atas_nama})</li>`;
+                
+                // Tambahkan ke dropdown select
+                const option = document.createElement('option');
+                option.value = metode.id;
+                option.textContent = `${metode.nama_metode} - ${metode.nomor_rekening}`;
+                paymentMethodSelect.appendChild(option);
+            });
+        }
+
+        function showToast(message, isSuccess = true) {
+            const toast = document.createElement('div');
+            toast.className = `toast-notification ${isSuccess ? 'success' : 'error'}`;
+            toast.innerHTML = `<i class="bi ${isSuccess ? 'bi-check-circle-fill' : 'bi-exclamation-triangle-fill'}"></i> ${message}`;
+            document.body.appendChild(toast);
+            setTimeout(() => {
+                toast.classList.add('show');
+            }, 10);
+            setTimeout(() => {
+                toast.classList.remove('show');
+                setTimeout(() => document.body.removeChild(toast), 500);
+            }, 3000);
+        }
+
         // Fungsi untuk menampilkan modal
         function showModal() {
             if (manualPaymentModal) {
                 manualPaymentModal.style.display = 'flex';
                 // Reset form jika modal ditutup lalu dibuka lagi
-                formContent.style.display = 'block';
+                formContent.style.display = 'flex';
                 successMessage.style.display = 'none';
                 manualPaymentForm.reset();
             }
@@ -190,7 +283,7 @@
         }
 
         // --- Event Listeners ---
-
+        
         // Tampilkan modal saat tombol "Langganan Sekarang" diklik
         if (subscribeButton) {
             subscribeButton.addEventListener('click', showModal);
@@ -217,22 +310,50 @@
 
         // --- Penanganan Submit Form ---
         if (manualPaymentForm) {
-            manualPaymentForm.addEventListener('submit', function(event) {
-                // Hentikan pengiriman form bawaan
+            manualPaymentForm.addEventListener('submit', async function(event) {
                 event.preventDefault();
+                const originalButtonText = submitPaymentBtn.innerHTML;
+                submitPaymentBtn.disabled = true;
+                submitPaymentBtn.innerHTML = '<i class="bi bi-arrow-repeat"></i> Mengirim...';
 
-                //
-                // !! PENTING: Di sinilah Anda seharusnya mengirim data 
-                //    form (termasuk file) ke server (backend) Anda.
-                //
+                const formData = new FormData(manualPaymentForm);
+                formData.append('paket_id', selectedPaketIdInput.value);
 
-                // Untuk sekarang, kita hanya simulasikan sukses di frontend:
-                // 1. Sembunyikan form
-                formContent.style.display = 'none';
+                try {
+                    const response = await fetch('../api/api_submit_pembayaran.php', {
+                        method: 'POST',
+                        body: formData
+                    });
 
-                // 2. Tampilkan pesan sukses
-                successMessage.style.display = 'block';
+                    const result = await response.json();
+
+                    if (response.ok && result.status === 'success') {
+                        formContent.style.display = 'none';
+                        successMessage.style.display = 'block';
+                    } else {
+                        // Tampilkan pesan error dari API
+                        showToast(result.message || 'Terjadi kesalahan.', false);
+                    }
+
+                } catch (error) {
+                    console.error('Submit error:', error);
+                    showToast('Gagal terhubung ke server. Silakan coba lagi.', false);
+                } finally {
+                    submitPaymentBtn.disabled = false;
+                    submitPaymentBtn.innerHTML = originalButtonText;
+                }
             });
         }
+
+        // --- Inisialisasi ---
+        // Panggil fungsi untuk memuat semua data yang diperlukan
+        loadPremiumData();
+        loadPaymentMethods();
     });
 </script>
+<style>
+    /* Toast Notification Style */
+    .toast-notification.success { background-color: #22c55e; }
+    .toast-notification.error { background-color: #ef4444; }
+    #form-content { flex-direction: column; }
+</style>

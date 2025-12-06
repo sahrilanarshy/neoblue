@@ -1,3 +1,9 @@
+<?php
+if (isset($_SESSION['sukses'])) {
+    $pesan_sukses = $_SESSION['sukses'];
+    unset($_SESSION['sukses']);
+}
+?>
 <div class="page-inner">
     <div class="page-header">
         <h3 class="fw-bold mb-3">Tryout</h3>
@@ -14,8 +20,7 @@
             <div class="card-header">
                 <div class="d-flex align-items-center">
                     <h4 class="card-title">Daftar Tryout</h4>
-                    <button class="btn btn-primary btn-round ms-auto"
-                        onclick="window.location.href='.?hal=tambahtryout';">
+                    <button class="btn btn-primary btn-round ms-auto" onclick="window.location.href='.?hal=tambahtryout';">
                         <i class="fa fa-plus"></i>
                         Tambah
                     </button>
@@ -30,106 +35,54 @@
                                 <th>Nama Tryout</th>
                                 <th>Tanggal Mulai</th>
                                 <th>Tanggal Selesai</th>
-                                <th>Waktu</th>
-                                <th>Status</th>
-                                <th>tipe</th>
+                                <th>Tipe</th>
                                 <th>Aksi</th>
                             </tr>
                         </thead>
-                        <tfoot>
-                            <tr>
-                                <th>No</th>
-                                <th>Nama Tryout</th>
-                                <th>Tanggal Mulai</th>
-                                <th>Tanggal Selesai</th>
-                                <th>Waktu</th>
-                                <th>Status</th>
-                                <th>tipe</th>
-                                <th>Aksi</th>
-                            </tr>
-                        </tfoot>
                         <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>Tryout UTBK - SNBT #1</td>
-                                <td>15/10/2025</td>
-                                <td>22/10/2025</td>
-                                <td>30 Menit</td>
-                                <td>
-                                    <span class="btn btn-primary btn-round btn-xs btn-warning">Mendatang</span>
-                                </td>
-                                <td>
-                                    <a class="btn btn-primary btn-round btn-xs btn-success">Free</a>
-                                </td>
-                                <td>
-                                    <div class="form-button-action">
-                                        <a href=".?hal=edittryout&id=1" data-bs-toggle="tooltip" title="Edit"
-                                            class="btn btn-link btn-primary btn-sm">
-                                            <i class="fa fa-edit"></i>
-                                        </a>
+                            <?php
+                            include '../config/koneksi.php';
+                            $no = 1;
+                            $query = "SELECT id, nama_tryout, tanggal_mulai, tanggal_selesai, tipe FROM tryout ORDER BY tanggal_mulai DESC";
+                            $result = mysqli_query($koneksi, $query);
+                            $today = date('Y-m-d');
+                            while ($row = mysqli_fetch_assoc($result)) {
+                                $status = '';
+                                $status_badge = '';
+                                if ($today < $row['tanggal_mulai']) {
+                                    $status = 'Mendatang';
+                                    $status_badge = 'btn-warning';
+                                } elseif ($today >= $row['tanggal_mulai'] && $today <= $row['tanggal_selesai']) {
+                                    $status = 'Aktif';
+                                    $status_badge = 'btn-success';
+                                } else {
+                                    $status = 'Selesai';
+                                    $status_badge = 'btn-secondary';
+                                }
 
-                                        <a href="#" data-bs-toggle="modal" data-bs-target="#confirmDeleteModal"
-                                            data-id="1" data-item-name="Tryout UTBK - SNBT #15" title="Hapus"
-                                            class="btn btn-link btn-danger btn-sm">
-                                            <i class="fa fa-times"></i>
-                                        </a>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>Tryout UTBK - SNBT #2</td>
-                                <td>08/10/2025</td>
-                                <td>15/10/2025</td>
-                                <td>30 Menit</td>
-                                <td>
-                                    <span class="btn btn-primary btn-round btn-xs btn-secondary">Selesai</span>
-                                </td>
-                                <td>
-                                    <a class="btn btn-primary btn-round btn-xs btn-success">Free</a>
-                                </td>
-                                <td>
-                                    <div class="form-button-action">
-                                        <a href=".?hal=edittryout&id=2" data-bs-toggle="tooltip" title="Edit"
-                                            class="btn btn-link btn-primary btn-sm">
-                                            <i class="fa fa-edit"></i>
-                                        </a>
-
-                                        <a href="#" data-bs-toggle="modal" data-bs-target="#confirmDeleteModal"
-                                            data-id="2" data-item-name="Tryout UTBK - SNBT #14" title="Hapus"
-                                            class="btn btn-link btn-danger btn-sm">
-                                            <i class="fa fa-times"></i>
-                                        </a>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>3</td>
-                                <td>Tryout UTBK - SNBT #3</td>
-                                <td>23/10/2025</td>
-                                <td>30/10/2025</td>
-                                <td>30 Menit</td>
-                                <td>
-                                    <span class="btn btn-primary btn-round btn-xs btn-success">Aktif</span>
-                                </td>
-                                <td>
-                                    <a class="btn btn-primary btn-round btn-xs btn-warning">Premium</a>
-                                </td>
-                                <td>
-                                    <div class="form-button-action">
-                                        <a href=".?hal=edittryout&id=3" data-bs-toggle="tooltip" title="Edit"
-                                            class="btn btn-link btn-primary btn-sm">
-                                            <i class="fa fa-edit"></i>
-                                        </a>
-
-                                        <a href="#" data-bs-toggle="modal" data-bs-target="#confirmDeleteModal"
-                                            data-id="3" data-item-name="Tryout UTBK - SNBT #16" title="Hapus"
-                                            class="btn btn-link btn-danger btn-sm">
-                                            <i class="fa fa-times"></i>
-                                        </a>
-                                    </div>
-                                </td>
-                            </tr>
+                                $tipe_badge = $row['tipe'] == 'Free' ? 'btn-success' : 'btn-warning';
+                            ?>
+                                <tr>
+                                    <td><?= $no++; ?></td>
+                                    <td><a href=".?hal=soaltryout&id_tryout=<?= $row['id']; ?>"><?= htmlspecialchars($row['nama_tryout']); ?></a></td>
+                                    <td><?= date('d/m/Y', strtotime($row['tanggal_mulai'])); ?></td>
+                                    <td><?= date('d/m/Y', strtotime($row['tanggal_selesai'])); ?></td>
+                                    <td><a class="btn btn-primary btn-round btn-xs <?= $tipe_badge; ?>"><?= htmlspecialchars($row['tipe']); ?></a></td>
+                                    <td>
+                                        <div class="form-button-action">
+                                            <a href=".?hal=tambahsoaltryout&id_tryout=<?= $row['id']; ?>" data-bs-toggle="tooltip" title="Tambah Soal" class="btn btn-link btn-success btn-sm">
+                                                <i class="fa fa-plus"></i>
+                                            </a>
+                                            <a href=".?hal=edittryout&id=<?= $row['id']; ?>" data-bs-toggle="tooltip" title="Edit" class="btn btn-link btn-primary btn-sm">
+                                                <i class="fa fa-edit"></i>
+                                            </a>
+                                            <a href="#" data-bs-toggle="modal" data-bs-target="#hapusTryoutModal" data-id="<?= $row['id']; ?>" data-item-name="<?= htmlspecialchars($row['nama_tryout']); ?>" title="Hapus" class="btn btn-link btn-danger btn-sm">
+                                                <i class="fa fa-times"></i>
+                                            </a>
+                                        </div>
+                                    </td>
+                                </tr>
+                            <?php } ?>
                         </tbody>
                     </table>
                 </div>
@@ -137,45 +90,13 @@
         </div>
     </div>
 </div>
-
-<div class="modal fade" id="confirmDeleteModal" tabindex="-1" aria-labelledby="confirmDeleteModalLabel"
-    aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="confirmDeleteModalLabel">Konfirmasi Penghapusan</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                Apakah Anda yakin ingin menghapus tryout <strong id="modal-item-name"></strong>?
-                <p class="text-danger small mt-2">Aksi ini tidak dapat dibatalkan.</p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-                <a href="#" id="confirmDeleteButton" class="btn btn-danger">Ya, Hapus</a>
-            </div>
-        </div>
-    </div>
-</div>
-
 <script>
-    const confirmDeleteModal = document.getElementById('confirmDeleteModal');
-
-    confirmDeleteModal.addEventListener('show.bs.modal', event => {
-        // Tombol yang memicu modal
-        const button = event.relatedTarget;
-
-        // Ekstrak informasi dari atribut data-*
-        const itemId = button.getAttribute('data-id');
-        const itemName = button.getAttribute('data-item-name');
-
-        // Perbarui konten modal
-        const modalItemName = confirmDeleteModal.querySelector('#modal-item-name');
-        const confirmButton = confirmDeleteModal.querySelector('#confirmDeleteButton');
-
-        modalItemName.textContent = `"${itemName}"`;
-
-        // Atur link href untuk tombol hapus di dalam modal
-        confirmButton.href = `.?hal=hapustryout&id=${itemId}`;
+    <?php if (isset($pesan_sukses)): ?>
+    document.addEventListener('DOMContentLoaded', function() {
+        document.getElementById('pesanSuksesModal').innerText = '<?= addslashes($pesan_sukses); ?>';
+        new bootstrap.Modal(document.getElementById('suksesModal')).show();
     });
+    <?php endif; ?>
 </script>
+
+<?php include 'hapustryout.php'; ?>

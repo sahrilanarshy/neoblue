@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F5F5F5"
+    android:fitsSystemWindows="true">
+
+    <include
+        android:id="@+id/header_layout"
+        layout="@layout/layout_header" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/header_layout"
+        android:layout_above="@id/bottom_navigation"
+        android:padding="16dp">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="12dp"
+            app:cardBackgroundColor="@color/white">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="20dp">
+
+                <TextView
+                    android:id="@+id/tv_judul_detail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Judul Materi"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+                    android:layout_marginBottom="4dp"/>
+
+                <TextView
+                    android:id="@+id/tv_tanggal_detail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Tanggal - Kategori"
+                    android:textSize="12sp"
+                    android:textColor="@color/text_grey"
+                    android:layout_marginBottom="16dp"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#EEEEEE"
+                    android:layout_marginBottom="16dp"/>
+
+                <!-- Layout untuk BACAAN -->
+                <TextView
+                    android:id="@+id/tv_isi_detail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Isi konten akan muncul di sini..."
+                    android:textSize="16sp"
+                    android:textColor="@color/black"
+                    android:lineSpacingExtra="6dp"
+                    android:visibility="visible"/>
+
+                <!-- Layout untuk SOAL (Hidden by default) -->
+                <LinearLayout
+                    android:id="@+id/layout_soal_container"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:id="@+id/tv_pertanyaan"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Pertanyaan..."
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/black"
+                        android:layout_marginBottom="16dp"/>
+
+                    <!-- Diganti dari RadioGroup ke LinearLayout agar tidak ada bulatan radio button -->
+                    <LinearLayout
+                        android:id="@+id/layout_opsi_jawaban"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/tv_opsi_a"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="A. Pilihan A"
+                            android:textColor="@color/text_dark"
+                            android:padding="8dp"
+                            android:layout_marginBottom="4dp"/>
+                        <TextView
+                            android:id="@+id/tv_opsi_b"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="B. Pilihan B"
+                            android:textColor="@color/text_dark"
+                            android:padding="8dp"
+                            android:layout_marginBottom="4dp"/>
+                        <TextView
+                            android:id="@+id/tv_opsi_c"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="C. Pilihan C"
+                            android:textColor="@color/text_dark"
+                            android:padding="8dp"
+                            android:layout_marginBottom="4dp"/>
+                        <TextView
+                            android:id="@+id/tv_opsi_d"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="D. Pilihan D"
+                            android:textColor="@color/text_dark"
+                            android:padding="8dp"
+                            android:layout_marginBottom="4dp"/>
+                        <TextView
+                            android:id="@+id/tv_opsi_e"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="E. Pilihan E"
+                            android:textColor="@color/text_dark"
+                            android:padding="8dp"
+                            android:layout_marginBottom="8dp"/>
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/btn_show_answer"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Lihat Kunci Jawaban"
+                        android:textColor="@color/neo_blue"
+                        android:textStyle="bold"
+                        android:padding="8dp"
+                        android:layout_marginBottom="12dp"/>
+
+                    <LinearLayout
+                        android:id="@+id/layout_pembahasan"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:background="#E3F2FD"
+                        android:padding="12dp"
+                        android:visibility="gone">
+
+                        <TextView
+                            android:id="@+id/tv_kunci_jawaban"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Jawaban: C"
+                            android:textStyle="bold"
+                            android:textColor="@color/black"
+                            android:layout_marginBottom="8dp"/>
+
+                        <TextView
+                            android:text="Pembahasan:"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textStyle="bold"
+                            android:textColor="@color/black"/>
+
+                        <TextView
+                            android:id="@+id/tv_pembahasan"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Ini adalah penjelasan..."
+                            android:textColor="@color/text_dark"
+                            android:layout_marginTop="4dp"/>
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+    </ScrollView>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@color/white"
+        app:menu="@menu/bottom_nav_menu"
+        app:itemIconTint="@color/neo_blue"
+        app:itemTextColor="@color/text_dark"
+        app:labelVisibilityMode="labeled"/>
+
+</RelativeLayout>

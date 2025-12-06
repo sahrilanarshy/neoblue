@@ -42,12 +42,12 @@
                             <a class="dropdown-toggle profile-pic" data-bs-toggle="dropdown" href="#"
                                 aria-expanded="false">
                                 <div class="avatar-sm">
-                                    <img src="../assets/admin/img/logo/icon profile.png" alt="..."
+                                    <img src="<?= $_SESSION['foto_profil'] ? '../' . htmlspecialchars($_SESSION['foto_profil']) : '../assets/admin/img/logo/icon profile.png' ?>" alt="..."
                                         class="avatar-img rounded-circle" />
                                 </div>
                                 <span class="profile-username">
                                     <span class="op-7">Hi,</span>
-                                    <span class="fw-bold">Admin</span>
+                                    <span class="fw-bold"><?= htmlspecialchars($_SESSION['nama'] ?? 'Admin'); ?></span>
                                 </span>
                             </a>
                             <ul class="dropdown-menu dropdown-user animated fadeIn">
@@ -55,13 +55,14 @@
                                     <li>
                                         <div class="user-box">
                                             <div class="avatar-lg">
-                                                <img src="../assets/admin/img/logo/icon profile.png" alt="image profile"
+                                                <img src="<?= $_SESSION['foto_profil'] ? '../' . htmlspecialchars($_SESSION['foto_profil']) : '../assets/admin/img/logo/icon profile.png' ?>" alt="image profile"
                                                     class="avatar-img rounded" />
                                             </div>
                                             <div class="u-text">
-                                                <h4>Admin</h4>
-                                                <p class="text-muted">sahrilwfc@mail.com</p>
+                                                <h4><?= htmlspecialchars($_SESSION['nama'] ?? 'Admin'); ?></h4>
+                                                <p class="text-muted"><?= htmlspecialchars($_SESSION['email'] ?? 'email@example.com'); ?></p>
                                             </div>
+                                        </div>
                                     </li>
                                     <li>
                                         <div class="dropdown-divider"></div>
@@ -76,3 +77,23 @@
             </nav>
             <!-- End Navbar -->
         </div>
+<?php
+// To ensure the profile picture is always up-to-date in the session without modifying the login API,
+// we can fetch it once if it's not set.
+if (!isset($_SESSION['foto_profil'])) {
+    include_once '../config/koneksi.php';
+    $user_id_for_photo = $_SESSION['user_id'] ?? 0;
+    if ($user_id_for_photo > 0 && isset($koneksi)) {
+        $stmt = mysqli_prepare($koneksi, "SELECT foto_profil FROM users WHERE id = ?");
+        if ($stmt) {
+            mysqli_stmt_bind_param($stmt, "i", $user_id_for_photo);
+            mysqli_stmt_execute($stmt);
+            $result = mysqli_stmt_get_result($stmt);
+            if ($user_photo_data = mysqli_fetch_assoc($result)) {
+                $_SESSION['foto_profil'] = $user_photo_data['foto_profil'];
+            }
+            mysqli_stmt_close($stmt);
+        }
+    }
+}
+?>

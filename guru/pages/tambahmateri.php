@@ -29,50 +29,52 @@
                     <h4 class="card-title">Tambah Materi</h4>
                 </div>
                 <div class="card-body">
-                    <form action="proses_simpan_materi.php" method="POST">
+                    <form action=".?hal=proses_materi&aksi=tambah" method="POST">
                         <div class="form-group">
                             <label for="tanggal">Tanggal</label>
                             <input type="date" class="form-control" id="tanggal" name="tanggal" required />
                         </div>
                         <div class="form-group">
-                            <label for="judul_materi">Judul Materi</label>
-                            <input type="text" class="form-control" id="judul_materi" name="judul_materi"
+                            <label for="judul">Judul Materi</label>
+                            <input type="text" class="form-control" id="judul" name="judul"
                                 placeholder="Contoh: Deret & Baris" required />
                         </div>
                         <div class="form-group">
-                            <label for="subtest">Pilih Subtest</label>
-                            <select class="form-select form-control" id="subtest" name="subtest" required>
+                            <label for="link">Link Video (Opsional)</label>
+                            <input type="url" class="form-control" id="link" name="link"
+                                placeholder="Contoh: https://www.youtube.com/watch?v=xxxx" />
+                        </div>
+                        <div class="form-group">
+                            <label for="subtest_id">Pilih Subtest</label>
+                            <select class="form-select form-control" id="subtest_id" name="subtest_id" required>
                                 <option value="" disabled selected>-- Pilih Subtest --</option>
-                                <option value="1">Penalaran Umum</option>
-                                <option value="2">Pemahaman Bacaan dan Menulis</option>
-                                <option value="3">Pengetahuan dan Pemahaman Umum</option>
-                                <option value="4">Literasi Bahasa Inggris</option>
+                                <?php
+                                include '../config/koneksi.php';
+                                $query_subtest = 'SELECT * FROM subtest ORDER BY nama_subtest ASC';
+                                $result_subtest = mysqli_query($koneksi, $query_subtest);
+                                while ($row_subtest = mysqli_fetch_assoc($result_subtest)) {
+                                    echo "<option value='{$row_subtest['id']}'>" . htmlspecialchars($row_subtest['nama_subtest']) . '</option>';
+                                }
+                                ?>
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="link_video">Link Video</label>
-                            <input type="url" class="form-control" id="link_video" name="link_video"
-                                placeholder="https://www.youtube.com/watch?v=..." />
-                            <small class="form-text text-muted">Masukkan URL lengkap dari video materi.</small>
+                            <label for="tipe">Tipe Materi</label>
+                            <select class="form-select form-control" id="tipe" name="tipe" required>
+                                <option value="Free">Free</option>
+                                <option value="Premium">Premium</option>
+                            </select>
                         </div>
-                        <div class="form-group" id="container_isi_materi">
-                            <label for="editor">Isi Konten</label>
-                            <textarea id="editor" name="isi_materi" class="form-control" rows="10"></textarea>
-                            <small class="form-text text-muted">Gunakan editor ini untuk menulis materi teks dan
-                                menyisipkan gambar.</small>
-                        </div>
+                        
                         <div class="form-group">
-                            <div class="form-check form-switch">
-                                <input class="form-check-input" type="checkbox" role="switch" id="is_premium"
-                                    name="is_premium" value="1" checked>
-                                <label class="form-check-label" for="is_premium">Jadikan short ini Premium</label>
-                                <small class="form-text text-muted d-block">Aktifkan jika short ini berbayar,
-                                    non-aktifkan jika gratis.</small>
-                            </div>
+                            <label for="editor">Deskripsi (Opsional)</label>
+                            <textarea id="editor" name="deskripsi" class="form-control" rows="5"></textarea>
+                            <small class="form-text text-muted">Gunakan editor ini untuk format teks dan menyisipkan
+                                gambar jika perlu.</small>
                         </div>
 
                         <div class="form-group mt-4">
-                            <button type="submit" class="btn btn-primary">Simpan</button>
+                            <button type="submit" class="btn btn-primary">Simpan Materi</button>
                             <a href=".?hal=materi" class="btn btn-secondary">Batal</a>
                         </div>
                     </form>

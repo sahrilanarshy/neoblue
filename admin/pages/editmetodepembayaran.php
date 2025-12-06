@@ -1,3 +1,40 @@
+<?php
+include '../config/koneksi.php';
+$id = $_GET['id'] ?? 0;
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $id = intval($_POST['id']);
+    $nama_metode = mysqli_real_escape_string($koneksi, $_POST['nama_metode']);
+    $nomor_rekening = mysqli_real_escape_string($koneksi, $_POST['nomor_rekening']);
+    $atas_nama = mysqli_real_escape_string($koneksi, $_POST['atas_nama']);
+    $status = mysqli_real_escape_string($koneksi, $_POST['status']);
+
+    $query = "UPDATE metode_pembayaran SET nama_metode = '$nama_metode', nomor_rekening = '$nomor_rekening', atas_nama = '$atas_nama', status = '$status' WHERE id = '$id'";
+
+    if (mysqli_query($koneksi, $query)) {
+        $_SESSION['sukses'] = "Metode pembayaran berhasil diperbarui.";
+    } else {
+        $_SESSION['gagal'] = "Gagal memperbarui metode pembayaran: " . mysqli_error($koneksi);
+    }
+    header("Location: ./?hal=metodepembayaran");
+    exit();
+}
+
+// Ambil data untuk ditampilkan di form
+if ($id > 0) {
+    $result = mysqli_query($koneksi, "SELECT * FROM metode_pembayaran WHERE id = '$id'");
+    $data = mysqli_fetch_assoc($result);
+    if (!$data) {
+        $_SESSION['gagal'] = "Metode pembayaran tidak ditemukan.";
+        header("Location: ./?hal=metodepembayaran");
+        exit();
+    }
+} else {
+    $_SESSION['gagal'] = "ID tidak valid.";
+    header("Location: ./?hal=metodepembayaran");
+    exit();
+}
+?>
 <div class="page-inner">
     <div class="page-header">
         <h3 class="fw-bold mb-3">Metode Pembayaran</h3>
@@ -30,31 +67,28 @@
                 </div>
 
                 <div class="card-body">
-                    <form>
+                    <form action="?hal=editmetodepembayaran" method="POST">
+                        <input type="hidden" name="id" value="<?= $data['id']; ?>">
                         <div class="form-group mb-3">
                             <label for="nama_metode">Nama Metode Pembayaran</label>
-                            <input type="text" class="form-control" id="nama_metode"
-                                placeholder="Contoh: BCA Transfer / QRIS / Gopay" required />
+                            <input type="text" class="form-control" id="nama_metode" name="nama_metode" value="<?= htmlspecialchars($data['nama_metode']); ?>" required />
                         </div>
 
                         <div class="form-group mb-3">
                             <label for="nomor_rekening">Nomor Rekening / ID Pembayaran</label>
-                            <input type="text" class="form-control" id="nomor_rekening"
-                                placeholder="Masukkan nomor rekening atau ID pembayaran" required />
+                            <input type="text" class="form-control" id="nomor_rekening" name="nomor_rekening" value="<?= htmlspecialchars($data['nomor_rekening']); ?>" required />
                         </div>
 
                         <div class="form-group mb-3">
                             <label for="atas_nama">Atas Nama</label>
-                            <input type="text" class="form-control" id="atas_nama"
-                                placeholder="Masukkan nama pemilik akun" required />
+                            <input type="text" class="form-control" id="atas_nama" name="atas_nama" value="<?= htmlspecialchars($data['atas_nama']); ?>" required />
                         </div>
 
                         <div class="form-group mb-3">
                             <label for="status">Status</label>
-                            <select class="form-select" id="status" required>
-                                <option value="">-- Pilih Status --</option>
-                                <option value="Aktif">Aktif</option>
-                                <option value="Nonaktif">Nonaktif</option>
+                            <select class="form-select" id="status" name="status" required>
+                                <option value="Aktif" <?= $data['status'] == 'Aktif' ? 'selected' : ''; ?>>Aktif</option>
+                                <option value="Nonaktif" <?= $data['status'] == 'Nonaktif' ? 'selected' : ''; ?>>Nonaktif</option>
                             </select>
                         </div>
 

@@ -1,12 +1,15 @@
 <?php
 session_start();
+// 1. Validasi sesi: Jika tidak login atau role bukan siswa, redirect ke halaman login.
 if (!isset($_SESSION['status_login']) || $_SESSION['status_login'] !== true || $_SESSION['role'] !== 'siswa') {
     header('Location: ../login.php');
     exit();
 }
-$nama_user = $_SESSION['nama'];
-$tipe_user = $_SESSION['tipe_user'];
+// 2. Tentukan halaman yang akan ditampilkan. Default ke 'materi'.
+$hal = $_GET['hal'] ?? 'materi';
 
+// Sertakan file koneksi database agar variabel $koneksi tersedia
+include '../config/koneksi.php';
 ?>
 <!DOCTYPE html>
 <html lang="id">
@@ -26,22 +29,23 @@ $tipe_user = $_SESSION['tipe_user'];
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="../assets/user/img/profile_neoblue.png" type="image/x-icon">
     <title>NeoBlue</title>
+    <!-- 3. Memperbaiki link stylesheet yang rusak dan merapikan pemanggilan aset -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/remixicon/fonts/remixicon.css" rel="stylesheet">
-    <link
-        rel="stylesheet"href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.5/font/bootstrap-icons.min.css">
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.5/font/bootstrap-icons.min.css">
     <link href="../assets/user/css/main.css" rel="stylesheet">
     <link rel="stylesheet" href="../assets/user/css/style.css">
 </head>
 
-<body style="background-color:rgb(245, 245, 245);">
+<body>
 
     <nav class="navbar navbar-expand-lg navbar-dark">
         <div class="container">
             <a class="navbar-brand fw-bold d-flex align-items-center" href="#">
-                <img src="../assets/user/img/logo.png" alt="NeoBlue Logo" style="height: 32px; margin: 10px 0px;">
+                <img src="../assets/user/img/logo1.png" style="height: 32px; margin: 10px 0px;">
             </a>
             <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
                 <ul class="navbar-nav">
@@ -53,12 +57,12 @@ $tipe_user = $_SESSION['tipe_user'];
                 </ul>
             </div>
             <div>
-                <a href=".?hal=notifikasi" class="btn rounded-pill position-relative"
-                    style="color: white; border: none;">
-                    <i class="bi bi-bell-fill" style="font-size: 19px;"></i>
+                <a href=".?hal=notifikasi" class="btn btn-icon-only rounded-pill position-relative">
+                    <i class="bi bi-bell-fill"></i>
+                    <span id="notification-dot" class="notification-dot"></span>
                 </a>
-                <a href=".?hal=profile" class="btn rounded-pill" style="color: white; border: none;">
-                    <i class="bi bi-person-circle" style="font-size: 19px;"></i>
+                <a href=".?hal=profile" class="btn btn-icon-only rounded-pill">
+                    <i class="bi bi-person-circle"></i>
                 </a>
             </div>
         </div>
@@ -66,13 +70,10 @@ $tipe_user = $_SESSION['tipe_user'];
 
     <div class="start">
         <?php
-        $hal = @$_GET['hal'];
-        $materi = 'pages/materi.php';
+        // 4. Menyederhanakan logika inklusi file halaman
         $p = "pages/$hal.php";
-        if (!empty($hal) && file_exists($p)) {
-            include "$p";
-        } else {
-            include "$materi";
+        if (file_exists($p)) {
+            include $p;
         }
         ?>
     </div>
@@ -93,22 +94,26 @@ $tipe_user = $_SESSION['tipe_user'];
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="../assets/user/js/main.js"></script>
     <script>
-        const showListBtn = document.getElementById('showListBtn');
-        const showCardBtn = document.getElementById('showCardBtn');
-        const listView = document.getElementById('listView');
-        const cardView = document.getElementById('cardView');
+        document.addEventListener('DOMContentLoaded', function() {
+            const notificationDot = document.getElementById('notification-dot');
 
-        showListBtn.addEventListener('click', () => {
-            listView.style.display = 'block';
-            cardView.style.display = 'none';
-            showListBtn.classList.add('active');
-            showCardBtn.classList.remove('active');
-        });
-        showCardBtn.addEventListener('click', () => {
-            cardView.style.display = 'block';
-            listView.style.display = 'none';
-            showCardBtn.classList.add('active');
-            showListBtn.classList.remove('active');
+            async function checkNewNotifications() {
+                try {
+                    const response = await fetch('../api/api_check_new_notifications.php');
+                    const result = await response.json();
+
+                    if (result.new_notification) {
+                        notificationDot.classList.add('show');
+                    } else {
+                        notificationDot.classList.remove('show');
+                    }
+                } catch (error) {
+                    console.error('Gagal memeriksa notifikasi baru:', error);
+                }
+            }
+
+            // Cek notifikasi saat halaman dimuat
+            checkNewNotifications();
         });
     </script>
 </body>

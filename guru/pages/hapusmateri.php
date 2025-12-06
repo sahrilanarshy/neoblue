@@ -40,6 +40,6 @@
         const btnHapus = hapusModal.querySelector('#btnHapusMateri');
 
         judulMateri.textContent = judul;
-        btnHapus.href = '.?hal=materi'; // Ganti sesuai file PHP kamu
+        btnHapus.href = `.?hal=proses_materi&aksi=hapus&id=${id}`; // Mengarahkan ke file proses yang baru
     });
 </script>

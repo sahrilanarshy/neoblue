@@ -4,7 +4,7 @@
         <!-- Logo Header -->
         <div class="logo-header" data-background-color="blue">
             <a href="index.php" class="logo">
-                <img src="../assets/admin/img/logo/logo.png" alt="navbar brand" class="navbar-brand" height="34" />
+                <img src="../assets/guru/img/logo/logo.png" alt="navbar brand" class="navbar-brand" height="34" />
             </a>
             <div class="nav-toggle">
                 <button class="btn btn-toggle toggle-sidebar">
@@ -59,25 +59,10 @@
                 </li>
 
                 <li class="nav-item">
-                    <a data-bs-toggle="collapse" href="#tryout">
+                    <a href=".?hal=tryout">
                         <i class="fas fa-file-alt"></i>
                         <p>Tryout</p>
-                        <span class="caret"></span>
                     </a>
-                    <div class="collapse" id="tryout">
-                        <ul class="nav nav-collapse">
-                            <li>
-                                <a href=".?hal=tryout">
-                                    <span class="sub-item">Tryout</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href=".?hal=soaltryout">
-                                    <span class="sub-item">Soal Tryout</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
                 </li>
 
                 <li class="nav-item">
@@ -103,6 +88,12 @@
                     <a href=".?hal=pengumuman">
                         <i class="fas fa-bullhorn"></i>
                         <p>Pengumuman</p>
+                    </a>
+                </li>
+                <li class="nav-item <?= $hal == 'riwayat_tryout' ? 'active' : '' ?>">
+                    <a href=".?hal=riwayat_tryout">
+                        <i class="fas fa-history"></i>
+                        <p>Riwayat Tryout</p>
                     </a>
                 </li>
             </ul>

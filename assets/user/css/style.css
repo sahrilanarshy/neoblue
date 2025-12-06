@@ -5,7 +5,7 @@ font-family: 'Nunito', sans-serif;
 /* Padding untuk fixed navbar & bottom bar dari file Anda */
 padding-top: 105px;
 padding-bottom: 104px;
-background-color: #ffffff; /* Latar belakang putih seperti desain baru */
+background-color: #f2f2f2; /* Latar belakang putih seperti desain baru */
 }
 
 /* Container Utama */
@@ -42,7 +42,7 @@ color: #fff !important;
 }
 
 .menu {
-color: #fff !important;
+color: #ffffff !important;
 }
 
 .nav-link {
@@ -79,6 +79,62 @@ display: block;
 color: #6c757d;
 }
 
+/* Tombol Ikon di Navbar (Notifikasi & Profil) */
+.navbar .btn-icon-only {
+color: white;
+border: none;
+}
+
+.navbar .btn-icon-only i {
+font-size: 19px;
+}
+
+/* Indikator Titik Merah untuk Notifikasi Baru */
+.notification-dot {
+    position: absolute;
+    top: 10px;
+    right: 8px;
+    width: 10px;
+    height: 10px;
+    background-color: #ef4444; /* Warna merah */
+    border-radius: 50%;
+    border: 2px solid white; /* Border putih agar kontras dengan ikon */
+    display: none; /* Sembunyi secara default */
+}
+.notification-dot.show {
+    display: block; /* Tampilkan jika ada notifikasi baru */
+}
+
+/* Avatar di Navbar */
+.avatar-sm {
+    width: 38px; /* Ukuran yang sesuai untuk navbar */
+    height: 38px;
+    border-radius: 50%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(255, 255, 255, 0.2); /* Background transparan putih agar menyatu dengan navbar */
+    border: 1px solid rgba(255, 255, 255, 0.3); /* Border tipis putih */
+}
+
+.avatar-sm .avatar-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.avatar-sm .avatar-initials {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    color: white; /* Teks inisial putih */
+    font-weight: bold;
+    font-size: 16px;
+}
 
 /* --- [BAGIAN 2] GAYA KONTEN DASHBOARD (Baru & Disesuaikan) --- */
 .dashboard-content {
@@ -408,6 +464,16 @@ text-decoration: none;
 .btn-upgrade-item:hover {
 background-color: #f3f4f6;
 }
+.btn-upgrade-item {
+background-color: #fff;
+border: 1px solid #d1d5db;
+color: #4b5563;
+padding: 8px 16px;
+border-radius: 8px;
+font-weight: 600;
+cursor: pointer;
+text-decoration: none;
+}
 
 /* Gaya untuk Banner Ajakan Upgrade (CTA) */
 .cta-banner {
@@ -426,7 +492,17 @@ font-weight: 700;
 .cta-banner p {
 margin-top: 0;
 margin-bottom: 1.5rem;
-opacity: 0.9;
+opacity: 0.9; 
+}
+
+/* Gaya khusus untuk banner CTA saat user sudah premium */
+.cta-banner.premium-active {
+    background-color: #ffc107; /* Warna biru langit yang lembut */
+    color: #1c1c1c; /* Warna biru tua untuk teks */
+}
+
+.cta-banner.premium-active p {
+    opacity: 1;
 }
 
 
@@ -527,6 +603,40 @@ background-color: #e0a800;
 }
 .habit-button.green {
 background-color: #22c55e; /* Hijau */
+}
+
+/* Saat habit sudah dibuka oleh user: tampilkan centang di samping label */
+.habit-button.opened {
+    /* Keep layout identical to regular button: do not change padding/width */
+    display: inline-flex;
+    align-items: center;
+}
+
+/* make the button a positioned container so the check can overlay */
+.habit-button { position: relative; }
+
+.habit-button.opened .habit-button-label { display: inline-block; }
+
+/* Overlay check circle positioned at top-right of the button */
+.habit-button .habit-check {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background: #22c55e;
+    color: #fff;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.12);
+    border: 2px solid #fff;
+    font-size: 14px;
+}
+
+.habit-button .habit-check .bi {
+    font-size: 14px;
 }
 
 
@@ -891,6 +1001,20 @@ font-size: 32px;
 font-weight: 700;
 }
 
+.profile-picture-wrapper {
+    width: 96px;
+    height: 96px;
+    border-radius: 50%;
+    position: relative;
+    overflow: hidden;
+    background-color: #e5e7eb;
+}
+.profile-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
 .profile-picture-upload {
 display: flex;
 align-items: center;
@@ -901,6 +1025,7 @@ color: #6b7280;
 
 .btn-file-upload {
 background-color: #f3f4f6;
+color: #374151;
 border: 1px solid #d1d5db;
 padding: 6px 12px;
 border-radius: 0.5rem;
@@ -958,6 +1083,8 @@ gap: 1.5rem; /* Jarak antar kartu notifikasi */
 max-width: 800px; /* Batasi lebar agar tidak terlalu panjang di layar besar */
 }
 
+/* Center notification list within dashboard */
+
 .notification-item {
 background-color: #ffffff;
 border: 1px solid #e5e7eb; /* Border abu-abu sangat muda */
@@ -965,6 +1092,28 @@ border-radius: 0.75rem; /* Sudut tumpul */
 padding: 1.5rem; /* Padding di dalam kartu */
 box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03); /* Shadow lembut */
 }
+
+/* Pastikan item notifikasi bisa diposisikan relatif agar ikon trash bisa di-absolute */
+.notification-item { position: relative; }
+
+/* Tombol icon hapus kecil di pojok kanan */
+.btn-delete-icon {
+    position: absolute;
+    top: 50%;
+    right: 12px;
+    transform: translateY(-50%);
+    background: none;
+    border: 0;
+    color: #6b7280;
+    font-size: 18px; /* sedikit lebih besar untuk icon-only */
+    padding: 0; /* hilangkan kotak */
+    line-height: 1;
+    cursor: pointer;
+    display: inline-block;
+}
+.btn-delete-icon:hover { color: #ef4444; }
+
+/* Tanda visual untuk notifikasi yang belum dibaca */
 
 .notification-date {
 font-size: 14px;
@@ -986,6 +1135,8 @@ color: #4b5563;
 line-height: 1.6;
 margin-bottom: 1.5rem;
 }
+
+/* restored original notification styles (no unread accent or delete button styles) */
 
 .btn-notification {
 background-color: #3b82f6; /* Warna biru */
@@ -2317,6 +2468,34 @@ transition: background-color 0.2s ease;
 .btn-logout:hover {
 background-color: #d9363e;
 }
+
+/* --- [BAGIAN BARU] GAYA UNTUK TOAST NOTIFICATION --- */
+.toast-notification {
+    position: fixed;
+    top: 120px; /* Di bawah navbar */
+    right: 24px;
+    background-color: #22c55e; /* Warna hijau sukses */
+    color: #ffffff;
+    padding: 1rem 1.5rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    z-index: 2000;
+    transform: translateX(120%);
+    opacity: 0;
+    transition: transform 0.4s ease-in-out, opacity 0.4s ease-in-out;
+}
+
+.toast-notification.show {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+.toast-notification i {
+    font-size: 1.5rem;
+}
 /*halaman short*/
 .shorts-outer {
 position: fixed;
@@ -2559,301 +2738,162 @@ z-index: 20;
 display: none;
 }
 /* Layout Paket */
-        .premium-layout {
-            display: flex;
-            gap: 2rem;
-            flex-wrap: wrap;
-            /* Agar responsif di layar kecil */
-        }
+.premium-layout {
+display: flex;
+gap: 2rem;
+flex-wrap: wrap;
+/* Agar responsif di layar kecil */
+}
 
-        .paket-premium-card {
-            flex: 1;
-            /* Lebar fleksibel */
-            min-width: 300px;
-        }
+.paket-premium-card {
+flex: 1;
+/* Lebar fleksibel */
+min-width: 300px;
+}
 
-        .pembayaran-card {
-            flex: 1.5;
-            /* Lebar fleksibel */
-            min-width: 350px;
-        }
+.pembayaran-card {
+flex: 1.5;
+/* Lebar fleksibel */
+min-width: 350px;
+}
 
-        /* Kartu Paket Premium */
-        .harga {
-            margin: 1rem 0;
-        }
+/* Kartu Paket Premium */
+.harga {
+margin: 1rem 0;
+}
 
-        .harga-dicoret {
-            text-decoration: line-through;
-            color: #888;
-            font-size: 1.1rem;
-            margin-right: 0.5rem;
-        }
+.harga-dicoret {
+text-decoration: line-through;
+color: #888;
+font-size: 1.1rem;
+margin-right: 0.5rem;
+}
 
-        .harga-promo {
-            color: #D90429;
-            /* Merah */
-            font-size: 2.5rem;
-            font-weight: 700;
-        }
+.harga-promo {
+color: #D90429;
+/* Merah */
+font-size: 2.5rem;
+font-weight: 700;
+}
 
-        .info-berlaku {
-            font-size: 0.9rem;
-            color: #555;
-            font-weight: 500;
-        }
+.info-berlaku {
+font-size: 0.9rem;
+color: #555;
+font-weight: 500;
+}
 
-        .fitur-list {
-            list-style: none;
-            padding-left: 0;
-            margin-top: 1.5rem;
-        }
+.fitur-list {
+list-style: none;
+padding-left: 0;
+margin-top: 1.5rem;
+}
 
-        .fitur-list li {
-            margin-bottom: 0.75rem;
-            display: flex;
-            align-items: center;
-        }
+.fitur-list li {
+margin-bottom: 0.75rem;
+display: flex;
+align-items: center;
+}
 
-        .fitur-list .bi-check-circle-fill {
-            color: #28A745;
-            /* Hijau */
-            margin-right: 0.75rem;
-            font-size: 1.2rem;
-        }
+.fitur-list .bi-check-circle-fill {
+color: #28A745;
+/* Hijau */
+margin-right: 0.75rem;
+font-size: 1.2rem;
+}
 
-        /* Kartu Detail Pembayaran */
-        .form-voucher .input-grup {
-            display: flex;
-            margin-top: 0.5rem;
-        }
+/* Kartu Detail Pembayaran */
+.form-voucher .input-grup {
+display: flex;
+margin-top: 0.5rem;
+}
 
-        .form-voucher input {
-            flex: 1;
-            border: 1px solid #ddd;
-            padding: 0.75rem;
-            border-radius: 6px 0 0 6px;
-        }
+.form-voucher input {
+flex: 1;
+border: 1px solid #ddd;
+padding: 0.75rem;
+border-radius: 6px 0 0 6px;
+}
 
-        .form-voucher button {
-            background-color: #f0f0f0;
-            border: 1px solid #ddd;
-            border-left: none;
-            padding: 0.75rem 1rem;
-            border-radius: 0 6px 6px 0;
-            cursor: pointer;
-            font-weight: 600;
-        }
+.form-voucher button {
+background-color: #f0f0f0;
+border: 1px solid #ddd;
+border-left: none;
+padding: 0.75rem 1rem;
+border-radius: 0 6px 6px 0;
+cursor: pointer;
+font-weight: 600;
+}
 
-        .ringkasan-harga {
-            margin-top: 1.5rem;
-            border-top: 1px solid #eee;
-            padding-top: 1.5rem;
-        }
+.ringkasan-harga {
+margin-top: 1.5rem;
+border-top: 1px solid #eee;
+padding-top: 1.5rem;
+}
 
-        .item-harga,
-        .total-harga {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 0.75rem;
-        }
+.item-harga,
+.total-harga {
+display: flex;
+justify-content: space-between;
+margin-bottom: 0.75rem;
+}
 
-        .total-harga {
-            font-size: 1.1rem;
-            font-weight: 700;
-            margin-top: 1rem;
-        }
+.total-harga {
+font-size: 1.1rem;
+font-weight: 700;
+margin-top: 1rem;
+}
 
-        .harga-final {
-            font-size: 1.5rem;
-            color: #D90429;
-        }
+.harga-final {
+font-size: 1.5rem;
+color: #D90429;
+}
 
-        .btn-langganan {
-            width: 100%;
-            background-color: #007BFF;
-            /* Biru */
-            color: white;
-            border: none;
-            padding: 1rem;
-            font-size: 1.1rem;
-            font-weight: 600;
-            border-radius: 6px;
-            cursor: pointer;
-            margin-top: 1rem;
-        }
+.btn-langganan {
+width: 100%;
+background-color: #007BFF;
+/* Biru */
+color: white;
+border: none;
+padding: 1rem;
+font-size: 1.1rem;
+font-weight: 600;
+border-radius: 6px;
+cursor: pointer;
+margin-top: 1rem;
+}
 
-        .syarat-ketentuan {
-            font-size: 0.8rem;
-            color: #888;
-            text-align: center;
-            margin-top: 1rem;
-        }
+.syarat-ketentuan {
+font-size: 0.8rem;
+color: #888;
+text-align: center;
+margin-top: 1rem;
+}
 
-        /* Lapisan Overlay (Latar Belakang) */
-        .modal-overlay {
-            display: none;
-            position: fixed;
-            z-index: 2000;
-            /* <-- PASTIKAN ANGKA INI TINGGI */
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            overflow: auto;
-            background-color: rgba(0, 0, 0, 0.6);
-            justify-content: center;
-            align-items: center;
-            padding: 1rem;
-        }
-
-        /* Konten Modal */
-        .modal-content-manual {
-            background-color: #ffffff;
-            border-radius: 8px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-            width: 100%;
-            max-width: 500px;
-            animation: slide-down 0.3s ease-out;
-        }
-
-        /* Animasi sederhana */
-        @keyframes slide-down {
-            from {
-                transform: translateY(-50px);
-                opacity: 0;
-            }
-
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
-        }
-
-        /* Header Modal */
-        .modal-content-manual .modal-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem 1.5rem;
-            border-bottom: 1px solid #e5e7eb;
-        }
-
-        .modal-content-manual .modal-header h3 {
-            margin: 0;
-            font-size: 1.25rem;
-            color: #111827;
-        }
-
-        .modal-close-button {
-            font-size: 1.75rem;
-            font-weight: bold;
-            color: #6b7280;
-            background: none;
-            border: none;
-            cursor: pointer;
-            padding: 0;
-            line-height: 1;
-        }
-
-        /* Body Modal (Form) */
-        .modal-body-manual {
-            padding: 1.5rem;
-        }
-
-        .rekening-list {
-            list-style: none;
-            padding-left: 0;
-            background-color: #f9fafb;
-            border: 1px solid #e5e7eb;
-            border-radius: 6px;
-            padding: 1rem;
-            font-size: 0.9rem;
-        }
-
-        .rekening-list li {
-            margin-bottom: 0.5rem;
-        }
-
-        .rekening-list li:last-child {
-            margin-bottom: 0;
-        }
-
-        .divider {
-            border: none;
-            border-top: 1px solid #e5e7eb;
-            margin: 1.5rem 0;
-        }
-
-        /* Grup Form */
-        .form-grup {
-            margin-bottom: 1.25rem;
-        }
-
-        .form-grup label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: 600;
-            font-size: 0.875rem;
-            color: #374151;
-        }
-
-        .form-grup select,
-        .form-grup input[type="file"],
-        .form-grup textarea {
-            width: 100%;
-            padding: 0.75rem;
-            border: 1px solid #d1d5db;
-            border-radius: 6px;
-            font-size: 0.9rem;
-            box-sizing: border-box;
-            /* Penting */
-            font-family: inherit;
-        }
-
-        .form-grup input[type="file"] {
-            padding: 0.5rem;
-            background-color: #f9fafb;
-        }
-
-        .form-grup small {
-            font-size: 0.8rem;
-            color: #6b7280;
-            margin-top: 0.25rem;
-        }
-
-        /* Tombol Kirim */
-        .btn-kirim-konfirmasi {
-            width: 100%;
-            padding: 0.85rem 1rem;
-            font-size: 1rem;
-            font-weight: 600;
-            color: #ffffff;
-            background-color: #007BFF;
-            /* Ganti dengan warna tema Anda */
-            border: none;
-            border-radius: 6px;
-            cursor: pointer;
-            transition: background-color 0.2s;
-        }
-
-        .btn-kirim-konfirmasi:hover {
-            background-color: #0056b3;
-        }
-
-        /* Pesan Sukses */
-        #success-message {
-            display: none;
-            text-align: center;
-            padding: 2rem;
-        }
-
-        #success-message .bi-check-circle-fill {
-            font-size: 3rem;
-            color: #10B981;
-            /* Hijau */
-        }
-
-        #success-message h4 {
-            margin-top: 1rem;
-        }
+/* Lapisan Overlay (Latar Belakang) */
+.modal-overlay {
+display: none;
+position: fixed;
+z-index: 2000;
+/* <-- PASTIKAN ANGKA INI TINGGI */ left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color:
+    rgba(0, 0, 0, 0.6); justify-content: center; align-items: center; padding: 1rem; } /* Konten Modal */
+    .modal-content-manual { background-color: #ffffff; border-radius: 8px; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    width: 100%; max-width: 500px; animation: slide-down 0.3s ease-out; } /* Animasi sederhana */ @keyframes slide-down
+    { from { transform: translateY(-50px); opacity: 0; } to { transform: translateY(0); opacity: 1; } } /* Header Modal
+    */ .modal-content-manual .modal-header { display: flex; justify-content: space-between; align-items: center;
+    padding: 1rem 1.5rem; border-bottom: 1px solid #e5e7eb; } .modal-content-manual .modal-header h3 { margin: 0;
+    font-size: 1.25rem; color: #111827; } .modal-close-button { font-size: 1.75rem; font-weight: bold; color: #6b7280;
+    background: none; border: none; cursor: pointer; padding: 0; line-height: 1; } /* Body Modal (Form) */
+    .modal-body-manual { padding: 1.5rem; } .rekening-list { list-style: none; padding-left: 0; background-color:
+    #f9fafb; border: 1px solid #e5e7eb; border-radius: 6px; padding: 1rem; font-size: 0.9rem; } .rekening-list li {
+    margin-bottom: 0.5rem; } .rekening-list li:last-child { margin-bottom: 0; } .divider { border: none; border-top: 1px
+    solid #e5e7eb; margin: 1.5rem 0; } /* Grup Form */ .form-grup { margin-bottom: 1.25rem; } .form-grup label {
+    display: block; margin-bottom: 0.5rem; font-weight: 600; font-size: 0.875rem; color: #374151; } .form-grup select,
+    .form-grup input[type="file" ], .form-grup textarea { width: 100%; padding: 0.75rem; border: 1px solid #d1d5db;
+    border-radius: 6px; font-size: 0.9rem; box-sizing: border-box; /* Penting */ font-family: inherit; } .form-grup
+    input[type="file" ] { padding: 0.5rem; background-color: #f9fafb; } .form-grup small { font-size: 0.8rem; color:
+    #6b7280; margin-top: 0.25rem; } /* Tombol Kirim */ .btn-kirim-konfirmasi { width: 100%; padding: 0.85rem 1rem;
+    font-size: 1rem; font-weight: 600; color: #ffffff; background-color: #007BFF; /* Ganti dengan warna tema Anda */
+    border: none; border-radius: 6px; cursor: pointer; transition: background-color 0.2s; } .btn-kirim-konfirmasi:hover
+    { background-color: #0056b3; } /* Pesan Sukses */ #success-message { display: none; text-align: center; padding:
+    2rem; } #success-message .bi-check-circle-fill { font-size: 3rem; color: #10B981; /* Hijau */ } #success-message h4
+    { margin-top: 1rem; }

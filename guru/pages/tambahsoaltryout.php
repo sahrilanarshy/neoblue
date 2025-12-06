@@ -1,10 +1,23 @@
+<?php
+include '../config/koneksi.php';
+$id_tryout = isset($_GET['id_tryout']) ? intval($_GET['id_tryout']) : 0;
+$tryout = null;
+if ($id_tryout > 0) {
+    $result = mysqli_query($koneksi, "SELECT nama_tryout FROM tryout WHERE id = $id_tryout");
+    $tryout = mysqli_fetch_assoc($result);
+}
+if (!$tryout) {
+    echo "<h4>Tryout tidak ditemukan.</h4>";
+    exit;
+}
+?>
 <div class="page-inner">
     <div class="page-header">
         <h3 class="fw-bold mb-3">Soal Tryout</h3>
         <ul class="breadcrumbs mb-3">
             <li class="nav-home"><a href="#"><i class="icon-home"></i></a></li>
             <li class="separator"><i class="icon-arrow-right"></i></li>
-            <li class="nav-item"><a href=".?hal=daftarsolatryout&id_tryout=1">Daftar Soal</a></li>
+            <li class="nav-item"><a href=".?hal=soaltryout&id_tryout=<?= $id_tryout; ?>">Daftar Soal</a></li>
             <li class="separator"><i class="icon-arrow-right"></i></li>
             <li class="nav-item"><a href="#">Tambah Soal</a></li>
         </ul>
@@ -17,29 +30,34 @@
                     <h4 class="card-title">Tambah Soal</h4>
                 </div>
                 <div class="card-body">
-                    <form action=".?hal=proses_tambah_soal_tryout" method="POST">
+                    <form action=".?hal=proses_soal_tryout&aksi=tambah" method="POST">
 
-                        <input type="hidden" name="id_tryout" value="1">
+                        <input type="hidden" name="id_tryout" value="<?= $id_tryout; ?>">
 
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group mb-3">
-                                    <label for="judul_bacaan" class="form-label">Nama Tryout</label>
-                                    <input type="text" class="form-control" id="judul_bacaan" name="judul_bacaan"
-                                        placeholder="Masukkan Nama Tryout"
-                                        required />
+                                    <label class="form-label">Nama Tryout</label>
+                                    <input type="text" class="form-control" value="<?= htmlspecialchars($tryout['nama_tryout']); ?>" readonly />
                                 </div>
                                 <div class="form-group">
-                                    <label for="subtest">Pilih Subtest</label>
-                                    <select class="form-select form-control" id="subtest" name="subtest" required>
+                                    <label for="subtest_id">Pilih Subtest</label>
+                                    <select class="form-select form-control" id="subtest_id" name="subtest_id" required>
                                         <option value="" disabled selected>-- Pilih Subtest --</option>
-                                        <option value="1">Penalaran Umum</option>
-                                        <option value="2">Pemahaman Bacaan dan Menulis</option>
-                                        <option value="3">Pengetahuan dan Pemahaman Umum</option>
-                                        <option value="4">Literasi Bahasa Inggris</option>
-                                        <option value="5">Penalaran Kuantitatif</option>
-                                        <option value="6">Penalaran Matematika</option>
+                                        <?php
+                                        $query_subtest = "SELECT * FROM subtest ORDER BY nama_subtest ASC";
+                                        $result_subtest = mysqli_query($koneksi, $query_subtest);
+                                        while ($row_subtest = mysqli_fetch_assoc($result_subtest)) {
+                                            echo "<option value='{$row_subtest['id']}'>" . htmlspecialchars($row_subtest['nama_subtest']) . "</option>";
+                                        }
+                                        ?>
                                     </select>
+                                </div>
+                                <div class="form-group mt-3">
+                                    <label for="waktu_pengerjaan">Waktu Pengerjaan (Menit)</label>
+                                    <input type="number" class="form-control" id="waktu_pengerjaan" name="waktu_pengerjaan"
+                                        placeholder="Contoh: 20" required>
+                                    <small class="form-text text-muted">Durasi pengerjaan untuk subtest ini.</small>
                                 </div>
                             </div>
                         </div>
@@ -110,7 +128,7 @@
 
                         <div class="form-group mt-4">
                             <button type="submit" class="btn btn-primary">Simpan Soal</button>
-                            <a href=".?hal=daftarsolatryout&id_tryout=1" class="btn btn-secondary">Batal</a>
+                            <a href=".?hal=soaltryout&id_tryout=<?= $id_tryout; ?>" class="btn btn-secondary">Batal</a>
                         </div>
                     </form>
                 </div>

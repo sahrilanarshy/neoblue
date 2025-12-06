@@ -1,3 +1,13 @@
+<?php
+// 1. Ambil data shorts dari database
+// Variabel $koneksi sudah tersedia dari index.php
+$query_shorts = mysqli_query($koneksi, "SELECT * FROM shorts ORDER BY id DESC");
+$shorts_list = mysqli_fetch_all($query_shorts, MYSQLI_ASSOC);
+
+// 2. Dapatkan status langganan pengguna dari sesi
+$is_premium = (isset($_SESSION['tipe_user']) && $_SESSION['tipe_user'] == 'Premium');
+
+?>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-EHWNSZCDXT"></script>
 <script>
     window.dataLayer = window.dataLayer || [];
@@ -15,39 +25,54 @@
     <div class="start">
         <div class="shorts-outer">
             <div class="shorts-inner" id="shorts-inner">
-                <div class="short-item active">
-                    <div class="short-video-frame">
-                        <div class="video-placeholder" id="placeholder-0">
-                            <div style="color: #555; font-size: 14px;">Memuat Video ...</div>
+                <?php if (empty($shorts_list)): ?>
+                    <div class="short-item active">
+                        <div class="short-video-frame" style="display:flex; flex-direction:column; gap:22px; color:#fff; text-align:center; padding:48px 28px; font-size:16px; line-height:1.4;">
+                            Belum ada video short yang tersedia.
                         </div>
-
-                        <video class="short-video" loop preload="metadata" playsinline webkit-playsinline
-                            disablepictureinpicture controlslist="nodownload noremoteplayback noplaybackrate"
-                            poster="" data-src="../assets/short/vid_565036_1757642696.mp4">
-                            <source data-src="../assets/user/short/video1.mp4" type="video/mp4">
-                            Browser Anda tidak mendukung video.
-                        </video>
-                        <div class="short-progress-container">
-                            <div class="short-progress-bar">
-                                <div class="short-progress-handle"></div>
+                    </div>
+                <?php else: ?>
+                    <?php foreach ($shorts_list as $index => $short): ?>
+                        <?php
+                        // 3. Lewati video premium jika pengguna bukan premium
+                        if ($short['tipe'] === 'Premium' && !$is_premium) {
+                            continue;
+                        }
+                        ?>
+                        <div class="short-item <?= $index === 0 ? 'active' : ''; ?>">
+                            <div class="short-video-frame">
+                                <div class="video-placeholder" id="placeholder-<?= $index; ?>">
+                                    <div style="color: #555; font-size: 14px;">Memuat Video ...</div>
+                                </div>
+                                <video class="short-video" loop preload="none" playsinline webkit-playsinline
+                                    disablepictureinpicture controlslist="nodownload noremoteplayback noplaybackrate" poster="" data-src="../<?= htmlspecialchars($short['video_path']); ?>">
+                                </video>
+                                <div class="short-progress-container">
+                                    <div class="short-progress-bar">
+                                        <div class="short-progress-handle"></div>
+                                    </div>
+                                    <div class="short-progress-time">0:00</div>
+                                </div>
+                                <div class="short-sound-btn" title="Suara">
+                                    <i class="bi bi-volume-up-fill icon-up"></i>
+                                    <i class="bi bi-volume-mute-fill icon-mute"></i>
+                                </div>
                             </div>
-                            <div class="short-progress-time">0:00</div>
                         </div>
-                        <div class="short-sound-btn" title="Suara">
-                            <i class="bi bi-volume-up-fill icon-up"></i>
-                            <i class="bi bi-volume-mute-fill icon-mute"></i>
+                    <?php endforeach; ?>
+                <?php endif; ?>
+
+                <?php if (!$is_premium): ?>
+                    <div class="short-item" data-upgrade="1">
+                        <div class="short-video-frame"
+                            style="display:flex;flex-direction:column;gap:22px;color:#fff;text-align:center;padding:48px 28px;font-size:16px;line-height:1.4;">
+                            <div><strong>Upgrade ke Premium</strong> untuk menonton lebih banyak.</div>
+                            <a href=".?hal=premium" class="btn fw-bold"
+                                style="background:#0d6efd;color:#fff;border-radius:30px;padding:10px 26px;font-size:15px;">Upgrade
+                                Sekarang</a>
                         </div>
                     </div>
-                </div>
-                <div class="short-item" data-upgrade="1">
-                    <div class="short-video-frame"
-                        style="display:flex;flex-direction:column;gap:22px;color:#fff;text-align:center;padding:48px 28px;font-size:16px;line-height:1.4;">
-                        <div><strong>Upgrade ke Premium</strong> untuk menonton lebih banyak.</div>
-                        <a href="pembayaran.php" class="btn fw-bold"
-                            style="background:#0d6efd;color:#fff;border-radius:30px;padding:10px 26px;font-size:15px;">Upgrade
-                            Sekarang</a>
-                    </div>
-                </div>
+                <?php endif; ?>
             </div>
         </div>
 
@@ -68,7 +93,7 @@
 
             let currentIdx = 0;
             let lastPlaying = null;
-            const isPremium = false;
+            const isPremium = <?= json_encode($is_premium); ?>;
             let allowSound = true;
             let progressUpdateIntervals = [];
             let isDragging = false;
@@ -213,18 +238,11 @@
             function preloadNextVideo(currentIdx) {
                 const nextIdx = (currentIdx + 1) % videos.length;
                 const nextVideo = videos[nextIdx];
-                if (nextVideo) {
-                    const nextSource = nextVideo.querySelector('source');
-                    if (nextSource && !nextSource.getAttribute('src')) {
-                        const dataSrc = nextSource.getAttribute('data-src') || nextVideo.getAttribute('data-src');
-                        if (dataSrc) {
-                            nextSource.setAttribute('src', dataSrc);
-                            try {
-                                nextVideo.load();
-                            } catch (e) {
-                                console.error('Error preloading video:', e);
-                            }
-                        }
+                if (nextVideo && !nextVideo.getAttribute('src')) {
+                    const dataSrc = nextVideo.getAttribute('data-src');
+                    if (dataSrc && dataSrc !== '../') { // Pastikan data-src tidak kosong
+                        nextVideo.setAttribute('src', dataSrc);
+                        // Browser akan mulai memuat metadata karena preload="none"
                     }
                 }
             }
@@ -232,12 +250,11 @@
             function playVideoWithSound(video) {
                 if (!video) return;
 
-                video.currentTime = 0;
-
                 video.muted = false;
                 allowSound = true;
 
                 const playPromise = video.play();
+                userInteracted = true; // Tandai bahwa interaksi telah terjadi
 
                 if (playPromise !== undefined) {
                     playPromise.then(() => {
@@ -245,7 +262,7 @@
                             autoplayNotification.style.display = 'none';
                         }
                     }).catch(error => {
-                        console.log('Autoplay with sound blocked, trying muted:', error);
+                        console.warn('Autoplay with sound blocked, trying muted:', error);
                         video.muted = true;
                         allowSound = false;
                         video.play().then(() => {
@@ -256,7 +273,7 @@
                                 }, 3000);
                             }
                         }).catch(e => {
-                            console.log('Autoplay completely blocked:', e);
+                            console.error('Autoplay completely blocked:', e);
                         });
                     });
                 }
@@ -292,41 +309,32 @@
                         placeholders[idx].classList.remove('hidden');
                     }
 
-                    const srcEl = video.querySelector('source');
-                    if (srcEl && !srcEl.getAttribute('src')) {
-                        const ds = srcEl.getAttribute('data-src') || video.getAttribute('data-src');
-                        if (ds) {
-                            srcEl.setAttribute('src', ds);
-                            try {
-                                video.load();
-                            } catch (_) {}
+                    if (!video.getAttribute('src')) {
+                        const dataSrc = video.getAttribute('data-src');
+                        if (dataSrc) {
+                            video.setAttribute('src', dataSrc);
+                            video.load();
                         }
                     }
 
                     video.currentTime = 0;
 
-                    if (userInteracted) {
-                        playVideoWithSound(video);
-                    } else {
-                        video.muted = false;
-                        allowSound = true;
-
-                        const playPromise = video.play();
-                        if (playPromise !== undefined) {
-                            playPromise.then(() => {
-                                if (placeholders[idx]) {
-                                    placeholders[idx].classList.add('hidden');
-                                }
-                            }).catch(error => {
-                                video.muted = true;
-                                allowSound = false;
-                                video.play().then(() => {
-                                    if (placeholders[idx]) {
-                                        placeholders[idx].classList.add('hidden');
-                                    }
-                                });
-                            });
-                        }
+                    // Coba putar video. Browser akan menangani apakah akan memutar dengan suara atau tidak.
+                    video.muted = !allowSound; // Set status mute berdasarkan interaksi sebelumnya
+                    const playPromise = video.play();
+                    if (playPromise !== undefined) {
+                        playPromise.catch(error => {
+                            console.warn("Autoplay was prevented. Muting and trying again.", error);
+                            // Jika gagal, coba lagi dengan suara dimatikan
+                            video.muted = true;
+                            allowSound = false;
+                            video.play().catch(e => console.error("Could not play video even when muted.", e));
+                            
+                            // Tampilkan notifikasi jika belum ada interaksi
+                            if (!userInteracted && autoplayNotification) {
+                                autoplayNotification.style.display = 'block';
+                            }
+                        });
                     }
 
                     lastPlaying = video;
@@ -354,20 +362,6 @@
                 showVideo(currentIdx);
             }
 
-            document.addEventListener('click', function() {
-                userInteracted = true;
-                if (autoplayNotification) {
-                    autoplayNotification.style.display = 'none';
-                }
-
-                const currentVideo = videos[currentIdx];
-                if (currentVideo && currentVideo.paused) {
-                    playVideoWithSound(currentVideo);
-                }
-            }, {
-                once: true
-            });
-
             let startY = null;
             let moved = false;
             const inner = document.getElementById('shorts-inner');
@@ -377,6 +371,15 @@
                 if (e.touches.length === 1) {
                     startY = e.touches[0].clientY;
                     moved = false;
+                }
+
+                // Handle first interaction to enable sound
+                if (!userInteracted) {
+                    const currentVideo = videos[currentIdx];
+                    if (currentVideo && currentVideo.muted) {
+                        currentVideo.muted = false;
+                        allowSound = true;
+                    }
                 }
             });
 
@@ -405,6 +408,16 @@
             let lastWheel = 0;
             inner.addEventListener('wheel', e => {
                 userInteracted = true;
+
+                // Handle first interaction to enable sound
+                if (!userInteracted) {
+                    const currentVideo = videos[currentIdx];
+                    if (currentVideo && currentVideo.muted) {
+                        currentVideo.muted = false;
+                        allowSound = true;
+                    }
+                }
+
                 const now = Date.now();
                 if (wheelTimeout) clearTimeout(wheelTimeout);
                 wheelTimeout = setTimeout(() => {
@@ -425,6 +438,16 @@
 
             window.addEventListener('keydown', e => {
                 userInteracted = true;
+
+                // Handle first interaction to enable sound
+                if (!userInteracted) {
+                    const currentVideo = videos[currentIdx];
+                    if (currentVideo && currentVideo.muted) {
+                        currentVideo.muted = false;
+                        allowSound = true;
+                    }
+                }
+
                 if (e.key === 'ArrowDown') {
                     if (!isUpgradeGateActive()) nextVideo();
                 }
@@ -437,7 +460,12 @@
                 video.addEventListener('click', function() {
                     userInteracted = true;
                     if (this.paused) {
-                        playVideoWithSound(this);
+                        // Jika video dijeda, putar lagi.
+                        // Jika sebelumnya dimute, coba unmute.
+                        if (this.muted) {
+                            this.muted = false;
+                        }
+                        this.play();
                     } else {
                         this.pause();
                     }
@@ -488,10 +516,7 @@
                         e.stopPropagation();
                         if (v.muted) {
                             v.muted = false;
-                            allowSound = true;
-                            if (i === currentIdx) {
-                                playVideoWithSound(v);
-                            }
+                            allowSound = true;                           
                         } else {
                             v.muted = true;
                             allowSound = false;
